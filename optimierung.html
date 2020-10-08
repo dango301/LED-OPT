@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="./assets/icons/optimierung.svg" type="image/svg" />
+    <link href="https://fonts.googleapis.com/css?family=Montserrat|Noto+Serif" rel="stylesheet">
+    <title>Optimierung - LED \ OPT</title>
+
+    <link rel="stylesheet" href="/styles/main.css">
+    <link rel="stylesheet" href="/styles/optimierung.css">
+
+    <script src="/scripts/dist/main.js"></script>
+</head>
+
+<body>
+    <header data-barba="wrapper">
+
+        <div class="logo">
+            <a href="/"><img src="/assets/icons/home.svg" alt=""></a>
+            <a href="/">LED<br>OPT</a>
+        </div>
+
+        <nav>
+            <ul>
+                <li><a href="/#projektübersicht">Projektübersicht</a></li>
+                <li><a href="/leuchtdioden.html">Leuchtdioden</a></li>
+                <li><a href="/datensätze.html">Datensätze</a></li>
+                <li><a href="/optimierung.html#">Optimierung</a></li>
+                <li><a href="/impressum.html">Impressum</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="page-transition left"></div>
+    <div class="page-transition right"></div>
+
+    <aside class="download">
+        <a href="/Facharbeit - Dennis Paust.pdf" target="_blank"><img src="/assets/icons/pdf.svg" alt=""></a>
+        <a href="/Facharbeit - Dennis Paust.pdf" target="_blank">Facharbeit Downloaden</a>
+    </aside>
+
+
+    <main data-barba="container" data-barba-namespace="optimierung">
+        <div class="banner" id="projektübersicht">
+            <h1>Optimierung & Endresultate</h1>
+            <p>
+                Die Nachrichtenübertragung gilt es nun mithilfe der roten Leuchtdiode zu optimieren. Aufgrund ihrer
+                zuvor beschriebenen
+                Merkmale, muss der Processing-Code im Folgenden an sie angepasst werden.
+
+            </p>
+        </div>
+
+        <div class="container">
+
+            <aside class="content">
+                <div class="table-of-contents">
+                    <a href="/optimierung.html#" class="top">UP</a>
+                    <h4>Content</h4>
+                    <ul>
+                        <li><a href="#anwendung">An&shy;wen&shy;dung der Da&shy;ten&shy;aus&shy;wer&shy;tung</a></li>
+                        <li><a href="#endresultate">End&shy;re&shy;sul&shy;tate</a></li>
+                    </ul>
+                </div>
+            </aside>
+
+            <article>
+
+                <section id="anwendung">
+                    <h2>An­wen­dung der Da­ten­aus­wer­tung</h2>
+                    <h3>Verhalten beim Originalprogramm</h3>
+                    <p>
+                        Der bisherig angewandte Algorithmus zur Bitbestimmung erweist sich als unpassend unter Nutzung
+                        der neuen LED. Grund ist
+                        der geringe Unterschied zwischen ihrem Minimal- und Durchschnittswert[H.a]. Ihre wünschenswerten
+                        Eigenschaften bleiben
+                        entgegen den Annahmen des vorherigen Kapitels jedoch vollständig erhalten. Unabhängig von der
+                        Leuchtdauer vor einem
+                        jeweiligen Bitwechsel fällt die Helligkeit nach einer Periode auf denselben festen Wert, wie in
+                        den Messungen, mit Max =
+                        2.15 * Min. Für jede weitere Periode, in der die LED ausgeschaltet bleibt, fällt der Wert
+                        weiterhin schlagartig. Diese
+                        Eigenschaft ging aus der Datenerfassung zwar nicht hervor, ist jedoch nicht nachteilig. Des
+                        Weiteren wechselt der
+                        Helligkeitswert von jedem beliebigen Minimalwert auf das feste Maximum von 945 SW.
+                    </p>
+
+                    <h3>Maßnahmen zur spezifischen Anpassung des Programms</h3>
+                    <p>
+                        Unter Ausnutzung letzterer Eigenschaft wurde der Durchschnittswert umfunktioniert zu einer
+                        festen Schwelle knapp unter
+                        dem Maximum. Da die Diode in der Lage ist rapide und konstant zwischen den Extremwerten zu
+                        oszillieren, wird nur
+                        überprüft, ob der aktuelle Wert über oder unter der Schwelle liegt. Mit dieser Verbesserung
+                        verläuft die Übermittlung
+                        bei Tmax mit einer Fehlerquote von null Prozent[H.b].
+                    </p>
+                    <p>
+                        In einer Art zweiten Phase der Anpassung des Programmcodes wurde ein fehlerkorrigierender
+                        Algorithmus entwickelt,
+                        welcher die angestrebte Periodendauer Tmin anwendbar macht. Die temporären Konsolenausgaben
+                        zeigen das Vorgehen, nach
+                        dem jede Folge von Nullen durch ihre Übertragungsdauer überprüft wird[H.c], [H.d].
+                    </p>
+                    <p>
+                        Unter Ausnutzung der schnellen Oszillation der roten TC LED korrigiert der neue Algorithmus
+                        jeweilige Bits mit Wert
+                        null, die durch Messverschiebungen fälschlicherweise mit Wert eins interpretiert werden. Dem
+                        konkreten Anwendungsfall
+                        entsprechend, ermittelt und kennzeichnet das Programm die Steigung des Graphen[H.e]. Somit kann
+                        die Fallzeit vor jedem
+                        Bitwechsel von Nullen zu Einsen bestimmt werden. Die Länge des Zeitraums gibt Aufschluss
+                        darüber, wie viele Bits mit
+                        einem Wert von null darin übertragen werden müssten. Die theoretische Anzahl wird bei jedem
+                        interpretierten Bit des
+                        Wertes eins abgeglichen. Sind sie nicht gleich bedeutet das eine verspätete Messung des letzten
+                        Bits mit Wert null,
+                        womit der Bitfehler korrigierbar ist[H.c], [H.d]. Auch hier ist der Algorithmus nur auf den
+                        vorliegenden Anwendungsfall,
+                        d. h. das Verhalten bei einer Röhrenlänge von einem Meter und der roten TC LED, optimiert.
+                    </p>
+                </section>
+
+                <section id="endresultate">
+                    <h2>Endresultate</h2>
+                    <p>
+                        Systematisches Verringern der Periodendauer ergibt, dass somit Übertragungen bei Tmin fehlerfrei
+                        funktionieren und bis
+                        zu einer optimierten Periodendauer Topt = 65 reduzierbar sind.
+                        <!-- TODO: move this out of here -->
+                    </p>
+                    <p>
+                        Die Optimierung der Datenübermittlungsrate des LWL-Modells war erfolgreich. Das festgelegte
+                        Verfahren, in dem zwei aufeinander folgende Bitwechsel zusammen mit verschiedenen Leuchtdauern
+                        simuliert
+                        wurden, bestätigte die Annahme, dass Minima abhängig von vorherigen Leuchtdauern sind. Über
+                        kürzere Zeiträume der
+                        Dunkelheit erhöhen sich die Minima, während sich die Maxima bei längeren Leuchtdauern
+                        vergrößern. Diese Beobachtung
+                        erklärt das inkonsistente Verhalten vieler Leuchtdioden, das die Nachrichtenübermittlungen bei
+                        Periodendauern T < Tmax unmöglich machen. Glücklicherweise weist die rote TC LED unabhängig von
+                            Leuchtdauer und Periodenlänge konstante Lichtwerte zusammen mit einer extrem schnellen
+                            Oszillation auf. Obwohl die Programmumgebung die Dateninterpretation im Anwendungsfall mit
+                            Tmin unrealistisch machte, konnten die Merkmale der LED aus der Datenauswertung zur
+                            Entwicklung eines fehlerkorrigierenden Algorithmus ausgenutzt werden. Der Code wurde an die
+                            Leuchtdiode angepasst, womit ein BER < 1,5 Prozent gewährleistet ist. Schließlich konnte die
+                            Periodendauer unter Anwendung der Fehlerkorrektur über Tmin bis hin zu Topt=65 ms reduziert
+                            werden. Dies entspricht einer enormen Verbesserung von 48 Prozent, statt der zu Beginn
+                            angestrebten 36 Prozent. Die finale Frequenz beträgt bemerkenswerte 15,4 Bits/s. </p>
+
+                </section>
+
+            </article>
+
+        </div>
+    </main>
+
+    <footer>
+        footer
+    </footer>
+
+
+</body>
+
+</html>

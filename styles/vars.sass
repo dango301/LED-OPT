@@ -1,0 +1,58 @@
+
+$cubic1: ease-in
+$dur1: 350ms
+$navHeight: 45px
+
+
+$bg: #111
+$primaryColor: crimson
+$secondaryColor: #43a4f3
+$inactiveColor: rgb(209, 209, 209)
+$activeColor: white
+$softblack: rgb(33, 33, 33)
+
+
+    
+@mixin navLinks($horizontal: true, $col: $primaryColor)
+    transition: all ease-in-out .4s
+    position: relative
+    &.active
+        color: $col
+    &::after
+        transition: all ease-out .15s
+        content: ''
+        position: absolute
+        background: $col
+        @if $horizontal
+            bottom: 0
+            left: 0
+            width: 0
+            height: 2px
+        @else 
+            top: 0
+            left: -4.5px
+            width: 2px
+            height: 0
+    &:hover::after
+        @if $horizontal
+            width: 100%
+        @else
+            height: 100%
+
+
+@mixin elevationShadow($m, $color: #111)
+    text-shadow: $m*1.25px $m*1.25px 2px $color
+
+
+@mixin banner($img, $opac1, $opac2, $bgPos)
+    background: url('../assets/images/'+$img+'.jpg')
+    background-size: cover
+    background-attachment: fixed
+    background-color: rgba(black, $opac1)
+    background-blend-mode: darken
+    filter: saturate(120%)
+    background-position: $bgPos
+    transition: all 0.4s ease-in-out
+    
+    &:hover
+        background-color: rgba(black, $opac2)

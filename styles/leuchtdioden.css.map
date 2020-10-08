@@ -1,0 +1,10 @@
+{
+    "version": 3,
+    "mappings": "AAEA,AAAA,OAAO,CAAC;EC6CJ,UAAU,EAAE,gCAAoC;EAChD,eAAe,EAAE,KAAK;EACtB,qBAAqB,EAAE,KAAK;EAC5B,gBAAgB,EAAO,kBAAK;EAC5B,qBAAqB,EAAE,MAAM;EAC7B,MAAM,EAAE,cAAc;EACtB,mBAAmB,EDlDc,MAAM;ECmDvC,UAAU,EAAE,oBAAoB;CDnDW;;AAD/C,ACsDI,ODtDG,ACsDF,MAAM,CAAC;EACJ,gBAAgB,EAAO,mBAAK;CAAY",
+    "sources": [
+        "leuchtdioden.sass",
+        "vars.sass"
+    ],
+    "names": [],
+    "file": "leuchtdioden.css"
+}

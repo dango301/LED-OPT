@@ -1,0 +1,17 @@
+.banner {
+  background: url("../assets/images/led1.jpg");
+  background-size: cover;
+  background-attachment: fixed;
+  background-color: rgba(0, 0, 0, 0.5);
+  background-blend-mode: darken;
+  -webkit-filter: saturate(120%);
+          filter: saturate(120%);
+  background-position: bottom;
+  -webkit-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+}
+
+.banner:hover {
+  background-color: rgba(0, 0, 0, 0.66);
+}
+/*# sourceMappingURL=leuchtdioden.css.map */

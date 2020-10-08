@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="./assets/icons/leuchtdioden.svg" type="image/svg" />
+    <link href="https://fonts.googleapis.com/css?family=Montserrat|Noto+Serif" rel="stylesheet">
+    <title>Leuchtdioden - LED \ OPT</title>
+
+    <link rel="stylesheet" href="/styles/main.css">
+    <link rel="stylesheet" href="/styles/leuchtdioden.css">
+
+    <script src="/scripts/dist/main.js"></script>
+</head>
+
+<body>
+
+    <header data-barba="wrapper">
+
+        <div class="logo">
+            <a href="/"><img src="/assets/icons/home.svg" alt=""></a>
+            <a href="/">LED<br>OPT</a>
+        </div>
+
+        <nav>
+            <ul>
+                <li><a href="/#projektübersicht">Projektübersicht</a></li>
+                <li><a href="/leuchtdioden.html#">Leuchtdioden</a></li>
+                <li><a href="/datensätze.html">Datensätze</a></li>
+                <li><a href="/optimierung.html">Optimierung</a></li>
+                <li><a href="/impressum.html">Impressum</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="page-transition left"></div>
+    <div class="page-transition right"></div>
+
+    <aside class="download">
+        <a href="/Facharbeit - Dennis Paust.pdf" target="_blank"><img src="/assets/icons/pdf.svg" alt=""></a>
+        <a href="/Facharbeit - Dennis Paust.pdf" target="_blank">Facharbeit Downloaden</a>
+    </aside>
+
+    <div class="modal">
+        <div class="img-container">
+            <img src="" alt="">
+        </div>
+        <h4></h4>
+        <a target="_blank" href=""></a>
+    </div>
+
+    <main data-barba="container" data-barba-namespace="leuchtdioden">
+        <div class="banner" id="projektübersicht">
+            <h1>Funktionsweise von Leuchtdioden</h1>
+            <p>
+                Im Rahmen der Optimierung soll das Verständnis der Funktionsweise von Leuchtdioden zur Auswahl von
+                Leuchtdioden
+                beitragen, im weiteren Verlauf aber auch dazu, Überlegungen zur Datenerfassung zu gestalten sowie die
+                späterhin
+                gemessenen Daten zu erläutern.
+                Alle LEDs sind Dioden, welche grundsätzlich Halbleiter sind. Daher wird im Folgenden darauf eingegangen,
+                wie Stromfluss
+                innerhalb von Halbleitern zustande kommt, Dioden aufgebaut sind und Licht verschiedener Wellenlängen
+                bzw. Farben in
+                Leuchtdioden entsteht.
+
+            </p>
+        </div>
+
+        <div class="container">
+
+            <aside class="content">
+                <div class="table-of-contents">
+                    <a href="/leuchtdioden.html#" class="top">UP</a>
+                    <h4>Content</h4>
+                    <ul>
+                        <li><a href="#halbleiter-und-leitungsarten">Halb&shy;lei&shy;ter und
+                                Lei&shy;tungs&shy;ar&shy;ten</a></li>
+                        <li><a href="#dotierung-und-leuchtdioden">Do&shy;tie&shy;rung und Leucht&shy;dioden</a></li>
+                        <li><a href="#kriterien-leuchtdioden">Kri&shy;te&shy;rien zur Aus&shy;wahl von
+                                Leucht&shy;dioden</a></li>
+                    </ul>
+                </div>
+            </aside>
+
+            <article>
+
+                <section id="halbleiter-und-leitungsarten">
+                    <h2>Halbleiter und Leitungsarten</h2>
+                    <p>Stromfluss entsteht durch die Bewegung freier Elektronen. Innerhalb eines Materials können sie
+                        sich aus den Umlaufbahnen
+                        ihrer Valenzschalen lösen. Sind die äußeren Elektronenschalen jedoch nicht vollständig besetzt,
+                        können anliegende Atome
+                        Bindungen eingehen, um die Edelgasregel zu erfüllen, indem sie sich ein gemeinsames
+                        Valenzelektron
+                        teilen. Diese Elektronenbrücke erschwert die Loslösung einzelner Elektronen, weshalb die
+                        Leitfähigkeit materialabhängig ist. Ein Atom geht über die Brücken Bindungen zu je vier weiteren
+                        Atomen ein. Da jeweils
+                        ein Elektron beider Atome an der Elektronenpaarbindung beteiligt ist, muss das Element, aus dem
+                        das Halbleitermaterial
+                        besteht, mindestens vier-wertig sein. Im Gegensatz zur Leitern oder Isolatoren, bei denen nahezu
+                        alle, bzw. gar keine Elektronen frei sind, befinden sich in Halbleitern nahezu alle Elektronen
+                        in Valenzschalen. Sie
+                        können sich bei Halbleitermaterialien selten loslösen, wodurch ein relativ geringer Stromfluss
+                        entsteht.
+                    </p>
+
+                    <figure data-isFloating="true">
+                        <div class="img-container">
+                            <img src="/assets/leuchtdioden/Leitungsarten.png" alt="Leitungsarten"
+                                data-imgSrc="https://media.springernature.com/lw785/springer-static/image/chp%3A10.1007%2F978-3-662-49355-7_9/MediaObjects/47441_12_De_9_Fig40_HTML.gif (Stand: 15.03.2020)">
+                        </div>
+                        <figcaption>Leitungsarten</figcaption>
+                    </figure>
+
+                    <p>Nach dem Bändermodell beschreiben Bänder Energieniveaus von Elektronen auf ihren
+                        Umlaufbahnen
+                        um
+                        ein Atom. Im Valenzband
+                        befinden sich Elektronen in der Umlaufbahn der vollbesetzten Valenzschale. Dies ist der
+                        energieärmste Zustand, aus dem
+                        sich die Elektronen schwer lösen. Beim Wechsel auf eine höhere Umlaufbahn, dem
+                        Leitungsband,
+                        verlassen sie das Valenzband. Es erfolgt die Generation eines freien Ladungsträgers, der
+                        sich
+                        relativ unbehindert
+                        bewegen kann. Möglich ist die Bewegungsfreiheit, da im Leitungsband nur sehr wenige
+                        Elektronen
+                        aufgrund der beschränkten
+                        Leitfähigkeit von Halbleitern fließen. Der Stromfluss durch Generation heißt
+                        Elektronenleitung.
+                        Daran schließt Winzker an, dass bei der Loslösung eines Elektrons gleichzeitig eine
+                        “Lücke”
+                        in
+                        der Valenzschale
+                        entsteht, ein sogenanntes Loch. In dieses “schlüpft” ein anderes Elektron, ohne seine
+                        Valenzschale zu verlassen. Es wird
+                        nämlich keine weitere Energie benötigt, wenn eine gleichwertige Bindung eingegangen
+                        wird,
+                        weshalb es sich bei dem
+                        füllenden Elektron um eines desselben Atoms handelt. Analog heißt das Füllen von Löchern
+                        Rekombination von
+                        Ladungsträgern. Infolge der zuvor beschriebenen Atombindungen entsteht eine Art
+                        Kettenreaktion
+                        von Rekombinationen, wie
+                        Winzker sie beschreibt. Diese verläuft durch die kovalenten Bindungen von Atom zu Atom.
+                        Da
+                        Atome
+                        im Grundzustand
+                        elektrisch neutral sind, bleiben positiv geladene Atome nach der Generation zurück.
+                        Obwohl
+                        sich
+                        bei den Kettenreaktionen
+                        lediglich Elektronen bewegen, wird anschaulich die Bewegung eines Loches als die eines
+                        fiktiven,
+                        positiven
+                        Ladungsträgers, auch Löcherleitung genannt, beschrieben.
+                    </p>
+                    <p>Die Vorgänge beider Leitungsarten, bzw. die der Generation und Rekombination, sowie das
+                        Bändermodell sind in der nebenstehenden
+                        Abbildung zum besseren Verständnis dargestellt. Sie sind die Ursache des Stromflusses
+                        bei
+                        Halbleitern und somit auch
+                        aller Leuchtdioden. Insgesamt herrscht im Halbleiter ein Gleichgewicht zwischen
+                        Elektronen-
+                        und
+                        Löcherleitung, womit die
+                        Gesamtzahl aller freien Ladungsträger, und infolgedessen der Stromfluss, konstant
+                        bleiben.
+                        Vereinfacht lässt sich unter Vernachlässigung der Selbstinduktion
+                        annehmen, dass das
+                        emittierte Licht einer Leuchtdiode proportional zum Stromfluss ist.
+                    </p>
+
+                </section>
+
+                <section id="dotierung-und-leuchtdioden">
+                    <h2>Dotierung und Leuchtdioden</h2>
+                    <figure data-isFloating="true">
+                        <div class="img-container">
+                            <img src="/assets/leuchtdioden/Elektrisches Feld einer Diode.png"
+                                alt="Elektrisches Feld einer Diode"
+                                data-imgSrc="https://youtu.be/Q9LrPK5W8I0?t=660 (Stand: 20.03.2020)">
+                        </div>
+                        <figcaption>Leitungsarten</figcaption>
+                    </figure>
+                    <p>
+                        Im Gegensatz zur Eigenleitung eines reinen Halbleiters, entsteht durch das Einfügen von
+                        Fremdatomen eine Störleitung bei
+                        Dioden. Dabei werden drei- oder fünf-wertige Atome verwendet, sodass je ein Elektron zu wenig,
+                        bzw. zu viel für eine
+                        Elektronenpaarbindung vorhanden sind. Für Brücken ungenutzte Elektronen lösen sich mit
+                        Leichtigkeit und erzeugen eine Elektronenleitung. Drei-wertige Atome werden aufgrund der Abgabe
+                        freier Elektronen
+                        Donatoren genannt. Entsprechend entsteht eine Löcherleitung durch das Defektelektron. Da die
+                        fünf-wertigen Atome bei der
+                        Rekombination Elektronen aufnehmen, heißen sie Akzeptoren.
+                        Dioden sind Halbleiterbauelemente mit zwei unterschiedlich dotierten Bereichen. Der n-Leiter
+                        verfügt über zusätzliche
+                        negative Ladung durch Donatoren, weshalb er auch Überschusshalbleiter genannt wird. Der Bereich
+                        des p-Leiters verfügt
+                        über einen Elektronenunterschuss durch die Akzeptoren, weshalb er auch Mangelhalbleiter heißt.
+                        Aufgrund der Ladungsträgerdiffusion bewegen sich Elektronen zum Mangelhalbleiter, wo sie
+                        rekombinieren. Im Normalzustand
+                        sind Atome elektrisch neutral. Lösen sich Elektronen von ihren ursprünglichen Atomen oder gehen
+                        sie Bindungen mit dem
+                        Mangelhalbleitermaterial ein, entstehen infolgedessen positive, bzw. negative Ionen. Die
+                        Ladungstrennung erzeugt ein elektrisches Feld, das der Driftkraft entgegenwirkt, bis ein
+                        Kräftegleichgewicht herrscht
+                        und die Sperrschicht aufhört zu wachsen. Die untere Abbildung zeigt das Verhalten von Ionen
+                        (in Kästchen) und freien Ladungsträgern (in Kreisen).
+                    </p>
+                    <figure data-isFloating="true">
+                        <div class="img-container">
+                            <img src="/assets/leuchtdioden/Verhalten einer Diode in Sperrichtung.png"
+                                alt="Verhalten einer Diode in Sperrichtung"
+                                data-imgSrc="https://youtu.be/Q9LrPK5W8I0?t=715 (Stand: 20.03.2020)">
+                        </div>
+                        <figcaption>Verhalten einer Diode in Sperrichtung</figcaption>
+                    </figure>
+                    <p>
+                        Wird eine äußere Spannung mit dem Minuspol an der p-Schicht und dem Pluspol an der n-Schicht
+                        angelegt, bewegen sich die
+                        Elektronen aus dem Überschusshalbleiter heraus und zum Mangelhalbleiter hin, wo sie
+                        rekombinieren und sich die Schicht
+                        vergrößert.
+                        Das elektrische Feld wird dadurch verstärkt, weshalb in Sperrrichtung kein
+                        Strom fließt, solange die
+                        Spannung unter der Durchbruchspannung einer Diode liegt. Bei umgekehrter Polung wirkt die
+                        Spannung dem elektrischen Feld entgegen. Der Strom durch den pn-Übergang, also durch die Diode,
+                        ist ein Diffusionsstrom. Das innere elektrische Feld hindert ihn eigentlich am fließen, aber
+                        wenn das Feld zu klein
+                        ist, gelingt das nicht mehr. In diesem Moment ist die Schwellspannung erreicht, wonach die
+                        Sperrschicht
+                        abgebaut ist. Das Verhalten einer jeweiligen Diode lässt sich in Abhängigkeit von
+                        Außentemperatur und Halbleitermaterial
+                        durch eine Kennlinie beschreiben. Sie zeigen auch für die hier genutzten LEDs, ab welcher
+                        Spannung sie zu leuchten beginnen und welche Stromstärke sie dabei haben[D].
+                    </p>
+                </section>
+
+                <section id="kriterien-leuchtdioden">
+                    <h2>Kriterien zur Auswahl von Leuchtdioden</h2>
+                    <p>
+                        Nachdem die Funktionsweisen von Halbleitermaterialien und Dioden erklärt wurden, ist es möglich,
+                        die Erkenntnisse zur
+                        Auswahl von LEDs anzuwenden. Da ein schneller Wechsel der Lichtwerte bei Bitwechseln gefordert
+                        ist, wird angenommen,
+                        dass die Sperrschichten der Dioden möglichst schnell auf- und wieder abbaubar sein sollten. Dies
+                        wäre bei möglichst
+                        kleinen Grenzschichten der Fall, die demzufolge bei bereits kleinen Spannungen abgebaut werden
+                        würden. Die Kennlinie
+                        einer LED offenbart, dass aufgrund geringer Durchlassspannungen auch geringere Ströme fließen.
+                        Folglich ist alleinig
+                        eine sehr helle Leuchtdiode auszuwählen, entgegen der anfänglichen Hypothese, nicht zwingend
+                        vorteilhaft.
+                    </p>
+                    <p>
+                        Des Weiteren wurden Leuchtdioden mit Wellenlängen ausgewählt, die über das sichtbare
+                        Lichtspektrum weit verteilt sind.
+                        Ihre Farben sind blau (ƛ = 465 nm), grün (ƛ = 570 nm) und rot (ƛ = 625 nm). Um unnötig viele
+                        Parameter zu vermeiden,
+                        sind diese alle der Marke “Tru Components” (TC) und haben ähnliche Schwellspannungen und
+                        Durchlassströme[D]. Sie
+                        besitzen weiterhin die gleichen Abstrahlwinkel und klare Schirme, um ihre Helligkeit voll
+                        ausschöpfen zu können.
+                    </p>
+                </section>
+            </article>
+
+        </div>
+    </main>
+
+    <footer
+    
+    
+    >
+        <div class="logo">
+            <a href="/"><img src="/assets/icons/home.svg" alt=""></a>
+            <a href="/">LED<br>OPT</a>
+        </div>
+        <div class="share">
+            facebook
+            instagram
+            twiter
+            whatsapp
+            ========
+            Referenz
+            Github
+        </div>
+        <nav>
+            <div class="column">
+                <h3><a href="/#projektübersicht">Projektübersicht</a></h3>
+                <ul>
+                    <li><a href="/#übertragungssystem">Das Über&shy;tragungs&shy;system</a></li>
+                    <li><a href="/#user-interfaces">Die User Inter&shy;faces</a></li>
+                    <li><a href="/#bitbestimmung">Die Be&shy;stim&shy;mung von Bits</a></li>
+                    <li><a href="/#ziele">End&shy;ziele & Vor&shy;gehen</a></li>
+                </ul>
+            </div>
+            <div class="column">
+                <h3><a href="/leuchtdioden.html#">Leuchtdioden</a></h3>
+                <ul>
+                    <li><a href="#halbleiter-und-leitungsarten">Halb&shy;lei&shy;ter und
+                            Lei&shy;tungs&shy;ar&shy;ten</a></li>
+                    <li><a href="#dotierung-und-leuchtdioden">Do&shy;tie&shy;rung und Leucht&shy;dioden</a></li>
+                    <li><a href="#kriterien-leuchtdioden">Kri&shy;te&shy;rien zur Aus&shy;wahl von
+                            Leucht&shy;dioden</a></li>
+                </ul>
+            </div>
+            <div class="column">
+                <h3><a href="/datensätze.html">Datensätze</a></h3>
+                <ul>
+                    <li><a href="/datensätze.html">Be&shy;grün&shy;dung des Vor&shy;ge&shy;hens für die
+                            Da&shy;ten&shy;er&shy;fas&shy;sung</a></li>
+                    <li><a href="/datensätze.html#erzeugung">Er&shy;zeu&shy;gung und
+                            Or&shy;ga&shy;ni&shy;sa&shy;ti&shy;on der
+                            Da&shy;ten&shy;sätze</a></li>
+                    <li><a href="/datensätze.html#auswertung">Aus&shy;wer&shy;tung der Da&shy;ten</a></li>
+                </ul>
+            </div>
+            </div>
+            <div class="column">
+                <h3><a href="/optimierung.html">Optimierung</a></h3>
+                <ul>
+                    <li><a href="/optimierung.html">An&shy;wen&shy;dung der Da&shy;ten&shy;aus&shy;wer&shy;tung</a></li>
+                    <li><a href="/optimierung.html#endresultate">End&shy;re&shy;sul&shy;tate</a></li>
+                </ul>
+            </div>
+            <div class="column">
+                <h3><a href="/impressum.html">Impressum</a></h3>
+                <ul>
+                </ul>
+            </div>
+        </nav>
+    </footer>
+
+</body>
+
+</html>

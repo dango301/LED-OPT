@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="./assets/icons/datensätze.svg" type="image/svg" />
+    <link href="https://fonts.googleapis.com/css?family=Montserrat|Noto+Serif" rel="stylesheet">
+    <title>Datensätze - LED \ OPT</title>
+
+    <link rel="stylesheet" href="/styles/main.css">
+    <link rel="stylesheet" href="/styles/datensätze.css">
+
+    <script src="/scripts/dist/main.js"></script>
+</head>
+
+<body>
+    <header data-barba="wrapper">
+
+        <div class="logo">
+            <a href="/"><img src="/assets/icons/home.svg" alt=""></a>
+            <a href="/">LED<br>OPT</a>
+        </div>
+
+        <nav>
+            <ul>
+                <li><a href="/#projektübersicht">Projektübersicht</a></li>
+                <li><a href="/leuchtdioden.html">Leuchtdioden</a></li>
+                <li><a href="/datensätze.html#">Datensätze</a></li>
+                <li><a href="/optimierung.html">Optimierung</a></li>
+                <li><a href="/impressum.html">Impressum</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="page-transition left"></div>
+    <div class="page-transition right"></div>
+
+    <aside class="download">
+        <a href="/Facharbeit - Dennis Paust.pdf" target="_blank"><img src="/assets/icons/pdf.svg" alt=""></a>
+        <a href="/Facharbeit - Dennis Paust.pdf" target="_blank">Facharbeit Downloaden</a>
+    </aside>
+
+
+    <main data-barba="container" data-barba-namespace="datensätze">
+        <div class="banner" id="projektübersicht">
+            <h1>Datenerfassung & Datenauswertung</h1>
+            <p>
+                Es gilt zu überprüfen, ob sich die Maxima und Minima über vermehrte Wiederholungen von
+                Bitwechseln, wie sie bei den 203
+                übertragenen Bits der ausgewählten Nachricht vorkommen, erhöhen. Beobachtet wird dazu, wie sich
+                die Helligkeit zum Ende
+                verschiedener Leuchtdauern sowie dem Ende einer weiteren Periode Tmin nach dem Ausschalten
+                verhält. Dieses Verfahren
+                wird pro Messung zweimal durchgeführt und simuliert den Ablauf zwei aufeinanderfolgender
+                Bitwechsel.
+
+            </p>
+        </div>
+
+        <div class="container">
+
+            <aside class="content">
+                <div class="table-of-contents">
+                    <a href="/datensätze.html#" class="top">UP</a>
+                    <h4>Content</h4>
+                    <ul>
+                        <li><a href="#vorgehen">Be&shy;grün&shy;dung des Vor&shy;ge&shy;hens für die
+                                Da&shy;ten&shy;er&shy;fas&shy;sung</a></li>
+                        <li><a href="#erzeugung">Er&shy;zeu&shy;gung und Or&shy;ga&shy;ni&shy;sa&shy;ti&shy;on der
+                                Da&shy;ten&shy;sätze</a></li>
+                        <li><a href="#auswertung">Aus&shy;wer&shy;tung der Da&shy;ten</a></li>
+                    </ul>
+                </div>
+            </aside>
+
+            <article>
+
+                <section id="vorgehen">
+                    <h2>Begründung des Vorgehens für die Datenerfassung</h2>
+                    <!-- <h3>Vergleichskriterien</h3> -->
+                    <p>
+                        Das in der Hypothese festgelegte Verfahren soll zeigen, wie sich die Lichtwerte nach
+                        verlängerter Dunkelheit (Max1),
+                        nach dem Abschalten der LED (Min1) für Tmin = 80 ms, dem erneuten Einschalten danach (Max2) und
+                        schließlich erneutem
+                        Ausschalten (Min2) entwickeln. Dargelegt wird dadurch, wie sich Leuchtdioden bei rapidem Ein-
+                        und Ausschalten entgegen
+                        längeren Leuchtperioden verhalten. Die Messpunkte der Variablen sind in der exemplarischen
+                        Abbildung in genannter
+                        Reihenfolge an t = 160, t = 240, t = 400 und T = 480 der Kurve zu sehen.
+                    </p>
+                    <!-- TODO: F.c -->
+                    <h3>Parameterwahl</h3>
+                    <p>
+                        Die Anzahl der Parameter ist im Rahmen dieser Facharbeit möglichst gering zu halten, da sonst
+                        eine unüberschaubare
+                        Anzahl möglicher Optionen zur Optimierung entstehen. Es werden bereits drei verschiedene
+                        Leuchtdioden untersucht,
+                        weshalb nicht mehr als ein weiterer Parameter betrachtet werden sollte.
+                    </p>
+                    <p>
+                        Der Helligkeitsverlauf beim wiederholten Ein- und Ausschalten einer jeden einzelnen Leuchtdiode
+                        kann stark variieren,
+                        weshalb er anhand verschiedener Leuchtdauern zu analysieren ist. Im experimentellen Teil erfolgt
+                        keine Bitbestimmung,
+                        sondern nur die Ermittlung der als wichtig gekennzeichneten Rohwerte. Da keine Bits übermittelt
+                        werden, simulieren die
+                        Leuchtdauern Übermittlungen mehrerer kontinuierlicher Bits mit Wert 1. Die Leuchtdauern sind
+                        Vielfache der angestrebten
+                        Leuchtdauer von 80 ms. Das Maximum beträgt dabei 480 ms, da der längste Byte sechsstellig ist,
+                        während die LED immer für
+                        Tmin = 80 ms ausgeschaltet bleibt. Zur Diskussion verschiedener Leuchtdauern werden diese fortan
+                        abgekürzt (LD) und in n
+                        Vielfachen der erstrebten Periodendauer Tmin angegeben (LD = n * Tmin).
+                    </p>
+                    <h3>Abweichungen und Streuung von Werten</h3>
+                    <p>
+                        Natürlicherweise weichen die Lichtwerte bei wiederholter Datenaufnahme voneinander ab. Dies ist
+                        berücksichtigt, indem
+                        die Messung für jede Leuchtdauer pro Diode 15 mal wiederholt wird. Die Zahl kommt durch die
+                        Begrenzung der Tabellenlänge
+                        zustande, ist aber völlig ausreichend, um ein umfangreiches Bild über das Verhalten der LEDs zu
+                        geben. Zum Arbeiten mit
+                        den Variablen werden die arithmetischen Mittelwerte dieser vom Datenverarbeitungsprogramm
+                        berechnet und in einem
+                        separaten Datenblatt für jede Leuchtdiode zusammengefasst.
+                    </p>
+                </section>
+
+                <section id="erzeugung">
+                    <h2>Erzeugung und Organisation der Datensätze</h2>
+                    <p>
+                        Zur Erzeugung der Daten wurde ein neues Arduino-Programm geschrieben, dass gleichzeitig für das
+                        Emittieren und Aufnehmen
+                        des Lichtes zuständig ist. Das Hinzuziehen eines dritten, unabhängigen Microcontrollers für die
+                        Datenaufnahme, ersparte
+                        das ständig wechselnde Hochladen von alten und neuen Programmcodes.
+                    </p>
+
+                    <h3>Automatisierung der Datenverarbeitung</h3>
+                    <p>
+                        Schon von Beginn an war klar, dass die Messwerte weder von Hand erzeugbar, noch dokumentierbar
+                        waren. Daher musste ein
+                        separates Programm geschrieben werden, dass den dritten Arduino ansteuert sowie dessen Werte
+                        verarbeitet und
+                        verzeichnet. Dazu wurde die Programmiersprache Python verwendet. Sie erleichtert den Umgang mit
+                        Daten, da Python eine objektorientierte Sprache ist und das Nutzen von Klassen
+                        ermöglicht. Zusätzlich verwaltet sie Speicher dynamisch und automatisch. Somit ließen sich
+                        Ergänzungen zur Menge der
+                        Daten von der Entwicklung des Programms bis zur Datenaufnahme problemlos skalieren. Es war
+                        effizienter diesen Prozess zu
+                        automatisieren, unter anderem indem das Programm die Datenblätter selbstständig erzeugt und auf
+                        Google Sheets hochlädt.
+                    </p>
+                    <h3>Programmablauf</h3>
+                    <p>
+                        Das Python-Programm wurde noch vor dessen Ausarbeitung in die Regionen “Serial Communication”,
+                        “Data Extraction &
+                        Evaluation” und “Google Sheets Upload” unterteilt. Der Ablauf der Datenerfassung kann diesen
+                        Bereichen folgend erklärt
+                        werden.
+                    </p>
+                    <p>
+                        Zunächst sendet das Arduino-Programm die Werte als Rohtext in Form von Bits über die serielle
+                        Schnittstelle an das
+                        Python-Programm. Dieses liest jeden Zeit- mit dessen zugehörigem Lichtwert heraus. Weiterhin ist
+                        das Verfahren für eine
+                        variable Anzahl an Wiederholungen für jede Leuchtdauer in einem Programmablauf möglich. Die
+                        Differenzierung der
+                        Werttypen erfolgt im Programm durch Linientrennung und sogenannte “Header” über jedem Datensatz.
+                    </p>
+                    <p>
+                        Es wird für jede Leuchtdauer der nächstmögliche Messzeitpunkt aller jeweiligen Variablen
+                        ermittelt und das arithmetische
+                        Mittel aller Variablen berechnet. Am Ende der zweiten Region liegt in separaten Arrays (Listen)
+                        für jede Leuchtdauer
+                        sowohl eine Klasse der Koordinaten aus t und den Messungen (SW 1-15), als auch eine Klasse für
+                        die Durchschnittswerte
+                        aller Variablen.
+                    </p>
+
+                    <h3>Implementierung der Google Sheets API</h3>
+                    <p>
+                        Die finalen Dokumente und darin enthaltenen Datenblätter werden in der letzten Region des
+                        Programms automatisch erzeugt
+                        und bearbeitet. Es ist in der Lage zu unterscheiden, ob ein Dokument erstellt, gewisse Teile
+                        überschrieben oder ergänzt
+                        werden müssen. Dabei mussten zahlreiche, extensive Algorithmen entwickelt werden, die bei
+                        variablen Datenmengen eine
+                        feste Tabellenstruktur generieren und sämtliche Zellen eines einzelnen Datenblattes mit einem
+                        einzigen Upload befüllen.
+                        Letzteres ist notwendig, sodass die Upload-Beschränkungen der Google Sheets API nicht überlastet
+                        werden. Die Konsolenlogs waren dabei eine fundamentale Unterstützung beim Verfassen des Codes
+                        und demonstrieren die Fähigkeiten des Codes in seinem vollen Maße[E.b - E.e].
+                    </p>
+                </section>
+
+                <section id="auswertung">
+                    <h2>Auswertung der Daten</h2>
+                    <p>
+                        Besonders die zusammenfassenden Datenblätter der Variablen (Max1, Max2, Min1 und Min2) mit ihren
+                        zugehörigen
+                        Balkendiagrammen geben Aufschluss über das Verhalten der Leuchtdioden. Aber auch die
+                        Helligkeitskurven einzelner
+                        Leuchtdauern sind beispielhaft für wünschenswerte oder unzureichende Eigenschaften.
+                    </p>
+
+                    <h3>Allgemeine Erkenntnisse</h3>
+                    <p>
+                        Unabhängig der Parameter verschiedener LEDs und Leuchtdauern lassen sich globale Beobachtungen
+                        machen: Max2 liegt immer
+                        20 SW bis 30 SW über Max1. Grund dafür ist, dass der Stromfluss einer Diode, bzw. proportional
+                        dazu die Helligkeit,
+                        nicht unmittelbar auf null sinkt. Bevor der Stromfluss in den Ausgangswert zurückfallen kann,
+                        steigt er nach Ende der
+                        Periode bereits wieder an, weshalb er bei Max2 höher ist. Analog dazu gilt dasselbe für Min1 und
+                        Min2: Bei Max2 ist die
+                        LED heller, weshalb sie auch bei Min2 mit gleicher Periodendauer noch etwas weiter aufleuchtet.
+                        Folglich sind die Minima
+                        abhängig von vorhergehenden Maxima, als auch der Dauer, in der die LED ausgeschaltet bleibt
+                        (hier konstant bei Tmin).
+                        Dieser Effekt ist ist im Graphen der grünen Leuchtdiode von “Tru Components” außerordentlich
+                        deutlich.
+                    </p>
+                    <!-- TODO: F.f -->
+                    <p>
+                        Dadurch bestätigt sich, wie in der Hypothese bereits vermutet, die Erhöhung von Max2 und Min2
+                        bei wiederholten
+                        Bitwechseln. Es ist anzunehmen, dass die Erhöhung der Maxima und Minima über sehr häufige
+                        Wiederholungen von Bitwechseln
+                        unvorhersehbarer sowie extremer werden. Dadurch lässt sich die regelmäßige Oszillation als
+                        wünschenswerte Eigenschaft,
+                        wie in der Hypothese formuliert, zur regelmäßigen Oszillation unabhängig von der Anzahl der
+                        Bitwechsel erweitern.
+                    </p>
+
+                    <h3>Gesamteinfluss des Parameters Leuchtdauer</h3>
+                    <p>
+                        Idealerweise ist genanntes Merkmal gleichfalls unabhängig aller Leuchtdauern. Stattdessen ist zu
+                        beobachten, dass die
+                        Streuung der Messkurven mit geringeren Leuchtdauern zunehmen, welche jedoch für die meisten LEDs
+                        tolerierbar bleiben.
+                        Weiterhin zeigt sich, dass sämtliche Lichtwerte mit abnehmender Leuchtdauer ebenfalls sinken.
+                        Die Zerfallsrate verhält
+                        sich dabei für jede Diode unterschiedlich und ist möglichst gering zu halten.
+                        Überraschenderweise zeigt sich, dass
+                        sämtliche LEDs verschieden auf die jeweiligen Leuchtdauern reagieren, weshalb sich keine
+                        weiteren Dioden-übergreifenden
+                        Schlüsse zu den Leuchtdauern machen lassen. Vor dem Vergleich werden sie aus diesem Grund alle
+                        einzeln betrachtet.
+                    </p>
+
+                    <h3>Analyse aller Leuchtdioden</h3>
+                    <p>
+                        Wie zu erwarten, schneidet die standardmäßige LED des Arduino schlecht ab. Der gefärbte Schirm
+                        filtert einen Großteil
+                        des Lichtspektrums ab, weshalb nur ein Höchstwert von 150 SW erreicht wird. Die Helligkeit ist,
+                        auch bei klaren,
+                        einwandfreien Unterschieden zwischen Maxima und Minima, über die Distanz von einem Meter
+                        unzureichend. Nichtsdestotrotz
+                        weist die LED ein sehr vorhersehbares Verhalten auf: Dem Diagramm der Durchschnittswerte ist zu
+                        entnehmen, dass die
+                        Beträge der Variablen allesamt linear abnehmen[F.a].
+                    </p>
+                    <p>
+                        Die TC LED in Blau liegt im Gegensatz dazu mit Höchstwerten von 445 SW in einer angemessenen
+                        Größenordnung. Ihre
+                        Streuungen sind von der Leuchtdauer unabhängig und kompensierbar. Allerdings nimmt Max2 nicht
+                        wie Max1 linear, sondern
+                        exponentiell ab. Der Effekt würde sich mit hoher Sicherheit bei rapiden, aufeinanderfolgenden
+                        Bitwechseln verstärken,
+                        weshalb auch die Leistung dieser Leuchtdiode unzureichend ist.
+                    </p>
+                    <p>
+                        Keinerlei positive Merkmale weist die grüne LED derselben Marke auf. Vergleichsweise besteht ein
+                        geringerer Unterschied
+                        zwischen Maximum und Minimum sowie signifikante Unterschiede zwischen Min1 und Min2. Ähnlich wie
+                        bei den vorherigen
+                        Dioden festgestellt, sind diese Charakteristika extrem anfällig sich bei längeren Bitfolgen zu
+                        verschlechtern. Das zuvor
+                        genannte Ausschlusskriterium, nachdem sich die Erhöhung von Maxima und Minima bei Bitwechseln
+                        verstärken, ist in der
+                        vorherigen Abbildung für LD = 1T am deutlichsten. Ersichtlich gruppierte[F.e], jedoch
+                        unverhältnismäßig weite
+                        Streuungen, machen das Verhalten zudem sprunghaft[F.d], [F.f].
+                    </p>
+                    <p>
+                        Herausstechend ist die rote TC LED durch ihr extrem konstantes Verhalten: Nahezu unabhängig der
+                        Leuchtdauer gilt Max1 =
+                        Max2, Min1 = Min2 sowie Max ⩰ 2.15 * Min[F.g]. Letzterer Zusammenhang bedeutet, dass diese LED
+                        mit einem vergleichsmäßig
+                        großen Höchstwert bei 945 SW ihre Helligkeit in einer Periode nur auf etwa die Hälfte mindern
+                        kann. Der Graph für LD =
+                        6T[F.h] zeigt, im Gegenzug die nahezu infinitesimale, benötigte Dauer, um den Maximalbetrag zu
+                        erreichen. Die Abnahme
+                        der Helligkeit über verkürzte Leuchtdauern ist aufgrund ihrer Geringfügigkeit schlecht von
+                        Messungenauigkeiten zu
+                        unterscheiden, weshalb sie für Leuchtdauern um Tmin als inexistent angesehen werden kann. Die
+                        Ergebnisse schienen
+                        zunächst überaus unwahrscheinlich, waren jedoch bei einer Wiederholung der gesamten Messung[F]
+                        mit identischen Werten
+                        reproduzierbar.
+                    </p>
+
+                    <h3>Vergleich aller Leuchtdioden und Schlussfolgerungen</h3>
+                    <p>
+                        Beinahe alle Leuchtdioden weisen gewisse Ausschlusskriterien auf. Zuwider der Annahme der
+                        Hypothese, nach welcher
+                        hellere LEDs die Differenzierung von Bits vereinfachen würden, sind es die die der Marke “True
+                        Components”, welche bei
+                        frequenten Bitwechseln unter verhältnismäßig starkem Helligkeitsverlust leiden oder
+                        unberechenbar auf sie reagieren.
+                        Ausschließlich die rote TC LED ist in ihren Eigenschaften nahezu optimal.
+                    </p>
+                </section>
+
+            </article>
+
+        </div>
+    </main>
+
+    <footer>
+        footer
+    </footer>
+
+</body>
+
+</html>

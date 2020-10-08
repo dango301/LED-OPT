@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="./assets/icons/home.svg" type="image/svg" />
+    <link href="https://fonts.googleapis.com/css?family=Montserrat|Noto+Serif|Merriweather" rel="stylesheet">
+    <title>LED \ OPT</title>
+    
+    <link rel="stylesheet" href="/styles/main.css">
+    <link rel="stylesheet" href="/styles/index.css">
+    
+    <script src="/scripts/dist/main.js"></script>
+    <script src="/scripts/index.js"></script>
+</head>
+
+<body>
+
+    <header data-barba="wrapper" class="landing">
+
+        <div class="logo">
+            <a href="#"><img src="/assets/icons/home.svg" alt=""></a>
+            <a href="#">LED<br>OPT</a>
+        </div>
+
+        <nav>
+            <ul>
+                <li><a href="/#projektübersicht">Projektübersicht</a></li>
+                <li><a href="/leuchtdioden.html">Leuchtdioden</a></li>
+                <li><a href="/datensätze.html">Datensätze</a></li>
+                <li><a href="/optimierung.html">Optimierung</a></li>
+                <li><a href="/impressum.html">Impressum</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="page-transition left"></div>
+    <div class="page-transition right"></div>
+
+    <aside class="download">
+        <a href="/Facharbeit - Dennis Paust.pdf" target="_blank"><img src="/assets/icons/pdf.svg" alt=""></a>
+        <a href="/Facharbeit - Dennis Paust.pdf" target="_blank">Facharbeit Downloaden</a>
+    </aside>
+
+
+    <main data-barba="container" data-barba-namespace="home">
+
+        <div id="hero">
+
+            <video autoplay muted loop>
+                <source src="assets/backgrounds/blinking.mp4" type="video/mp4">
+                <!-- TODO: add other formats for other browsers -->
+            </video>
+
+            <div class="content">
+                <h1>LED-OPT / LWL</h1>
+                <h2>Untersuchung der Eigenschaften von Lechtdioden zur Verbesserung der Datenübermittlungsrate eines
+                    Lichtwellenleitermodells</h2>
+                <p>
+                    Im Rahmen des finalen Semesters des Seminarfaches werden hier die Inhalte der Facharbeit aus dem
+                    zweiten Halbjahr vorgestellt, welche sich auf ein Arduino-Projekt bezog.
+                    Dieses modellierte mithilfe von Leuchtdioden und Lichtsensoren einen Lichtwellenleiter, im
+                    Allgemeinen besser bekannt als Glasfaserkabel und
+                    zielte auf die Optimierung der Übertragungsrate ab. Dazu wurden die Funktionsweise und Eigenschaften
+                    von LEDs untersucht sowie die erlangten Erkenntnisse aus der Datenerhebung des praktischen Teils
+                    genutzt, sodass die Software des LWL-Modells an die Charakteristika einer optimalen
+                    Leuchtdiode angepasst werden konnte.
+                </p>
+            </div>
+        </div>
+
+        <div class="banner landing" id="projektübersicht">
+            <h1>Projektübersicht</h1>
+            <p>
+                Das LWL-Modell besteht aus einer Leuchtdiode und einem Lichtsensor an den jeweiligen Enden einer mit
+                Alumiumfolie ausgekleideten Röhre. Bevor mit der Optimierung der Datenübermittlungsrate begonnen werden
+                kann, ist es es wichtig zu verstehen, wie der
+                Algorithmus des Empfängerprogramms funktioniert und welche Rolle Leuchtdioden darin spielen. Dazu sollen
+                anhand einer
+                beispielhaften Demonstration der Umfang des Programms sowie die Bestimmung von Bits mit besonderem Fokus
+                erklärt werden.
+            </p>
+        </div>
+
+        <div class="container">
+
+            <aside class="content">
+                <div class="table-of-contents">
+                    <a href="/#" class="top">UP</a>
+                    <h4>Content</h4>
+                    <ul>
+                        <li><a href="#übertragungssystem">Das Über&shy;tragungs&shy;system</a></li>
+                        <li><a href="#user-interfaces">Die User Inter&shy;faces</a></li>
+                        <li><a href="#bitbestimmung">Die Be&shy;stim&shy;mung von Bits</a></li>
+                        <li><a href="#ziele">End&shy;ziele & Vor&shy;gehen</a></li>
+                    </ul>
+                </div>
+            </aside>
+
+            <article>
+
+                <section id="übertragungssystem">
+                    <h2>Das Übertragungssystem</h2>
+                    <p>
+                        In Lichtwellenleitern, wie Glasfaserkabeln, werden Signale mittels einer Totalreflektion des
+                        Lichtes übertragen.
+                        Vereinfacht sieht das Prinzip des Übertragungssystems wie in der unteren Abbildung aus.
+                        <!-- TODO: A.a -->
+                        Zunächst wird das Quellsignal durch einen Analog-Digital-Wandler und eine das elektrische Signal
+                        verstärkende
+                        Treiberstufe zu einer Leuchtdiode geführt. Diese überträgt die Information in Form von Licht
+                        durch den Lichtwellenleiter
+                        bis zu einem Photoelement. Es erzeugt aus den Lichtimpulsen erneut ein elektrisches Signal, das
+                        ggf. von digital zu
+                        analog umgewandelt und verstärkt wird, bevor es zum Empfänger gelangt.
+                    </p>
+                    <p>
+                        Das System lässt sich nun auf das Modell übertragen: Der Nutzer liefert das Quellsignal über die
+                        Texteingabe in einem Processing-Programm. Die
+                        Nachricht wird darin als
+                        binäre Sequenz codiert. Dies entspricht der Analog-Digital-Wandlung. Die Sequenz wird über die
+                        serielle Schnittstelle
+                        des Computers an ein Arduino-Programm übergeben, das den Microcontroller steuert. Der Arduino
+                        steuert schließlich eine
+                        LED an, welche sich in einer Röhre befindet. Mit lichtreflektierender Aluminiumfolie sowie
+                        Backpapier ausgekleidet,
+                        entsprechen diese Schichten dem Mantelglas, bzw. der äußeren Hülle eines LWL. Die ineinander
+                        gesteckten Rohre haben
+                        zusammen eine Länge von etwa einem Meter. Am anderen Ende der Röhre befindet sich ein
+                        Photowiderstand, der die rohen
+                        Lichtwerte ständig über das empfangende Arduino- an das empfangende Processing-Programm
+                        weitergibt. Letzteres ist für
+                        die Interpretation der Daten sowie die Decodierung und Ausgabe an den Endnutzer eines zweiten
+                        Computers
+                        zuständig.
+                    </p>
+                    <!-- TODO: [A.a] [A.b] [A.c] -->
+                    <p>
+                        Die Nachricht “tranquility base here, the eagle has landed.” wird fortan für alle
+                        Testläufe des Modells
+                        übertragen. Momentan zuverlässig ist die Übertragung unter Nutzung der Arduino-LED bei einer
+                        Periodendauer von Tmax = 125 ms.
+                    </p>
+                </section>
+
+                <section id="user-interfaces">
+                    <h2>Die User Interfaces</h2>
+                    <!-- TODO: Video von Sender Processing mit Texteingabe -->
+                    <p>
+                        Die aufgenommenen Rohwerte des Lichtwiderstandes werden auf einer Ratioskala von null bis 1024
+                        angegeben und auf die
+                        Höhe des Programmfensters angepasst dargestellt. Im weiteren Verlauf wird mit dieser Skala
+                        weitergearbeitet und deren
+                        Werte in SW (Sensor-Wert) angegeben. Es gilt: 1 SW ≙ 1.75 mcd, mit dem Nullpunkt beider Skalen
+                        bei null.
+                    </p>
+                    <p>
+                        Die gelben Linien zeigen Beginn und Ende der Übertragung an, während der Anfang der Nachricht
+                        durch
+                        die pinke Linie
+                        markiert ist. Die grauen Punkte entsprechen den Cheats, die beim Schreiben des Programms zur
+                        Fehlererkennung hinzugefügt
+                        wurden. Sie dienen zur Identifizierung kritischer Messzeitpunkte und geben den
+                        Übertragungszeitpunkt
+                        eines jeweiligen
+                        Bits an. Erfolgt die Messung zu nahe am folgenden Cheat, wird der Messpunkt statt in rot oder
+                        blau
+                        aufgrund seiner hohen
+                        Fehlerwahrscheinlichkeit pink gefärbt.
+                    </p>
+                    <!-- TODO: Video mit gesamten Nachricht von Aktor Processing -->
+                </section>
+
+                <section id="bitbestimmung">
+                    <h2>Bestimmung von Bits</h2>
+                    <!-- TODO: Video mit Konsolenausgabe von Beginn bis Ende der Messung -->
+                    <p>
+                        Der Dechiffrierungsprozess der einzelnen Bits zu einer gesamten Zeichenfolge ist in seiner
+                        Gesamtheit anhand der
+                        Konsolenausgaben[B.d] zu erkennen. Die jeweils blauen bzw. roten Punkte, welche genau eine halbe
+                        Periode nach dem Cheat,
+                        d. h. dem eigentlichen Zeitpunkt der Übertragung stehen, sind die Messpunkte für einen
+                        jeweiligen
+                        Bit. Zur Bestimmung
+                        des Bits ist nur ausschlaggebend, ob der Lichtwert über oder unter dem Durchschnittswert liegt.
+                        Grund der zeitlichen
+                        Verschiebung ist die für eine LED benötigte Zeit zum Ein- und Ausschalten abzuwarten. Für
+                        sämtliche
+                        Bitwechsel ist klar
+                        im Diagramm der Programmfenster zu erkennen, dass der Lichteinfall nicht sofortig vom Maximum
+                        zum
+                        Minimum und vice versa
+                        reguliert werden kann. Nur durch die Messverschiebung ist die unverzichtbare Reduktion der
+                        Fehlerquote möglich. Die
+                        einzelnen Bits werden während der Laufzeit zu einer Bitfolge verkettet. Diese wird sofort
+                        abgeschnitten, sobald ein
+                        Zeichen des Kodierungsbaumes erkannt wird. Die gesamten dechiffrierten Zeichenfolgen aller
+                        jeweilig übermittelten
+                        Nachrichten werden in der oberen linken Ecke des Programmfensters angezeigt.
+                    </p>
+                    <h3>Umgebungsfaktoren</h3>
+                    <p>
+                        Die Auszüge der Demonstration zeigen, dass das Umgebungslicht keinerlei Einfluss auf die
+                        Messergebnisse hat. Die
+                        Auskleidung des Inneren sowie der Enden der Pappröhre mit Aluminiumfolie ist somit effektiv. Der
+                        LDR nimmt höchstens
+                        Werte bis 5 SW auf, wenn die LED länger abgeschaltet bleibt.
+                    </p>
+                    <p>
+                        Zu den Umgebungsfaktoren zählen
+                        hier nicht nur äußere
+                        Umstände: Auch Faktoren der Programmumgebungen sind nicht zu vernachlässigen. Bei den Testläufen
+                        und während des
+                        Schreibens des Programmcodes fiel auf, dass es beim Processing-Programm, bei welchem eine
+                        akkurate zeitliche
+                        Koordinierung von höchster Wichtigkeit ist, zu Verschiebungen der periodischen
+                        Programmausführung kam. Die Problematik
+                        besteht in der Funktion “draw” der Umgebung. Sie wird mit einer Frequenz von 60 Hz, d. h. etwa
+                        einmal in 17
+                        Millisekunden ausgeführt, ist dabei jedoch verhältnismäßig unregelmäßig.
+                        Daher wird ständig
+                        berechnet, wann die Zeit nach der letzten Periode abläuft und dieser Zeitpunkt abgewartet, bevor
+                        der zeitabhängige Code
+                        ausgeführt wird. Nichtsdestotrotz weicht der Ausführungszeitpunkt aufgrund der äußerst geringen
+                        Frequenz, sowie der
+                        Leistungsbeschränkung des genutzten Computers ab. Die Divergenz der Periode steigt proportional
+                        zur Laufzeit des
+                        Programms. Dabei nimmt nicht die Höhe der Abweichungen über Zeit zu, sondern die Häufigkeit der
+                        Verspätungen. Daher ist
+                        die Länge der zu übertragenden Nachricht unter etwa 15 Wörtern zu halten, bevor sich die
+                        zeitlichen Verschiebungen zur
+                        Länge einer gesamten Periode summieren und ein Bit versetzt gemessen wird.
+                    </p>
+                </section>
+
+                <section id="ziele">
+                    <h2>Endziele & Vorgehen</h2>
+                    <p>
+                        Aus den vorgestellten Funktionsweisen des Programms gehen eine Mehrzahl von Eigenschaften
+                        hervor, welche Leuchtdioden
+                        zur Verbesserung der Übertragung potentiell haben sollten.
+                        Es gilt zu überprüfen, ob sich die Maxima und Minima über vermehrte Wiederholungen von
+                        Bitwechseln,
+                        wie sie bei den 203
+                        übertragenen Bits der ausgewählten Nachricht vorkommen, erhöhen. Durch nähere Betrachtung
+                        konkreter Lichtwerte bei Bitwechseln soll die Fähigkeit einer LED, ihre Helligkeit möglichst
+                        schnell
+                        und mit regelmäßigen Werten zu oszillieren, überprüft werden. Durch systematisches Verkürzen der
+                        Periodendauer soll schließlich eine optimale Übertragung erzielt werden.
+                    </p>
+                    <p>
+                        Problematisch ist die zur Kodierung verwendete verlustfreie
+                        Komprimierung, da dabei keine einheitliche Bytelänge
+                        existiert. Entsteht ein Bitfehler, kann somit nicht einfach unterschieden werden, ob es sich um
+                        einen längeren Byte oder
+                        eine Fehlinterpretation handelt. In diesem Fall ist die Gesamtheit oder zumindest ein Großteil
+                        der
+                        folgen Übertragung
+                        nichtig, da sie durch die Fehlerkennung bzw. unmöglich gewordene Erkennung eines Bytes
+                        verschoben
+                        wird. Die
+                        Konsolenausgaben zeigen, dass oft nur wenige Bitfehler den gesamten Text unleserlich machen
+                        können.
+                    </p>
+                    <!-- TODO: [B.f] Video mit Konsolenausgaben eines Bitfehlers mit Problematik der der verlustfreien Übertragung -->
+                    <p>
+                        Voraussetzung für das Programm ist in diesem Rahmen daher eine nahezu fehlerfreie Übertragung,
+                        wobei die Fehlerrate unter 1,5 Prozent liegen soll. Angepeilt ist eine Verbesserung von 36
+                        Prozent, was
+                        eine
+                        erfolgreiche
+                        Verminderung der Periodendauer von Tmax = 125 ms auf Tmin = 80 ms , bzw. Erhöhung der Frequenz
+                        von 8
+                        Bits/s auf 12,5
+                        Bits/s, bedeuten würde.
+                    </p>
+                    <p>
+                        Die
+                        Fehlerquote (BER)
+                        ergibt sich aus dem Quotienten der Bitfehlerhäufigkeit und der Gesamtzahl der Bits. Es werden
+                        nur die
+                        Fehlerquoten der jeweiligen Übertragungen betrachtet, da das Finden und ggf. Berichtigen von
+                        Übertragungsfehlern eher
+                        dem Feld eines fehlerkorrigierenden Algorithmus entspricht. Das zuvor festgelegte Ziel einer
+                        Fehlerquote von weniger als
+                        1,5 Prozent, hieße somit maximal drei Fehler unter den 203 übertragenen Bits. Zur
+                        Identifizierung
+                        von
+                        Übertragungsfehlern werden die korrekten Bits der bereits bekannten Nachricht als
+                        Prüfinformation
+                        mit den
+                        interpretierten Bits abgeglichen.
+                    </p>
+                </section>
+
+                <section>
+                    <h3>Weiterlesen:</h3>
+                    <div id="weiterlesen">
+                        <a href="/">Mit der Datenerfassung beginnen</a>
+                        <a href="/">Ergebnisse der Datenauswertung</a>
+                        <a href="/">Herausfinden wie LEDs funktionieren</a>
+                        <a href="/">Endresultate einsehen</a>
+                    </div>
+                </section>
+            </article>
+
+        </div>
+    </main>
+
+    <footer data-barba="wrapper">
+        Bye bye!
+    </footer>
+
+</body>
+
+</html>

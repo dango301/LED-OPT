@@ -1,0 +1,17 @@
+.banner {
+  background: url("../assets/images/code1.jpg");
+  background-size: cover;
+  background-attachment: fixed;
+  background-color: rgba(0, 0, 0, 0.33);
+  background-blend-mode: darken;
+  -webkit-filter: saturate(120%);
+          filter: saturate(120%);
+  background-position: center;
+  -webkit-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+}
+
+.banner:hover {
+  background-color: rgba(0, 0, 0, 0.75);
+}
+/*# sourceMappingURL=optimierung.css.map */

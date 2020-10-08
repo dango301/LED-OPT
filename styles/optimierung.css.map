@@ -1,0 +1,10 @@
+{
+    "version": 3,
+    "mappings": "AAEA,AAAA,OAAO,CAAC;EC6CJ,UAAU,EAAE,iCAAoC;EAChD,eAAe,EAAE,KAAK;EACtB,qBAAqB,EAAE,KAAK;EAC5B,gBAAgB,EAAO,mBAAK;EAC5B,qBAAqB,EAAE,MAAM;EAC7B,MAAM,EAAE,cAAc;EACtB,mBAAmB,EDlDgB,MAAM;ECmDzC,UAAU,EAAE,oBAAoB;CDnDa;;AADjD,ACsDI,ODtDG,ACsDF,MAAM,CAAC;EACJ,gBAAgB,EAAO,mBAAK;CAAY",
+    "sources": [
+        "optimierung.sass",
+        "vars.sass"
+    ],
+    "names": [],
+    "file": "optimierung.css"
+}

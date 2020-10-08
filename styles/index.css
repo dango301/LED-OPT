@@ -1,0 +1,103 @@
+@-webkit-keyframes heroSlide {
+  0% {
+    -webkit-transform: translateY(150%);
+            transform: translateY(150%);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateY(0%);
+            transform: translateY(0%);
+    opacity: 1;
+  }
+}
+
+@keyframes heroSlide {
+  0% {
+    -webkit-transform: translateY(150%);
+            transform: translateY(150%);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateY(0%);
+            transform: translateY(0%);
+    opacity: 1;
+  }
+}
+
+#hero {
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  -o-object-fit: scale-down;
+     object-fit: scale-down;
+  height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  scroll-snap-align: start;
+  -webkit-box-shadow: 1px 1.5px 5px black;
+          box-shadow: 1px 1.5px 5px black;
+}
+
+#hero .content {
+  margin: 0 4vw;
+  -webkit-animation: 1.25s cubic-bezier(0.58, 0, 0.33, 1.25) 0s 1 heroSlide;
+          animation: 1.25s cubic-bezier(0.58, 0, 0.33, 1.25) 0s 1 heroSlide;
+}
+
+#hero .content * {
+  max-width: 700px;
+}
+
+#hero .content h1 {
+  font-family: 'Noto Serif', 'Times New Roman';
+  letter-spacing: 2.5px;
+  text-shadow: -8px 1.25px 1.5px rgba(17, 17, 17, 0.75);
+  font-size: 80px;
+  font-style: italic;
+  font-weight: 900;
+}
+
+#hero .content h2 {
+  margin: 45px 0 0 30px;
+  font-size: 20px;
+  font-style: italic;
+  font-weight: 800;
+  text-shadow: -2px 1.25px 1.5px #080808;
+}
+
+#hero .content p {
+  margin: 15px 0 0 30px;
+  text-align: justify;
+  font-size: 15px;
+  text-shadow: -.5px .25px 2px #2e2e2e;
+}
+
+#hero video {
+  position: absolute;
+  z-index: -1;
+  width: 100%;
+  -webkit-filter: brightness(110%) saturate(120%);
+          filter: brightness(110%) saturate(120%);
+}
+
+.banner {
+  background: url("../assets/images/arduino2.jpg");
+  background-size: cover;
+  background-attachment: fixed;
+  background-color: rgba(0, 0, 0, 0.275);
+  background-blend-mode: darken;
+  -webkit-filter: saturate(120%);
+          filter: saturate(120%);
+  background-position: bottom;
+  -webkit-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+}
+
+.banner:hover {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+/*# sourceMappingURL=index.css.map */

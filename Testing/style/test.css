@@ -1,0 +1,104 @@
+@charset "UTF-8";
+body {
+  margin: 40px;
+  font-family: "Noto Serif";
+  font-size: 14px;
+  font-weight: 500;
+  background-color: #e79f88;
+}
+
+.container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-line-pack: justify;
+      align-content: space-between;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  font-family: "Montserrat";
+  color: white;
+  -webkit-transform: perspective(800px);
+          transform: perspective(800px);
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+}
+
+.container .card {
+  cursor: pointer;
+  position: relative;
+  margin: 20px 0;
+  width: 400px;
+  height: 200px;
+  padding: 10px 20px;
+  background-color: #333;
+  overflow: hidden;
+  border-radius: 10px;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.66) 0 30px 60px 0, inset #333 0 0 0 5px, inset rgba(255, 255, 255, 0.5) 0 0 0 6px;
+          box-shadow: rgba(0, 0, 0, 0.66) 0 30px 60px 0, inset #333 0 0 0 5px, inset rgba(255, 255, 255, 0.5) 0 0 0 6px;
+  -webkit-transition: 1s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+  transition: 1s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+  -webkit-transform: rotateY(0deg) rotateX(0deg);
+          transform: rotateY(0deg) rotateX(0deg);
+}
+
+.container .card h5 {
+  font-size: 16px;
+  font-weight: 700;
+  padding: 0;
+  margin: 10px;
+}
+
+.container .card p {
+  -webkit-transform: translateY(-100%);
+          transform: translateY(-100%);
+  -webkit-transition: -webkit-transform cubic-bezier(0.23, 1, 0.32, 1) 600ms;
+  transition: -webkit-transform cubic-bezier(0.23, 1, 0.32, 1) 600ms;
+  transition: transform cubic-bezier(0.23, 1, 0.32, 1) 600ms;
+  transition: transform cubic-bezier(0.23, 1, 0.32, 1) 600ms, -webkit-transform cubic-bezier(0.23, 1, 0.32, 1) 600ms;
+}
+
+.container .card:hover {
+  -webkit-transition: 0.66s cubic-bezier(0.23, 1, 0.32, 1), -webkit-box-shadow 2s cubic-bezier(0.23, 1, 0.32, 1);
+  transition: 0.66s cubic-bezier(0.23, 1, 0.32, 1), -webkit-box-shadow 2s cubic-bezier(0.23, 1, 0.32, 1);
+  transition: 0.66s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 2s cubic-bezier(0.23, 1, 0.32, 1);
+  transition: 0.66s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 2s cubic-bezier(0.23, 1, 0.32, 1), -webkit-box-shadow 2s cubic-bezier(0.23, 1, 0.32, 1);
+  -webkit-box-shadow: rgba(255, 255, 255, 0.2) 0 0 40px 5px, white 0 0 0 1px, rgba(0, 0, 0, 0.66) 0 30px 60px 0, inset #333 0 0 0 5px, inset white 0 0 0 6px;
+          box-shadow: rgba(255, 255, 255, 0.2) 0 0 40px 5px, white 0 0 0 1px, rgba(0, 0, 0, 0.66) 0 30px 60px 0, inset #333 0 0 0 5px, inset white 0 0 0 6px;
+}
+
+.container .card:hover p {
+  -webkit-transform: translateY(0);
+          transform: translateY(0);
+}
+
+.container .card.home {
+  background: url("../assets/images/arduino2.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.container .card.leuchtdioden {
+  background: url("../assets/images/led1.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.container .card.datensätze {
+  background: url("../assets/images/graphs2.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.container .card.optimierung {
+  background: url("../assets/images/code1.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+/*# sourceMappingURL=test.css.map */
