@@ -51,12 +51,7 @@ header
             img
                 width: 40px
                 height: 40px
-                animation: logoPulse 1250ms ease-in-out infinite alternate
-                @keyframes logoPulse
-                    0%
-                        filter: brightness(1)
-                    100%
-                        filter: brightness(2)
+                @include logoPulse()
         a:last-child
             transform: translateX(-1px)
             font-weight: 900
@@ -205,7 +200,7 @@ aside.download
     &:not(.landing)
         margin-top: $navHeight
 
-main .container // INHALTSVERZEICHNIS is nested in here
+main .container // aside is nested in here
     display: flex
     flex-direction: row
     align-items: stretch
@@ -306,8 +301,8 @@ section
     *
         color: black
         &::selection
-            background: rgba(56, 56, 56, 0.1)
-            @include elevationShadow(.75, #666)
+            background: rgba(200, 200, 200, 0.15)
+            text-shadow: -.75px .5px 2px #999
 
     h2
         text-align: left
@@ -370,7 +365,6 @@ figure
     grid-template-rows: auto auto
     transition: width ease-in .1s
     margin: 20px 0 20px 20px
-    // width: calc(100% - 800px)
 
     .img-container
         width: inherit
@@ -395,11 +389,12 @@ figure
         padding: 3px 12px 0 12px
 
 footer
+    scroll-snap-align: start
     background: #0a0a0a
     padding: 45px 30px
     display: grid
-    grid-template-areas: 'logo logo' 'share nav'
-    grid-template-columns: 1fr 4fr
+    grid-template-areas: 'logo logo' 'share nav' 'github nav'
+    grid-template-columns: 1fr 5fr
     grid-template-rows: auto
 
     &>*
@@ -416,12 +411,7 @@ footer
             img
                 width: 40px
                 height: 40px
-                animation: logoPulse 1250ms ease-in-out infinite alternate
-                @keyframes logoPulse
-                    0%
-                        filter: brightness(1)
-                    100%
-                        filter: brightness(2)
+                @include logoPulse()
         a:last-child
             transform: translateX(-1px)
             font-weight: 900
@@ -431,11 +421,37 @@ footer
             width: 40px
 
     .share
+        grid-area: share
         display: flex
         flex-direction: rows
         justify-content: space-evenly
 
+    .github
+        grid-area: github
+        display: flex
+        flex-wrap: wrap
+        align-items: center
+        height: min-content
+        @include navLinks(false)
+
+        h4
+            width: min-content
+            height: min-content
+            font-family: 'Noto Serif', 'Times New Roman'
+            color: white
+            font-style: italic
+            font-size: 14px
+        img
+            width: 40px
+            height: 40px
+            margin: 5px 15px
+            transform: scale(1)
+            transition: all ease-in-out .33s
+        &:hover img
+            transform: scale(1.12)
+
     nav
+        grid-area: nav
         display: flex
         flex-wrap: wrap
         margin-left: 0

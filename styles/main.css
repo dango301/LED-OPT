@@ -548,13 +548,13 @@ section * {
 }
 
 section *::-moz-selection {
-  background: rgba(56, 56, 56, 0.1);
-  text-shadow: 0.9375px 0.9375px 2px #666;
+  background: rgba(200, 200, 200, 0.15);
+  text-shadow: -.75px .5px 2px #999;
 }
 
 section *::selection {
-  background: rgba(56, 56, 56, 0.1);
-  text-shadow: 0.9375px 0.9375px 2px #666;
+  background: rgba(200, 200, 200, 0.15);
+  text-shadow: -.75px .5px 2px #999;
 }
 
 section h2 {
@@ -694,13 +694,14 @@ figure figcaption {
 }
 
 footer {
+  scroll-snap-align: start;
   background: #0a0a0a;
   padding: 45px 30px;
   display: -ms-grid;
   display: grid;
-      grid-template-areas: 'logo logo' 'share nav';
-  -ms-grid-columns: 1fr 4fr;
-      grid-template-columns: 1fr 4fr;
+      grid-template-areas: 'logo logo' 'share nav' 'github nav';
+  -ms-grid-columns: 1fr 5fr;
+      grid-template-columns: 1fr 5fr;
   -ms-grid-rows: auto;
       grid-template-rows: auto;
 }
@@ -756,6 +757,9 @@ footer .logo a:last-child {
 }
 
 footer .share {
+  -ms-grid-row: 2;
+  -ms-grid-column: 1;
+  grid-area: share;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -768,7 +772,79 @@ footer .share {
           justify-content: space-evenly;
 }
 
+footer .github {
+  -ms-grid-row: 3;
+  -ms-grid-column: 1;
+  grid-area: github;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: -webkit-min-content;
+  height: -moz-min-content;
+  height: min-content;
+  -webkit-transition: all ease-in-out .4s;
+  transition: all ease-in-out .4s;
+  position: relative;
+}
+
+footer .github.active {
+  color: crimson;
+}
+
+footer .github::after {
+  -webkit-transition: all ease-out .15s;
+  transition: all ease-out .15s;
+  content: '';
+  position: absolute;
+  background: crimson;
+  top: 0;
+  left: -4.5px;
+  width: 2px;
+  height: 0;
+}
+
+footer .github:hover::after {
+  height: 100%;
+}
+
+footer .github h4 {
+  width: -webkit-min-content;
+  width: -moz-min-content;
+  width: min-content;
+  height: -webkit-min-content;
+  height: -moz-min-content;
+  height: min-content;
+  font-family: 'Noto Serif', 'Times New Roman';
+  color: white;
+  font-style: italic;
+  font-size: 14px;
+}
+
+footer .github img {
+  width: 40px;
+  height: 40px;
+  margin: 5px 15px;
+  -webkit-transform: scale(1);
+          transform: scale(1);
+  -webkit-transition: all ease-in-out .33s;
+  transition: all ease-in-out .33s;
+}
+
+footer .github:hover img {
+  -webkit-transform: scale(1.12);
+          transform: scale(1.12);
+}
+
 footer nav {
+  -ms-grid-row: 2;
+  -ms-grid-row-span: 2;
+  -ms-grid-column: 2;
+  grid-area: nav;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
