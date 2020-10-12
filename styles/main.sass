@@ -34,8 +34,9 @@ header
     z-index: 999
     display: grid
     grid-template-columns: 1fr 2fr
-    padding: 25px 0 0 2px
-    transition: background $cubic1 $dur1, padding $cubic1 $dur1
+    background: $bg
+    padding: 0
+    box-shadow: 0px 1px 3px black
 
     nav
         height: $navHeight
@@ -67,21 +68,13 @@ header
         align-items: center
 
         a
-            transition: color $cubic1 $dur1
             font-family: 'Noto Serif', 'Times New Roman'
             font-style: italic
             font-size: 15px
             font-weight: 500
+            text-shadow: none
             transition: color 0.25s ease-out
             @include navLinks()
-            @include elevationShadow(1.1)
-
-    &.stick, &:not(.landing)
-        background: $bg
-        padding: 0
-        box-shadow: 0px 1px 3px black
-    &.stick a, &:not(.landing) a
-        text-shadow: none
 
 aside.download
     position: fixed
@@ -115,7 +108,7 @@ aside.download
 .page-transition
     position: fixed
     z-index: 998
-    width: 50vw
+    width: 100%
     height: 100vh
     background: white
     top: %$navHeight

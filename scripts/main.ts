@@ -1,6 +1,6 @@
 import mostVisible from 'most-visible'
-// import barba from '@barba/core'
-// import { gsap } from 'gsap'
+import barba from '@barba/core'
+import { gsap } from 'gsap'
 
 var
     _sections: NodeListOf<HTMLElement>,
@@ -16,10 +16,12 @@ var
     link: HTMLAnchorElement
 const pages = ['home', 'leuchtdioden', 'datensätze', 'optimierung', 'impressum']
 
-window.onload = () => {
+window.onload = pageLoad
+function pageLoad() {
+    console.log('%c'+ 'Welcome!', 'font-weight: 900; color: lightblue')
 
     const n = pages.indexOf(Array.from(document.getElementsByTagName('main'))[0].getAttribute('data-barba-namespace'))
-    Array.from(document.querySelectorAll('nav a')).forEach((navLink, i) => navLink.classList.toggle('active', i == n))
+    Array.from(document.querySelectorAll('header nav a')).forEach((navLink, i) => navLink.classList.toggle('active', i == n))
 
     _sections = document.querySelectorAll('section')
     sections = Array.from(_sections)
@@ -37,10 +39,12 @@ window.onload = () => {
     title = document.querySelector('.modal h4')
     link = <HTMLAnchorElement>document.querySelector('.modal a')
     figures.forEach(fig => fig.addEventListener('click', () => enlargeImg(<HTMLImageElement>fig.firstElementChild.firstElementChild)))
-    modal.addEventListener('click', e => hideImg(<HTMLElement>e.target))
+    if (modal) modal.addEventListener('click', e => hideImg(<HTMLElement>e.target))
     resize()
     window.onresize = resize
 }
+
+
 function enlargeImg(img: HTMLImageElement) {
     const imgSrc = img.getAttribute('data-imgSrc')
 
@@ -121,14 +125,12 @@ function pageTransitionSetup() { //TODO: add animation dely for hero & banners s
 
     //         leave() {
     //             let tl = gsap.timeline()
-    //             tl.to('.page-transition.left', { duration: .5, left: 0 })
-    //             tl.to('.page-transition.right', { duration: .5, right: 0 })
+    //             tl.to('.page-transition.left', { duration: .66, left: 0 })
     //         },
     //         enter() {
-
     //             let tl = gsap.timeline()
-    //             tl.to('.page-transition.left', { duration: .5, left: '-100%' })
-    //             tl.to('.page-transition.right', { duration: .5, right: '100%' })
+    //             tl.to('.page-transition.left', { duration: .66, delay: .66, left: '-100%' })
+    //             pageLoad()
     //         }
 
     //     }]

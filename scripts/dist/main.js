@@ -282,17 +282,17 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var most_visible_1 = __importDefault(require("most-visible")); // import barba from '@barba/core'
-// import { gsap } from 'gsap'
-
+var most_visible_1 = __importDefault(require("most-visible"));
 
 var _sections, sections, contentLI, contentLinks, table, container, figures, modal, modalImg, title, link;
 
 var pages = ['home', 'leuchtdioden', 'datensätze', 'optimierung', 'impressum'];
+window.onload = pageLoad;
 
-window.onload = function () {
+function pageLoad() {
+  console.log('%c' + 'Welcome!', 'font-weight: 900; color: lightblue');
   var n = pages.indexOf(Array.from(document.getElementsByTagName('main'))[0].getAttribute('data-barba-namespace'));
-  Array.from(document.querySelectorAll('nav a')).forEach(function (navLink, i) {
+  Array.from(document.querySelectorAll('header nav a')).forEach(function (navLink, i) {
     return navLink.classList.toggle('active', i == n);
   });
   _sections = document.querySelectorAll('section');
@@ -314,12 +314,12 @@ window.onload = function () {
       return enlargeImg(fig.firstElementChild.firstElementChild);
     });
   });
-  modal.addEventListener('click', function (e) {
+  if (modal) modal.addEventListener('click', function (e) {
     return hideImg(e.target);
   });
   resize();
   window.onresize = resize;
-};
+}
 
 function enlargeImg(img) {
   var imgSrc = img.getAttribute('data-imgSrc');
@@ -403,13 +403,12 @@ function pageTransitionSetup() {// barba.init({
   //     transitions: [{
   //         leave() {
   //             let tl = gsap.timeline()
-  //             tl.to('.page-transition.left', { duration: .5, left: 0 })
-  //             tl.to('.page-transition.right', { duration: .5, right: 0 })
+  //             tl.to('.page-transition.left', { duration: .66, left: 0 })
   //         },
   //         enter() {
   //             let tl = gsap.timeline()
-  //             tl.to('.page-transition.left', { duration: .5, left: '-100%' })
-  //             tl.to('.page-transition.right', { duration: .5, right: '100%' })
+  //             tl.to('.page-transition.left', { duration: .66, delay: .66, left: '-100%' })
+  //             pageLoad()
   //         }
   //     }]
   // })
@@ -442,7 +441,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59284" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60198" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

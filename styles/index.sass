@@ -7,7 +7,7 @@
     100%
         transform: translateY(0%)
         opacity: 1
-        
+
 #hero
     position: relative
     z-index: 1
@@ -43,14 +43,30 @@
             text-align: justify
             font-size: 15px
             text-shadow: -.5px .25px 2px #2e2e2e
-            
-        
+
     video
         position: absolute
         z-index: -1
         width: 100%
         filter: brightness(110%) saturate(120%)
 
-
 .banner
     @include banner('arduino2', .275, .5, bottom)
+
+header
+    background: transparent
+    box-shadow: none
+    padding: 25px 0 0 2px
+    transition: background $cubic1 $dur1, padding $cubic1 $dur1
+    a
+        transition: color $cubic1 $dur1
+        @include elevationShadow(1.1)
+    &.stick
+        background: $bg
+        padding: 0
+        box-shadow: 0px 1px 3px black
+    &.stick a
+        text-shadow: none
+
+.page-transition.stick
+    top: 60px
