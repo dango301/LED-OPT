@@ -86,8 +86,8 @@ header .logo a:first-child img {
             filter: brightness(1);
   }
   100% {
-    -webkit-filter: brightness(2);
-            filter: brightness(2);
+    -webkit-filter: brightness(2.25);
+            filter: brightness(2.25);
   }
 }
 
@@ -97,8 +97,8 @@ header .logo a:first-child img {
             filter: brightness(1);
   }
   100% {
-    -webkit-filter: brightness(2);
-            filter: brightness(2);
+    -webkit-filter: brightness(2.25);
+            filter: brightness(2.25);
   }
 }
 
@@ -155,6 +155,10 @@ header ul a::after {
 
 header ul a:hover::after {
   width: 100%;
+}
+
+header ul a.active {
+  font-weight: 900;
 }
 
 aside.download {
@@ -324,13 +328,13 @@ aside.download:hover a {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  padding: 40px;
+  padding: 50px 40px;
   scroll-snap-align: start;
 }
 
 .banner h1 {
   font-family: 'Noto Serif', 'Times New Roman';
-  font-size: 30px;
+  font-size: 27.5px;
   font-weight: 700;
   margin: 15px;
   text-align: center;
@@ -341,6 +345,17 @@ aside.download:hover a {
   margin-bottom: 15px;
   text-align: justify;
   text-align-last: center;
+  -webkit-transform: scale(1);
+          transform: scale(1);
+  -webkit-transition: -webkit-transform 0.25s ease-in-out;
+  transition: -webkit-transform 0.25s ease-in-out;
+  transition: transform 0.25s ease-in-out;
+  transition: transform 0.25s ease-in-out, -webkit-transform 0.25s ease-in-out;
+}
+
+.banner:hover p {
+  -webkit-transform: scale(1.02);
+          transform: scale(1.02);
 }
 
 .banner * {
@@ -729,8 +744,8 @@ footer .logo a:first-child img {
             filter: brightness(1);
   }
   100% {
-    -webkit-filter: brightness(2);
-            filter: brightness(2);
+    -webkit-filter: brightness(2.25);
+            filter: brightness(2.25);
   }
 }
 

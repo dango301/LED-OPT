@@ -75,6 +75,8 @@ header
             text-shadow: none
             transition: color 0.25s ease-out
             @include navLinks()
+            &.active
+                font-weight: 900
 
 aside.download
     position: fixed
@@ -174,12 +176,12 @@ aside.download
     align-items: center
     justify-content: space-around
     flex-direction: column
-    padding: 40px
+    padding: 50px 40px
     scroll-snap-align: start
 
     h1
         font-family: 'Noto Serif', 'Times New Roman'
-        font-size: 30px
+        font-size: 27.5px
         font-weight: 700
         margin: 15px
         text-align: center
@@ -188,6 +190,10 @@ aside.download
         margin-bottom: 15px
         text-align: justify
         text-align-last: center
+        transform: scale(1)
+        transition: transform 0.25s ease-in-out
+    &:hover p
+        transform: scale(1.02)
     *
         animation: .75s ease-in-out 0s 1 bannerScale
     &:not(.landing)

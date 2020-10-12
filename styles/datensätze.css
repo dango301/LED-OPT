@@ -1,17 +1,17 @@
 .banner {
-  background: url("../assets/images/graphs2.jpg");
+  background: url("../assets/images/graphs3.jpg");
   background-size: cover;
   background-attachment: fixed;
-  background-color: rgba(0, 0, 0, 0.33);
+  background-color: rgba(0, 0, 0, 0);
   background-blend-mode: darken;
   -webkit-filter: saturate(120%);
           filter: saturate(120%);
-  background-position: bottom;
+  background-position: top;
   -webkit-transition: all 0.4s ease-in-out;
   transition: all 0.4s ease-in-out;
 }
 
 .banner:hover {
-  background-color: rgba(0, 0, 0, 0.75);
+  background-color: rgba(0, 0, 0, 0.25);
 }
 /*# sourceMappingURL=datensätze.css.map */
