@@ -297,7 +297,7 @@ function pageLoad() {
   Array.from(document.getElementsByClassName('page-transition')).forEach(function (el) {
     return el.classList.add('loaded');
   });
-  var n = pages.indexOf(Array.from(document.getElementsByTagName('main'))[0].getAttribute('data-barba-namespace'));
+  var n = pages.indexOf(Array.from(document.getElementsByTagName('main'))[0].getAttribute('data-namespace'));
   Array.from(document.querySelectorAll('header nav a')).forEach(function (navLink, i) {
     return navLink.classList.toggle('active', i == n);
   });

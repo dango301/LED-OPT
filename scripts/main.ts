@@ -24,7 +24,7 @@ function pageLoad() {
     Array.from(document.getElementsByClassName('page-transition')).forEach(el => el.classList.add('loaded'))
 
 
-    const n = pages.indexOf(Array.from(document.getElementsByTagName('main'))[0].getAttribute('data-barba-namespace'))
+    const n = pages.indexOf(Array.from(document.getElementsByTagName('main'))[0].getAttribute('data-namespace'))
     Array.from(document.querySelectorAll('header nav a')).forEach((navLink, i) => navLink.classList.toggle('active', i == n))
 
     _sections = document.querySelectorAll('section')

@@ -1,1 +1,115 @@
-/* No CSS *//*# sourceMappingURL=impressum.css.map */
+@-webkit-keyframes logoPulse {
+  0% {
+    -webkit-filter: brightness(1);
+            filter: brightness(1);
+  }
+  100% {
+    -webkit-filter: brightness(2);
+            filter: brightness(2);
+  }
+}
+
+@keyframes logoPulse {
+  0% {
+    -webkit-filter: brightness(1);
+            filter: brightness(1);
+  }
+  100% {
+    -webkit-filter: brightness(2);
+            filter: brightness(2);
+  }
+}
+
+header {
+  background: transparent;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  padding: 25px 0 0 2px;
+  -webkit-transition: background ease-in 350ms, padding ease-in 350ms;
+  transition: background ease-in 350ms, padding ease-in 350ms;
+}
+
+header a {
+  -webkit-transition: color ease-in 350ms;
+  transition: color ease-in 350ms;
+  text-shadow: 1.375px 1.375px 2px #111;
+}
+
+header.stick {
+  background: #111;
+  padding: 0;
+  -webkit-box-shadow: 0px 1px 3px black;
+          box-shadow: 0px 1px 3px black;
+}
+
+header.stick a {
+  text-shadow: none;
+}
+
+main {
+  scroll-snap-align: start;
+  background: url("../assets/images/arduino3.jpg");
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: bottom;
+  background-color: rgba(0, 0, 0, 0.45);
+  background-blend-mode: darken;
+  min-height: 100vh;
+  -webkit-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+  padding: 10vh 5vw;
+}
+
+main h1 {
+  font-family: 'Noto Serif', 'Times New Roman';
+  font-size: 27.5px;
+  font-weight: 700;
+  margin-top: 90px;
+}
+
+main ul {
+  margin-top: 20px;
+}
+
+main ul li {
+  margin: 5px 0;
+  font-weight: 900;
+}
+
+main ul li a {
+  -webkit-transition: all ease-in-out .4s;
+  transition: all ease-in-out .4s;
+  position: relative;
+}
+
+main ul li a.active {
+  color: crimson;
+}
+
+main ul li a::after {
+  -webkit-transition: all ease-out .15s;
+  transition: all ease-out .15s;
+  content: '';
+  position: absolute;
+  background: crimson;
+  top: 0;
+  left: -4.5px;
+  width: 2px;
+  height: 0;
+}
+
+main ul li a:hover::after {
+  height: 100%;
+}
+
+main ul li a span {
+  font-weight: 900;
+}
+
+footer {
+  position: relative;
+  z-index: 2;
+  -webkit-box-shadow: 1px -1.75px 5px black;
+          box-shadow: 1px -1.75px 5px black;
+}
+/*# sourceMappingURL=impressum.css.map */

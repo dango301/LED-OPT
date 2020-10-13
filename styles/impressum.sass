@@ -1,0 +1,51 @@
+@import "vars"
+
+
+header
+    background: transparent
+    box-shadow: none
+    padding: 25px 0 0 2px
+    transition: background $cubic1 $dur1, padding $cubic1 $dur1
+    a
+        transition: color $cubic1 $dur1
+        @include elevationShadow(1.1)
+    &.stick
+        background: $bg
+        padding: 0
+        box-shadow: 0px 1px 3px black
+    &.stick a
+        text-shadow: none
+
+    
+    
+main
+    scroll-snap-align: start
+    background: url('../assets/images/arduino3.jpg')
+    background-size: cover
+    background-attachment: fixed
+    background-position: bottom
+    background-color: rgba(black, .45)
+    background-blend-mode: darken
+    min-height: 100vh
+    transition: all 0.4s ease-in-out
+    padding: 10vh 5vw
+
+    h1
+        font-family: 'Noto Serif', 'Times New Roman'
+        font-size: 27.5px
+        font-weight: 700
+        margin-top: 90px
+    ul
+        margin-top: 20px
+        li
+            margin: 5px 0
+            font-weight: 900
+            a
+                @include navLinks(false)
+                span
+                    font-weight: 900
+
+footer
+    position: relative
+    z-index: 2
+    box-shadow: 1px -1.75px 5px black

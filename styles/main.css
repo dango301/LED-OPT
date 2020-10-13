@@ -545,8 +545,8 @@ main .container {
           align-items: stretch;
   position: relative;
   z-Index: 2;
-  -webkit-box-shadow: 1px 1.5px 5px black, 0px -1.5px 5px black;
-          box-shadow: 1px 1.5px 5px black, 0px -1.5px 5px black;
+  -webkit-box-shadow: 1px 1.75px 5px black, 0px -1.75px 5px black;
+          box-shadow: 1px 1.75px 5px black, 0px -1.75px 5px black;
 }
 
 main .container aside.content {
@@ -728,7 +728,7 @@ section *::selection {
 }
 
 section h2 {
-  text-shadow: -.75px 1.5px 2px #999;
+  text-shadow: -.5px 1.25px 2px #999;
   text-align: left;
   font-size: 30px;
   font-weight: 900;
