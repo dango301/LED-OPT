@@ -75,18 +75,14 @@
 }
 
 #hero .content {
-  margin: 0 4vw;
+  margin: 0 5vw;
   -webkit-animation: 1.25s cubic-bezier(0.58, 0, 0.33, 1.25) 0s 1 heroSlide;
           animation: 1.25s cubic-bezier(0.58, 0, 0.33, 1.25) 0s 1 heroSlide;
 }
 
-#hero .content * {
-  max-width: 700px;
-}
-
 #hero .content h1 {
   font-family: 'Noto Serif', 'Times New Roman';
-  letter-spacing: 2.5px;
+  letter-spacing: 3px;
   text-shadow: -8px 1.25px 1.5px rgba(17, 17, 17, 0.75);
   font-size: 80px;
   font-style: italic;
@@ -94,6 +90,7 @@
 }
 
 #hero .content h2 {
+  max-width: 700px;
   margin: 45px 0 0 30px;
   font-size: 20px;
   font-style: italic;
@@ -102,6 +99,7 @@
 }
 
 #hero .content p {
+  max-width: 700px;
   margin: 15px 0 0 30px;
   text-align: justify;
   font-size: 15px;

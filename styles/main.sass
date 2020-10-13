@@ -146,6 +146,7 @@ aside.download
         @keyframes load
             0%
                 box-shadow: 0 -0.83em 0 -0.4em, 0 -0.83em 0 -0.42em, 0 -0.83em 0 -0.44em, 0 -0.83em 0 -0.46em, 0 -0.83em 0 -0.477em
+                transform: rotate(0deg)
             5%,
             95%
                 box-shadow: 0 -0.83em 0 -0.4em, 0 -0.83em 0 -0.42em, 0 -0.83em 0 -0.44em, 0 -0.83em 0 -0.46em, 0 -0.83em 0 -0.477em
@@ -158,11 +159,6 @@ aside.download
                 box-shadow: 0 -0.83em 0 -0.4em, -0.377em -0.74em 0 -0.42em, -0.645em -0.522em 0 -0.44em, -0.775em -0.297em 0 -0.46em, -0.82em -0.09em 0 -0.477em
             100%
                 box-shadow: 0 -0.83em 0 -0.4em, 0 -0.83em 0 -0.42em, 0 -0.83em 0 -0.44em, 0 -0.83em 0 -0.46em, 0 -0.83em 0 -0.477em
-
-        @keyframes round
-            0%
-                transform: rotate(0deg)// translate(-50%, -50%)
-            100%
                 transform: rotate(360deg)// translate(-50%, -50%)
 
         .loader
@@ -179,7 +175,7 @@ aside.download
             position: absolute
             top: calc(50% - 117px)
             left: calc(100% - 45px)
-            animation: load 2s infinite ease, round 2s infinite ease
+            animation: load 2s infinite ease
     &.right .loader
         left: -45px
     &.loaded .loader
@@ -192,7 +188,7 @@ aside.download
         top: 50%
         left: 100%
         transform: translate(-50%, -50%)
-        @include logoPulse(500)
+        @include logoPulse(1s)
     &.right img
         left: 0
     &.hide
@@ -378,10 +374,12 @@ section
     *
         color: black
         &::selection
-            background: rgba(200, 200, 200, 0.15)
-            text-shadow: -.75px .5px 2px #999
+            background: rgba($primaryColor, 1)
+            text-shadow: -.25px .25px 2px #999
+            color: white
 
     h2
+        text-shadow: -.75px 1.5px 2px #999
         text-align: left
         font-size: 30px
         font-weight: 900
