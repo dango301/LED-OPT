@@ -1,6 +1,4 @@
 import mostVisible from 'most-visible'
-import barba from '@barba/core'
-import { gsap } from 'gsap'
 
 var
     _sections: NodeListOf<HTMLElement>,
@@ -18,7 +16,10 @@ const pages = ['home', 'leuchtdioden', 'datensätze', 'optimierung', 'impressum'
 
 window.onload = pageLoad
 function pageLoad() {
-    console.log('%c'+ 'Welcome!', 'font-weight: 900; color: lightblue')
+
+    console.log('%c' + 'Welcome!', 'font-weight: 900; color: lightblue')
+    Array.from(document.getElementsByClassName('page-transition')).forEach(el => el.classList.add('loaded'))
+
 
     const n = pages.indexOf(Array.from(document.getElementsByTagName('main'))[0].getAttribute('data-barba-namespace'))
     Array.from(document.querySelectorAll('header nav a')).forEach((navLink, i) => navLink.classList.toggle('active', i == n))
@@ -31,7 +32,6 @@ function pageLoad() {
     container = document.querySelector('main .container')
     scrollVisibility()
     window.onscroll = scrollVisibility
-    pageTransitionSetup()
 
     figures = Array.from(document.getElementsByTagName('figure'))
     modal = <HTMLElement>document.querySelector('.modal')
@@ -42,6 +42,11 @@ function pageLoad() {
     if (modal) modal.addEventListener('click', e => hideImg(<HTMLElement>e.target))
     resize()
     window.onresize = resize
+}
+window.onunload = () => {
+
+    Array.from(document.getElementsByClassName('page-transition')).forEach(el => el.classList.add('loaded'))
+    console.log('Bye bye!')
 }
 
 
@@ -117,22 +122,3 @@ function resize() { //TODO: if aspect ratio too wide make it go under text
     }
 }
 
-
-
-function pageTransitionSetup() { //TODO: add animation dely for hero & banners so they are visible AFTER barba transitions
-    // barba.init({
-    //     transitions: [{
-
-    //         leave() {
-    //             let tl = gsap.timeline()
-    //             tl.to('.page-transition.left', { duration: .66, left: 0 })
-    //         },
-    //         enter() {
-    //             let tl = gsap.timeline()
-    //             tl.to('.page-transition.left', { duration: .66, delay: .66, left: '-100%' })
-    //             pageLoad()
-    //         }
-
-    //     }]
-    // })
-}

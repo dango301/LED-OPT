@@ -1,3 +1,25 @@
+@-webkit-keyframes logoPulse {
+  0% {
+    -webkit-filter: brightness(1);
+            filter: brightness(1);
+  }
+  100% {
+    -webkit-filter: brightness(2);
+            filter: brightness(2);
+  }
+}
+
+@keyframes logoPulse {
+  0% {
+    -webkit-filter: brightness(1);
+            filter: brightness(1);
+  }
+  100% {
+    -webkit-filter: brightness(2);
+            filter: brightness(2);
+  }
+}
+
 .banner {
   background: url("../assets/images/graphs3.jpg");
   background-size: cover;

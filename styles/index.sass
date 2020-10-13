@@ -1,5 +1,15 @@
 @import "vars"
 
+.page-transition .icon
+    &:before
+        content: ''
+        position: absolute
+        top: 0
+        left: 0
+        width: 100%
+        height: 100%
+        background: lightblue
+
 @keyframes heroSlide
     0%
         transform: translateY(150%)
@@ -68,5 +78,5 @@ header
     &.stick a
         text-shadow: none
 
-.page-transition.stick
-    top: 60px
+// .page-transition
+//     top: 0px

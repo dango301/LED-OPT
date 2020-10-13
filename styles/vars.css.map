@@ -1,6 +1,6 @@
 {
     "version": 3,
-    "mappings": "",
+    "mappings": "AAYA,UAAU,CAAV,SAAU;EACN,EAAE;IACE,MAAM,EAAE,aAAa;;EACzB,IAAI;IACA,MAAM,EAAE,aAAa",
     "sources": [
         "vars.sass"
     ],

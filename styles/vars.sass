@@ -10,13 +10,13 @@ $inactiveColor: rgb(209, 209, 209)
 $activeColor: white
 $softblack: rgb(33, 33, 33)
 
-@mixin logoPulse()
-    animation: logoPulse 1250ms ease-in-out infinite alternate
-    @keyframes logoPulse
-        0%
-            filter: brightness(1)
-        100%
-            filter: brightness(2.25)
+@keyframes logoPulse
+    0%
+        filter: brightness(1)
+    100%
+        filter: brightness(2)
+@mixin logoPulse($dur: 1250ms )
+    animation: logoPulse $dur ease-in-out infinite alternate
 
 @mixin navLinks($horizontal: true, $col: $primaryColor)
     transition: all ease-in-out .4s
