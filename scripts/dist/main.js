@@ -287,6 +287,9 @@ var most_visible_1 = __importDefault(require("most-visible"));
 var _sections, sections, contentLI, contentLinks, table, container, figures, modal, modalImg, title, link;
 
 var pages = ['home', 'leuchtdioden', 'datensätze', 'optimierung', 'impressum'];
+if (window.location.hash == '') Array.from(document.getElementsByClassName('page-transition')).forEach(function (el) {
+  return el.classList.add('hide');
+});
 window.onload = pageLoad;
 
 function pageLoad() {
@@ -322,13 +325,6 @@ function pageLoad() {
   resize();
   window.onresize = resize;
 }
-
-window.onunload = function () {
-  Array.from(document.getElementsByClassName('page-transition')).forEach(function (el) {
-    return el.classList.add('loaded');
-  });
-  console.log('Bye bye!');
-};
 
 function enlargeImg(img) {
   var imgSrc = img.getAttribute('data-imgSrc');

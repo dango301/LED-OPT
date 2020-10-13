@@ -14,6 +14,9 @@ var
     link: HTMLAnchorElement
 const pages = ['home', 'leuchtdioden', 'datensätze', 'optimierung', 'impressum']
 
+if (window.location.hash == '')
+    Array.from(document.getElementsByClassName('page-transition')).forEach(el => el.classList.add('hide'))
+
 window.onload = pageLoad
 function pageLoad() {
 
@@ -42,11 +45,6 @@ function pageLoad() {
     if (modal) modal.addEventListener('click', e => hideImg(<HTMLElement>e.target))
     resize()
     window.onresize = resize
-}
-window.onunload = () => {
-
-    Array.from(document.getElementsByClassName('page-transition')).forEach(el => el.classList.add('loaded'))
-    console.log('Bye bye!')
 }
 
 
