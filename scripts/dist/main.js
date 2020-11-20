@@ -284,7 +284,20 @@ Object.defineProperty(exports, "__esModule", {
 
 var most_visible_1 = __importDefault(require("most-visible"));
 
-var _sections, sections, contentLI, contentLinks, table, container, figures, modal, modalImg, title, link;
+var _sections,
+    sections,
+    contentLI,
+    contentLinks,
+    table,
+    container,
+    figures,
+    freeFigs,
+    modal,
+    modalImg,
+    title,
+    link,
+    figIndex = 0,
+    figInfo = [];
 
 var pages = ['home', 'leuchtdioden', 'datensätze', 'optimierung', 'impressum'];
 if (window.location.hash == '') Array.from(document.getElementsByClassName('page-transition')).forEach(function (el) {
@@ -310,13 +323,29 @@ function pageLoad() {
   scrollVisibility();
   window.onscroll = scrollVisibility;
   figures = Array.from(document.getElementsByTagName('figure'));
+  freeFigs = figures.filter(function (fig) {
+    return !(fig.parentElement.classList.contains('gallery') || fig.parentElement.classList.contains('content'));
+  });
   modal = document.querySelector('.modal');
   modalImg = document.querySelector('.modal img');
   title = document.querySelector('.modal h4');
   link = document.querySelector('.modal a');
-  figures.forEach(function (fig) {
-    return fig.addEventListener('click', function () {
-      return enlargeImg(fig.firstElementChild.firstElementChild);
+  document.querySelectorAll('.modal img.slider').forEach(function (slider, i) {
+    return slider.addEventListener('click', function () {
+      return enlargeImg(figIndex + (i == 0 ? -1 : 1));
+    });
+  });
+  figures.forEach(function (fig, i) {
+    var img = fig.firstElementChild.firstElementChild;
+    var imgSrc = img.getAttribute('data-imgSrc');
+    figInfo.push({
+      src: img.src,
+      alt: img.alt,
+      imgSrc: imgSrc,
+      href: imgSrc.substring(0, imgSrc.indexOf(' '))
+    });
+    fig.addEventListener('click', function () {
+      return enlargeImg(i);
     });
   });
   if (modal) modal.addEventListener('click', function (e) {
@@ -324,20 +353,25 @@ function pageLoad() {
   });
   resize();
   window.onresize = resize;
+  console.log({
+    figures: figures,
+    figInfo: figInfo
+  });
 }
 
-function enlargeImg(img) {
-  var imgSrc = img.getAttribute('data-imgSrc');
+function enlargeImg(n) {
+  if (n >= figInfo.length) figIndex = 0;else if (n < 0) figIndex = figInfo.length - 1;else figIndex = n;
+  var info = figInfo[figIndex];
   modal.classList.add('show');
-  modalImg.src = img.src;
-  modalImg.alt = img.alt;
-  title.innerHTML = img.alt;
-  link.innerHTML = imgSrc;
-  link.href = imgSrc.substring(0, imgSrc.indexOf(' '));
+  modalImg.src = info.src;
+  modalImg.alt = info.alt;
+  title.innerHTML = info.alt;
+  link.innerHTML = info.imgSrc;
+  link.href = info.href;
 }
 
 function hideImg(el) {
-  if (el.tagName != 'a') modal.classList.remove('show');
+  if (el.tagName != 'a' && !el.classList.contains('slider')) modal.classList.remove('show');
 }
 
 function scrollVisibility() {
@@ -360,9 +394,9 @@ function scrollVisibility() {
   table.style.top = (pos < 0 ? 0 : bottom < tableHeight * 1.5 + 45 ? containerHeight - tableHeight : pos) + "px";
 }
 
-var minP = 650,
+var minP = 600,
     maxP = 800,
-    minImg = 400,
+    minImg = 250,
     maxImg = 600,
     changeOrder = function changeOrder(fig, pushDown) {
   var section = fig.parentNode;
@@ -386,7 +420,7 @@ function resize() {
 
   if (availableW - minImg < minP) {
     // both text and img would become too small
-    figures.forEach(function (fig) {
+    freeFigs.forEach(function (fig) {
       return changeOrder(fig, true);
     });
   } else {
@@ -397,7 +431,7 @@ function resize() {
     } //FIXME: while (availableW - finalW > maxP) finalW++ // if text is has enough space too reach maximum (800px) then give the remaining space to img
 
 
-    figures.forEach(function (fig) {
+    freeFigs.forEach(function (fig) {
       fig.style.width = finalW_1 + 'px';
       changeOrder(fig, false);
     });
@@ -431,7 +465,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56183" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64725" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

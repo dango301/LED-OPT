@@ -8,10 +8,13 @@ var
     table: HTMLElement,
     container: HTMLElement,
     figures: HTMLElement[],
+    freeFigs: HTMLElement[],
     modal: HTMLElement,
     modalImg: HTMLImageElement,
     title: HTMLElement,
-    link: HTMLAnchorElement
+    link: HTMLAnchorElement,
+    figIndex = 0,
+    figInfo = []
 const pages = ['home', 'leuchtdioden', 'datensätze', 'optimierung', 'impressum']
 
 if (window.location.hash == '')
@@ -37,30 +40,49 @@ function pageLoad() {
     window.onscroll = scrollVisibility
 
     figures = Array.from(document.getElementsByTagName('figure'))
+    freeFigs = figures.filter(fig => !(fig.parentElement.classList.contains('gallery') || fig.parentElement.classList.contains('content')))
     modal = <HTMLElement>document.querySelector('.modal')
     modalImg = <HTMLImageElement>document.querySelector('.modal img')
     title = document.querySelector('.modal h4')
     link = <HTMLAnchorElement>document.querySelector('.modal a')
-    figures.forEach(fig => fig.addEventListener('click', () => enlargeImg(<HTMLImageElement>fig.firstElementChild.firstElementChild)))
+    document.querySelectorAll('.modal img.slider').forEach((slider, i) => slider.addEventListener('click', () => enlargeImg(figIndex + (i == 0 ? -1 : 1))))
+    figures.forEach((fig, i) => {
+        const img = <HTMLImageElement>fig.firstElementChild.firstElementChild
+        const imgSrc = img.getAttribute('data-imgSrc')
+        figInfo.push({
+            src: img.src,
+            alt: img.alt,
+            imgSrc,
+            href: imgSrc.substring(0, imgSrc.indexOf(' '))
+        })
+        fig.addEventListener('click', () => enlargeImg(i))
+    })
     if (modal) modal.addEventListener('click', e => hideImg(<HTMLElement>e.target))
     resize()
     window.onresize = resize
+
+    console.log({figures, figInfo})
 }
 
 
-function enlargeImg(img: HTMLImageElement) {
-    const imgSrc = img.getAttribute('data-imgSrc')
+function enlargeImg(n: number) {
 
+    if (n >= figInfo.length) figIndex = 0
+    else if (n < 0) figIndex = figInfo.length - 1
+    else figIndex = n
+
+    const info = figInfo[figIndex]
     modal.classList.add('show')
-    modalImg.src = img.src
-    modalImg.alt = img.alt
-    title.innerHTML = img.alt
-    link.innerHTML = imgSrc
-    link.href = imgSrc.substring(0, imgSrc.indexOf(' '))
+
+    modalImg.src = info.src
+    modalImg.alt = info.alt
+    title.innerHTML = info.alt
+    link.innerHTML = info.imgSrc
+    link.href = info.href
 }
 function hideImg(el: HTMLElement) {
 
-    if (el.tagName != 'a')
+    if (el.tagName != 'a' && !el.classList.contains('slider'))
         modal.classList.remove('show')
 }
 
@@ -81,9 +103,9 @@ function scrollVisibility() {
 
 
 const
-    minP = 650,
+    minP = 600,
     maxP = 800,
-    minImg = 400,
+    minImg = 250,
     maxImg = 600,
     changeOrder = (fig: HTMLElement, pushDown: boolean) => { //TODO: set max height
         const section = fig.parentNode
@@ -104,16 +126,16 @@ function resize() { //TODO: if aspect ratio too wide make it go under text
 
     const totalW = document.querySelector('article').getBoundingClientRect().width
     const availableW = totalW - 2 * 45 - 20 // total minus section padding and figure margin
-
+    
     if (availableW - minImg < minP) { // both text and img would become too small
-        figures.forEach(fig => changeOrder(fig, true))
+        freeFigs.forEach(fig => changeOrder(fig, true))
     } else {
         let finalW = minImg + .5 * (availableW - minP - minImg) //distribute space evenly
 
         while (finalW > maxImg) finalW--
         //FIXME: while (availableW - finalW > maxP) finalW++ // if text is has enough space too reach maximum (800px) then give the remaining space to img
 
-        figures.forEach(fig => {
+        freeFigs.forEach(fig => {
             fig.style.width = finalW + 'px'
             changeOrder(fig, false)
         })

@@ -208,10 +208,12 @@ aside.download
     grid-template-rows: auto repeat(2, min-content)
     opacity: 0
     transition: opacity ease-in-out .45s
-    pointer-events: none
+
+    &, & *
+        pointer-events: none
     &, *:not(a)
         cursor: crosshair
-    &.show
+    &.show, &.show *
         opacity: 1
         pointer-events: all
 
@@ -236,6 +238,17 @@ aside.download
             content: 'Bildquelle: '
             font-weight: 900
             text-decoration: underline
+    img.slider //these are the arrows
+        position: fixed
+        cursor: pointer
+        height: 75px
+        top: 50%
+        transform: translateY(-50%)
+        filter: invert(1)
+        &:first-child
+            left: 0
+        &:last-child
+            right: 30px
 
 @keyframes bannerScale
     0%
@@ -281,15 +294,15 @@ main .container // aside is nested in here
     z-Index: 2
     box-shadow: 1px 1.75px 5px black, 0px -1.75px 5px black
     
-    @mixin expandTransition($prop: all)
-        transition: $prop .45s cubic-bezier(.56,.36,.37,1.26)
+    // @mixin expandTransition($prop: all)
+    //     transition: $prop .45s cubic-bezier(.56,.36,.37,1.26)
 
     aside.content
         position: relative
         box-shadow: 1px 0px 3px black
-        width: 150px
+        width: 225px
         overflow: hidden
-        @include expandTransition()
+        // @include expandTransition()
 
         .table-of-contents
             position: absolute
@@ -326,44 +339,46 @@ main .container // aside is nested in here
                 margin: 12px 0
                 position: relative
 
-                &:before
-                    content: ''
-                    position: absolute
-                    z-index: 2
-                    width: 100%
-                    right: 0
-                    transform: translateX(0%)
-                    height: 14px
-                    transition: border ease-in-out .4s
-                    border: 2px solid $secondaryColor
-                    border-radius: 16px
-                    background: $secondaryColor
-                    @include expandTransition()
-                &.active:before
-                    border: 2px solid white
+                // &:before
+                //     content: ''
+                //     position: absolute
+                //     z-index: 2
+                //     width: 100%
+                //     right: 0
+                //     transform: translateX(0%)
+                //     height: 14px
+                //     transition: border ease-in-out .4s
+                //     border: 2px solid $secondaryColor
+                //     border-radius: 16px
+                //     background: $secondaryColor
+                //     @include expandTransition()
+                // &.active:before
+                //     border: 2px solid white
                 a
-                    font-size: 0
-                    white-space: nowrap
-                    overflow: hidden
+                    font-size: 14px
+                    font-style: italic
+                    //font-size: 0
+                    //white-space: nowrap
+                    //overflow: hidden
                     line-height: 8px
                     font-weight: 500
                     @include elevationShadow(1)
                     @include navLinks(false)
-                    @include expandTransition()
+                    // @include expandTransition()
 
-        &:hover
-            width: 27.5vw
-            li
-                &:before, &.active:before
-                    width: 0
-                    border: 0px solid $secondaryColor
-                a
-                    font-size: 16px
-                    white-space: normal
+        // &:hover
+        //     width: 27.5vw
+        //     li
+        //         &:before, &.active:before
+        //             width: 0
+        //             border: 0px solid $secondaryColor
+        //         a
+        //             font-size: 16px
+        //             white-space: normal
 
     article
         flex: 1
-        @include expandTransition()
+    //     @include expandTransition()
 
 section
     scroll-snap-align: start
@@ -390,6 +405,7 @@ section
         font-weight: 900
         &:before
             content: '➤ '
+
     p
         max-width: 800px
         margin-bottom: 15px
@@ -434,34 +450,39 @@ section
                 cursor: pointer
                 background: rgba(white, 0.1)
 
-figure
-    float: right
-    display: grid
-    grid-template-rows: auto auto
-    transition: width ease-in .1s
-    margin: 20px 0 20px 20px
 
-    .img-container
-        width: inherit
-        height: inherit
-        object-fit: contain
-        overflow: hidden
-        img
-            transform: scale(1)
-            transition: transform ease-out .35s
-            width: 100%
-            height: 100%
+    figure
+        float: right
+        display: grid
+        grid-template-rows: auto auto
+        transition: width ease-in .1s
+        margin: 20px 0 20px 20px
+        position: relative
 
-    &:hover
-        cursor: pointer
-        .img-container img
-            transform: scale(1.05)
+        .img-container
+            width: inherit
+            height: inherit
+            display: flex
+            justify-content: center
+            object-fit: contain
+            overflow: hidden
+            img
+                transform: scale(1)
+                transition: transform ease-out .35s
+                width: 100%
+                height: 100%
 
-    figcaption
-        font-family: 'Noto Serif', 'Times New Roman'
-        text-align: justify
-        text-align-last: center
-        padding: 3px 12px 0 12px
+        &:hover
+            cursor: pointer
+            .img-container img
+                transform: scale(1.05)
+
+        figcaption
+            font-family: 'Noto Serif', 'Times New Roman'
+            font-size: 13px
+            text-align: center
+            text-align-last: center
+            padding: 3px 12px 0 12px
 
 footer
     scroll-snap-align: start
@@ -471,7 +492,7 @@ footer
     grid-template-areas: 'logo logo' 'share nav' 'github nav'
     grid-template-columns: 1fr 5fr
     grid-template-rows: auto
-    
+
     &>*
         margin: 15px 25px
 

@@ -408,6 +408,9 @@ aside.download:hover a {
   opacity: 0;
   -webkit-transition: opacity ease-in-out .45s;
   transition: opacity ease-in-out .45s;
+}
+
+.modal, .modal * {
   pointer-events: none;
 }
 
@@ -415,7 +418,7 @@ aside.download:hover a {
   cursor: crosshair;
 }
 
-.modal.show {
+.modal.show, .modal.show * {
   opacity: 1;
   pointer-events: all;
 }
@@ -452,6 +455,25 @@ aside.download:hover a {
   content: 'Bildquelle: ';
   font-weight: 900;
   text-decoration: underline;
+}
+
+.modal img.slider {
+  position: fixed;
+  cursor: pointer;
+  height: 75px;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  -webkit-filter: invert(1);
+          filter: invert(1);
+}
+
+.modal img.slider:first-child {
+  left: 0;
+}
+
+.modal img.slider:last-child {
+  right: 30px;
 }
 
 @-webkit-keyframes bannerScale {
@@ -553,10 +575,8 @@ main .container aside.content {
   position: relative;
   -webkit-box-shadow: 1px 0px 3px black;
           box-shadow: 1px 0px 3px black;
-  width: 150px;
+  width: 225px;
   overflow: hidden;
-  -webkit-transition: all 0.45s cubic-bezier(0.56, 0.36, 0.37, 1.26);
-  transition: all 0.45s cubic-bezier(0.56, 0.36, 0.37, 1.26);
 }
 
 main .container aside.content .table-of-contents {
@@ -626,40 +646,15 @@ main .container aside.content .table-of-contents li {
   position: relative;
 }
 
-main .container aside.content .table-of-contents li:before {
-  content: '';
-  position: absolute;
-  z-index: 2;
-  width: 100%;
-  right: 0;
-  -webkit-transform: translateX(0%);
-          transform: translateX(0%);
-  height: 14px;
-  -webkit-transition: border ease-in-out .4s;
-  transition: border ease-in-out .4s;
-  border: 2px solid #43a4f3;
-  border-radius: 16px;
-  background: #43a4f3;
-  -webkit-transition: all 0.45s cubic-bezier(0.56, 0.36, 0.37, 1.26);
-  transition: all 0.45s cubic-bezier(0.56, 0.36, 0.37, 1.26);
-}
-
-main .container aside.content .table-of-contents li.active:before {
-  border: 2px solid white;
-}
-
 main .container aside.content .table-of-contents li a {
-  font-size: 0;
-  white-space: nowrap;
-  overflow: hidden;
+  font-size: 14px;
+  font-style: italic;
   line-height: 8px;
   font-weight: 500;
   text-shadow: 1.25px 1.25px 2px #111;
   -webkit-transition: all ease-in-out .4s;
   transition: all ease-in-out .4s;
   position: relative;
-  -webkit-transition: all 0.45s cubic-bezier(0.56, 0.36, 0.37, 1.26);
-  transition: all 0.45s cubic-bezier(0.56, 0.36, 0.37, 1.26);
 }
 
 main .container aside.content .table-of-contents li a.active {
@@ -682,26 +677,10 @@ main .container aside.content .table-of-contents li a:hover::after {
   height: 100%;
 }
 
-main .container aside.content:hover {
-  width: 27.5vw;
-}
-
-main .container aside.content:hover li:before, main .container aside.content:hover li.active:before {
-  width: 0;
-  border: 0px solid #43a4f3;
-}
-
-main .container aside.content:hover li a {
-  font-size: 16px;
-  white-space: normal;
-}
-
 main .container article {
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
-  -webkit-transition: all 0.45s cubic-bezier(0.56, 0.36, 0.37, 1.26);
-  transition: all 0.45s cubic-bezier(0.56, 0.36, 0.37, 1.26);
 }
 
 section {
@@ -818,7 +797,7 @@ section #weiterlesen a:hover {
   background: rgba(255, 255, 255, 0.1);
 }
 
-figure {
+section figure {
   float: right;
   display: -ms-grid;
   display: grid;
@@ -827,17 +806,24 @@ figure {
   -webkit-transition: width ease-in .1s;
   transition: width ease-in .1s;
   margin: 20px 0 20px 20px;
+  position: relative;
 }
 
-figure .img-container {
+section figure .img-container {
   width: inherit;
   height: inherit;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   -o-object-fit: contain;
      object-fit: contain;
   overflow: hidden;
 }
 
-figure .img-container img {
+section figure .img-container img {
   -webkit-transform: scale(1);
           transform: scale(1);
   -webkit-transition: -webkit-transform ease-out .35s;
@@ -848,18 +834,19 @@ figure .img-container img {
   height: 100%;
 }
 
-figure:hover {
+section figure:hover {
   cursor: pointer;
 }
 
-figure:hover .img-container img {
+section figure:hover .img-container img {
   -webkit-transform: scale(1.05);
           transform: scale(1.05);
 }
 
-figure figcaption {
+section figure figcaption {
   font-family: 'Noto Serif', 'Times New Roman';
-  text-align: justify;
+  font-size: 13px;
+  text-align: center;
   text-align-last: center;
   padding: 3px 12px 0 12px;
 }

@@ -60,6 +60,8 @@
         </div>
         <h4></h4>
         <a target="_blank" href=""></a>
+        <img class="slider" src="./assets/icons/slideLeft.svg" alt="👈🏽">
+        <img class="slider" src="./assets/icons/slideRight.svg" alt="👉🏽">
     </div>
 
 
@@ -87,11 +89,11 @@
                     <a href="/datensätze.html#" class="top">UP</a>
                     <h4>Content</h4>
                     <ul>
-                        <li><a href="#vorgehen">Be&shy;grün&shy;dung des Vor&shy;ge&shy;hens für die
-                                Da&shy;ten&shy;er&shy;fas&shy;sung</a></li>
-                        <li><a href="#erzeugung">Er&shy;zeu&shy;gung und Or&shy;ga&shy;ni&shy;sa&shy;ti&shy;on der
-                                Da&shy;ten&shy;sätze</a></li>
-                        <li><a href="#auswertung">Aus&shy;wer&shy;tung der Da&shy;ten</a></li>
+                        <li><a href="#vorgehen">Begrün&shy;dung des Vor&shy;gehens für die
+                                Daten&shy;er&shy;fassung</a></li>
+                        <li><a href="#erzeugung">Erzeugung und Organi&shy;sation der
+                                Daten&shy;sätze</a></li>
+                        <li><a href="#auswertung">Aus&shy;wertung der Daten</a></li>
                     </ul>
                 </div>
             </aside>
@@ -229,6 +231,16 @@
                     </p>
 
                     <h3>Allgemeine Erkenntnisse</h3>
+
+                    <figure data-isFloating="true">
+                        <div class="img-container">
+                            <img src="/assets/Datensätze/TC LED Grün/LD80.svg"
+                                alt="TC LED Grün: Helligkeitskurve, LD=80ms"
+                                data-imgSrc="https://docs.google.com/spreadsheets/d/18egQrmvfD8haDFTcDsmkCjueUQchOEDEtnh7UoKOyt8/edit?usp=sharing (Stand: 19.11.2020)">
+                        </div>
+                        <figcaption>TC LED Grün: Helligkeitskurve, LD=80ms</figcaption>
+                    </figure>
+
                     <p>
                         Unabhängig der Parameter verschiedener LEDs und Leuchtdauern lassen sich globale Beobachtungen
                         machen: Max2 liegt immer
@@ -245,7 +257,6 @@
                         Dieser Effekt ist ist im Graphen der grünen Leuchtdiode von “Tru Components” außerordentlich
                         deutlich.
                     </p>
-                    <!-- TODO: F.f -->
                     <p>
                         Dadurch bestätigt sich, wie in der Hypothese bereits vermutet, die Erhöhung von Max2 und Min2
                         bei wiederholten
@@ -274,62 +285,370 @@
                     </p>
 
                     <h3>Analyse aller Leuchtdioden</h3>
+
+                    <!-- #region Arduino Standard LED-->
                     <p>
-                        Wie zu erwarten, schneidet die standardmäßige LED des Arduino schlecht ab. Der gefärbte Schirm
+                        Wie zu erwarten, schneidet die standardmäßige LED des Arduino schlecht ab. Der gefärbte
+                        Schirm
                         filtert einen Großteil
-                        des Lichtspektrums ab, weshalb nur ein Höchstwert von 150 SW erreicht wird. Die Helligkeit ist,
+                        des Lichtspektrums ab, weshalb nur ein Höchstwert von 150 SW erreicht wird. Die
+                        Helligkeit
+                        ist,
                         auch bei klaren,
                         einwandfreien Unterschieden zwischen Maxima und Minima, über die Distanz von einem Meter
                         unzureichend. Nichtsdestotrotz
-                        weist die LED ein sehr vorhersehbares Verhalten auf: Dem Diagramm der Durchschnittswerte ist zu
+                        weist die LED ein sehr vorhersehbares Verhalten auf: Dem Diagramm der Durchschnittswerte
+                        ist
+                        zu
                         entnehmen, dass die
-                        Beträge der Variablen allesamt linear abnehmen[F.a].
+                        Beträge der Variablen allesamt linear abnehmen.
                     </p>
+                    <div class="info-box">
+                        <div class="content">
+                            <figure>
+                                <div class="img-container">
+                                    <img src="/assets/Datensätze/Arduino LED/DataAvg.svg"
+                                        alt="Arduino Standard LED: Data-Average"
+                                        data-imgSrc="https://docs.google.com/spreadsheets/d/19x5HEz9P4UeiIv4LCMNBh6H-Px7PK9qUuWwhAO77HOA/edit?usp=sharing (Stand: 19.11.2020)">
+                                </div>
+                                <figcaption>Data-Average</figcaption>
+                            </figure>
+                            <h4><span>Kurzübersicht: Arduino Standard LED</span></h4>
+                            <ul>
+                                <li>sehr geringe Helligkeit aufgrund Filterung des Farbschirms</li>
+                                <li>weite Abstände zwischen Minima und Maxima</li>
+                                <li>Min1, Min2, Max1 und Max2 nehmen mit steigender Leuchtdauer linear ab</li>
+                            </ul>
+                        </div>
+                        <div class="gallery">
+                            <h5>Weitere Graphiken aus Datensätzen der Arduino Standard LED:</h5>
+                            <figure>
+                                <div class="img-container">
+                                    <img src="/assets/Datensätze/Arduino LED/LD80.svg"
+                                        alt="Arduino Standard LED: Helligkeitskurve, LD=80ms"
+                                        data-imgSrc="https://docs.google.com/spreadsheets/d/19x5HEz9P4UeiIv4LCMNBh6H-Px7PK9qUuWwhAO77HOA/edit?usp=sharing (Stand: 19.11.2020)">
+                                </div>
+                                <figcaption>Helligkeitskurve, LD=80ms</figcaption>
+                            </figure>
+                            <figure>
+                                <div class="img-container">
+                                    <img src="/assets/Datensätze/Arduino LED/LD160.svg"
+                                        alt="Arduino Standard LED: Helligkeitskurve, LD=160ms"
+                                        data-imgSrc="https://docs.google.com/spreadsheets/d/19x5HEz9P4UeiIv4LCMNBh6H-Px7PK9qUuWwhAO77HOA/edit?usp=sharing (Stand: 19.11.2020)">
+                                </div>
+                                <figcaption>Helligkeitskurve, LD=160ms</figcaption>
+                            </figure>
+                            <figure>
+                                <div class="img-container">
+                                    <img src="/assets/Datensätze/Arduino LED/LD240.svg"
+                                        alt="Arduino Standard LED: Helligkeitskurve, LD=240ms"
+                                        data-imgSrc="https://docs.google.com/spreadsheets/d/19x5HEz9P4UeiIv4LCMNBh6H-Px7PK9qUuWwhAO77HOA/edit?usp=sharing (Stand: 19.11.2020)">
+                                </div>
+                                <figcaption>Helligkeitskurve, LD=240ms</figcaption>
+                            </figure>
+                            <figure>
+                                <div class="img-container">
+                                    <img src="/assets/Datensätze/Arduino LED/LD320.svg"
+                                        alt="Arduino Standard LED: Helligkeitskurve, LD=320ms"
+                                        data-imgSrc="https://docs.google.com/spreadsheets/d/19x5HEz9P4UeiIv4LCMNBh6H-Px7PK9qUuWwhAO77HOA/edit?usp=sharing (Stand: 19.11.2020)">
+                                </div>
+                                <figcaption>Helligkeitskurve, LD=320ms</figcaption>
+                            </figure>
+                            <figure>
+                                <div class="img-container">
+                                    <img src="/assets/Datensätze/Arduino LED/LD400.svg"
+                                        alt="Arduino Standard LED: Helligkeitskurve, LD=400ms"
+                                        data-imgSrc="https://docs.google.com/spreadsheets/d/19x5HEz9P4UeiIv4LCMNBh6H-Px7PK9qUuWwhAO77HOA/edit?usp=sharing (Stand: 19.11.2020)">
+                                </div>
+                                <figcaption>Helligkeitskurve, LD=400ms</figcaption>
+                            </figure>
+                            <figure>
+                                <div class="img-container">
+                                    <img src="/assets/Datensätze/Arduino LED/LD480.svg"
+                                        alt="Arduino Standard LED: Helligkeitskurve, LD=480ms"
+                                        data-imgSrc="https://docs.google.com/spreadsheets/d/19x5HEz9P4UeiIv4LCMNBh6H-Px7PK9qUuWwhAO77HOA/edit?usp=sharing (Stand: 19.11.2020)">
+                                </div>
+                                <figcaption>Helligkeitskurve, LD=480ms</figcaption>
+                            </figure>
+                        </div>
+                    </div>
+                    <!-- #endregion -->
+
+                    <!-- #region Tru Components LED Blau-->
                     <p>
                         Die TC LED in Blau liegt im Gegensatz dazu mit Höchstwerten von 445 SW in einer angemessenen
                         Größenordnung. Ihre
-                        Streuungen sind von der Leuchtdauer unabhängig und kompensierbar. Allerdings nimmt Max2 nicht
+                        Streuungen sind von der Leuchtdauer unabhängig und kompensierbar. Allerdings nimmt Max2
+                        nicht
                         wie Max1 linear, sondern
-                        exponentiell ab. Der Effekt würde sich mit hoher Sicherheit bei rapiden, aufeinanderfolgenden
+                        exponentiell ab. Der Effekt würde sich mit hoher Sicherheit bei rapiden,
+                        aufeinanderfolgenden
                         Bitwechseln verstärken,
                         weshalb auch die Leistung dieser Leuchtdiode unzureichend ist.
                     </p>
+                    <div class="info-box">
+                        <div class="content">
+                            <h4><span>Kurzübersicht: Tru Components LED Blau</span></h4>
+                            <ul>
+                                <li>angemesse Helligkeit mit Sensorwerten bis zu 445 SW</li>
+                                <li>Streuungen unabähngig von der Leuchtdauer</li>
+                                <li>Max1 nimmt linear ab</li>
+                                <li>Max2 nimmt exponentiell ab; Effekt würde sich bei schnellen Bitwechseln
+                                    hintereinander verstärken</li>
+                            </ul>
+                            <figure>
+                                <div class="img-container">
+                                    <img src="/assets/Datensätze/TC LED Blau/LD240.svg"
+                                        alt="TC LED Blau: Helligkeitskurve, LD=240ms"
+                                        data-imgSrc="https://docs.google.com/spreadsheets/d/1YNaNFaw-8JeICuI7LRExAZRBeJKntvZgIdP9HqouJZA/edit?usp=sharing (Stand: 19.11.2020)">
+                                </div>
+                                <figcaption>Helligkeitskurve, LD=240ms</figcaption>
+                            </figure>
+                        </div>
+                        <div class="gallery">
+                            <h5>Weitere Graphiken aus Datensätzen der Tru Components LED Blau:</h5>
+                            <figure>
+                                <div class="img-container">
+                                    <img src="/assets/Datensätze/TC LED Blau/DataAvg.svg"
+                                        alt="TC LED Blau: Data-Average"
+                                        data-imgSrc="https://docs.google.com/spreadsheets/d/1YNaNFaw-8JeICuI7LRExAZRBeJKntvZgIdP9HqouJZA/edit?usp=sharing (Stand: 19.11.2020)">
+                                </div>
+                                <figcaption>Data-Average</figcaption>
+                            </figure>
+                            <figure>
+                                <div class="img-container">
+                                    <img src="/assets/Datensätze/TC LED Blau/LD80.svg"
+                                        alt="TC LED Blau: Helligkeitskurve, LD=80ms"
+                                        data-imgSrc="https://docs.google.com/spreadsheets/d/1YNaNFaw-8JeICuI7LRExAZRBeJKntvZgIdP9HqouJZA/edit?usp=sharing (Stand: 19.11.2020)">
+                                </div>
+                                <figcaption>Helligkeitskurve, LD=80ms</figcaption>
+                            </figure>
+                            <figure>
+                                <div class="img-container">
+                                    <img src="/assets/Datensätze/TC LED Blau/LD160.svg"
+                                        alt="TC LED Blau: Helligkeitskurve, LD=160ms"
+                                        data-imgSrc="https://docs.google.com/spreadsheets/d/1YNaNFaw-8JeICuI7LRExAZRBeJKntvZgIdP9HqouJZA/edit?usp=sharing (Stand: 19.11.2020)">
+                                </div>
+                                <figcaption>Helligkeitskurve, LD=160ms</figcaption>
+                            </figure>
+                            <figure>
+                                <div class="img-container">
+                                    <img src="/assets/Datensätze/TC LED Blau/LD320.svg"
+                                        alt="TC LED Blau: Helligkeitskurve, LD=320ms"
+                                        data-imgSrc="https://docs.google.com/spreadsheets/d/1YNaNFaw-8JeICuI7LRExAZRBeJKntvZgIdP9HqouJZA/edit?usp=sharing (Stand: 19.11.2020)">
+                                </div>
+                                <figcaption>Helligkeitskurve, LD=320ms</figcaption>
+                            </figure>
+                            <figure>
+                                <div class="img-container">
+                                    <img src="/assets/Datensätze/TC LED Blau/LD400.svg"
+                                        alt="TC LED Blau: Helligkeitskurve, LD=400ms"
+                                        data-imgSrc="https://docs.google.com/spreadsheets/d/1YNaNFaw-8JeICuI7LRExAZRBeJKntvZgIdP9HqouJZA/edit?usp=sharing (Stand: 19.11.2020)">
+                                </div>
+                                <figcaption>Helligkeitskurve, LD=400ms</figcaption>
+                            </figure>
+                            <figure>
+                                <div class="img-container">
+                                    <img src="/assets/Datensätze/TC LED Blau/LD480.svg"
+                                        alt="Arduino Standard LED: Helligkeitskurve, LD=480ms"
+                                        data-imgSrc="https://docs.google.com/spreadsheets/d/1YNaNFaw-8JeICuI7LRExAZRBeJKntvZgIdP9HqouJZA/edit?usp=sharing (Stand: 19.11.2020)">
+                                </div>
+                                <figcaption>Helligkeitskurve, LD=480ms</figcaption>
+                            </figure>
+                        </div>
+                    </div>
+                    <!-- #endregion -->
+
+
+                    <!-- #region Tru Components LED Grün -->
                     <p>
-                        Keinerlei positive Merkmale weist die grüne LED derselben Marke auf. Vergleichsweise besteht ein
+                        Keinerlei positive Merkmale weist die grüne LED derselben Marke auf. Vergleichsweise besteht
+                        ein
                         geringerer Unterschied
-                        zwischen Maximum und Minimum sowie signifikante Unterschiede zwischen Min1 und Min2. Ähnlich wie
+                        zwischen Maximum und Minimum sowie signifikante Unterschiede zwischen Min1 und Min2. Ähnlich
+                        wie
                         bei den vorherigen
-                        Dioden festgestellt, sind diese Charakteristika extrem anfällig sich bei längeren Bitfolgen zu
+                        Dioden festgestellt, sind diese Charakteristika extrem anfällig sich bei längeren Bitfolgen
+                        zu
                         verschlechtern. Das zuvor
-                        genannte Ausschlusskriterium, nachdem sich die Erhöhung von Maxima und Minima bei Bitwechseln
+                        genannte Ausschlusskriterium, nachdem sich die Erhöhung von Maxima und Minima bei
+                        Bitwechseln
                         verstärken, ist in der
-                        vorherigen Abbildung für LD = 1T am deutlichsten. Ersichtlich gruppierte[F.e], jedoch
+                        vorherigen Abbildung für LD = 1T am deutlichsten. Ersichtlich gruppierte, jedoch
                         unverhältnismäßig weite
-                        Streuungen, machen das Verhalten zudem sprunghaft[F.d], [F.f].
+                        Streuungen, machen das Verhalten zudem sprunghaft.
                     </p>
+                    <div class="info-box">
+                        <div class="content">
+                            <h4><span>Kurzübersicht: Tru Components LED Grün</span></h4>
+                            <ul>
+                                <li>zu geringe Abstände zwischen Minima und Maxima</li>
+                                <li>signifikante Unterschiede zwischen Min1 und Min2</li>
+                                <li>gennante Merkmale sind anfällig bei längeren Bitfolgen schlechter zu werden</li>
+                                <li>extreme Streuungen</li>
+                            </ul>
+                            <figure>
+                                <div class="img-container">
+                                    <img src="/assets/Datensätze/TC LED Grün/LD480.svg"
+                                        alt="TC LED Grün: Helligkeitskurve, LD=480ms"
+                                        data-imgSrc="https://docs.google.com/spreadsheets/d/18egQrmvfD8haDFTcDsmkCjueUQchOEDEtnh7UoKOyt8/edit?usp=sharing (Stand: 19.11.2020)">
+                                </div>
+                                <figcaption>Helligkeitskurve, LD=480ms</figcaption>
+                            </figure>
+                        </div>
+                        <div class="gallery">
+                            <h5>Weitere Graphiken aus Datensätzen der Tru Components LED Grün:</h5>
+                            <figure>
+                                <div class="img-container">
+                                    <img src="/assets/Datensätze/TC LED Grün/DataAvg.svg"
+                                        alt="TC LED Grün: Data-Average"
+                                        data-imgSrc="https://docs.google.com/spreadsheets/d/18egQrmvfD8haDFTcDsmkCjueUQchOEDEtnh7UoKOyt8/edit?usp=sharing (Stand: 19.11.2020)">
+                                </div>
+                                <figcaption>Data-Average</figcaption>
+                            </figure>
+                            <figure>
+                                <div class="img-container">
+                                    <img src="/assets/Datensätze/TC LED Grün/LD160.svg"
+                                        alt="TC LED Grün: Helligkeitskurve, LD=160ms"
+                                        data-imgSrc="https://docs.google.com/spreadsheets/d/18egQrmvfD8haDFTcDsmkCjueUQchOEDEtnh7UoKOyt8/edit?usp=sharing (Stand: 19.11.2020)">
+                                </div>
+                                <figcaption>Helligkeitskurve, LD=160ms</figcaption>
+                            </figure>
+                            <figure>
+                                <div class="img-container">
+                                    <img src="/assets/Datensätze/TC LED Grün/LD240.svg"
+                                        alt="TC LED Grün: Helligkeitskurve, LD=240ms"
+                                        data-imgSrc="https://docs.google.com/spreadsheets/d/18egQrmvfD8haDFTcDsmkCjueUQchOEDEtnh7UoKOyt8/edit?usp=sharing (Stand: 19.11.2020)">
+                                </div>
+                                <figcaption>Helligkeitskurve, LD=240ms</figcaption>
+                            </figure>
+                            <figure>
+                                <div class="img-container">
+                                    <img src="/assets/Datensätze/TC LED Grün/LD320.svg"
+                                        alt="TC LED Grün: Helligkeitskurve, LD=320ms"
+                                        data-imgSrc="https://docs.google.com/spreadsheets/d/18egQrmvfD8haDFTcDsmkCjueUQchOEDEtnh7UoKOyt8/edit?usp=sharing (Stand: 19.11.2020)">
+                                </div>
+                                <figcaption>Helligkeitskurve, LD=320ms</figcaption>
+                            </figure>
+                            <figure>
+                                <div class="img-container">
+                                    <img src="/assets/Datensätze/TC LED Grün/LD400.svg"
+                                        alt="TC LED Grün: Helligkeitskurve, LD=400ms"
+                                        data-imgSrc="https://docs.google.com/spreadsheets/d/18egQrmvfD8haDFTcDsmkCjueUQchOEDEtnh7UoKOyt8/edit?usp=sharing (Stand: 19.11.2020)">
+                                </div>
+                                <figcaption>Helligkeitskurve, LD=400ms</figcaption>
+                            </figure>
+                        </div>
+                    </div>
+                    <!-- #endregion -->
+
+
+                    <!-- #region Tru Components LED Rot -->
                     <p>
-                        Herausstechend ist die rote TC LED durch ihr extrem konstantes Verhalten: Nahezu unabhängig der
+                        Herausstechend ist die rote TC LED durch ihr extrem konstantes Verhalten: Nahezu unabhängig
+                        der
                         Leuchtdauer gilt Max1 =
-                        Max2, Min1 = Min2 sowie Max ⩰ 2.15 * Min[F.g]. Letzterer Zusammenhang bedeutet, dass diese LED
+                        Max2, Min1 = Min2 sowie Max ⩰ 2.15 * Min. Letzterer Zusammenhang bedeutet, dass diese
+                        LED
                         mit einem vergleichsmäßig
-                        großen Höchstwert bei 945 SW ihre Helligkeit in einer Periode nur auf etwa die Hälfte mindern
+                        großen Höchstwert bei 945 SW ihre Helligkeit in einer Periode nur auf etwa die Hälfte
+                        mindern
                         kann. Der Graph für LD =
-                        6T[F.h] zeigt, im Gegenzug die nahezu infinitesimale, benötigte Dauer, um den Maximalbetrag zu
+                        480 ms zeigt, im Gegenzug die nahezu infinitesimale, benötigte Dauer, um den Maximalbetrag
+                        zu
                         erreichen. Die Abnahme
                         der Helligkeit über verkürzte Leuchtdauern ist aufgrund ihrer Geringfügigkeit schlecht von
                         Messungenauigkeiten zu
-                        unterscheiden, weshalb sie für Leuchtdauern um Tmin als inexistent angesehen werden kann. Die
+                        unterscheiden, weshalb sie für Leuchtdauern um Tmin als inexistent angesehen werden kann.
+                        Die
                         Ergebnisse schienen
-                        zunächst überaus unwahrscheinlich, waren jedoch bei einer Wiederholung der gesamten Messung[F]
+                        zunächst überaus unwahrscheinlich, waren jedoch bei einer Wiederholung der gesamten
+                        Messung
                         mit identischen Werten
                         reproduzierbar.
                     </p>
+                    <div class="info-box">
+                        <div class="content">
+                            <h4><span>Kurzübersicht: Tru Components LED Rot</span></h4>
+                            <ul>
+                                <li>unabhängig der Leuchtdauer sind Max1 und Max2 sowie Min1 und Min2 jeweils identisch
+                                </li>
+                                <li>unabhängig der Leuchtdauer sind die Maxima das 2.15-fache der Minima; es gilt: Max ⩰
+                                    2.15 * Min</li>
+                                <li>extrem große Helligkeit bei 945 SW</li>
+                                <li>sofortiges Ansteigen von Minima zum Maximalbetrag der Helligkeit</li>
+                            </ul>
+                            <figure>
+                                <div class="img-container">
+                                    <img src="/assets/Datensätze/TC LED Rot/DataAvg.svg" alt="TC LED Rot: Data-Average"
+                                        data-imgSrc="https://docs.google.com/spreadsheets/d/17sHtoM12D5H6DvVnA3jSZMGxUAHOcgQIdPJzFkLIywI/edit?usp=sharing (Stand: 19.11.2020)">
+                                </div>
+                                <figcaption>Data-Average</figcaption>
+                            </figure>
+                        </div>
+
+                        <div class="gallery">
+                            <h5>Weitere Graphiken aus Datensätzen der Tru Components LED Rot:</h5>
+                            <figure>
+                                <div class="img-container">
+                                    <img src="/assets/Datensätze/TC LED Rot/LD80.svg"
+                                        alt="TC LED Rot: Helligkeitskurve, LD=80ms"
+                                        data-imgSrc="https://docs.google.com/spreadsheets/d/17sHtoM12D5H6DvVnA3jSZMGxUAHOcgQIdPJzFkLIywI/edit?usp=sharing (Stand: 19.11.2020)">
+                                </div>
+                                <figcaption>Helligkeitskurve, LD=80ms</figcaption>
+                            </figure>
+                            <figure>
+                                <div class="img-container">
+                                    <img src="/assets/Datensätze/TC LED Rot/LD160.svg"
+                                        alt="TC LED Rot: Helligkeitskurve, LD=160ms"
+                                        data-imgSrc="https://docs.google.com/spreadsheets/d/17sHtoM12D5H6DvVnA3jSZMGxUAHOcgQIdPJzFkLIywI/edit?usp=sharing (Stand: 19.11.2020)">
+                                </div>
+                                <figcaption>Helligkeitskurve, LD=160ms</figcaption>
+                            </figure>
+                            <figure>
+                                <div class="img-container">
+                                    <img src="/assets/Datensätze/TC LED Rot/LD240.svg"
+                                        alt="TC LED Rot: Helligkeitskurve, LD=240ms"
+                                        data-imgSrc="https://docs.google.com/spreadsheets/d/17sHtoM12D5H6DvVnA3jSZMGxUAHOcgQIdPJzFkLIywI/edit?usp=sharing (Stand: 19.11.2020)">
+                                </div>
+                                <figcaption>Helligkeitskurve, LD=240ms</figcaption>
+                            </figure>
+                            <figure>
+                                <div class="img-container">
+                                    <img src="/assets/Datensätze/TC LED Rot/LD320.svg"
+                                        alt="TC LED Rot: Helligkeitskurve, LD=320ms"
+                                        data-imgSrc="https://docs.google.com/spreadsheets/d/17sHtoM12D5H6DvVnA3jSZMGxUAHOcgQIdPJzFkLIywI/edit?usp=sharing (Stand: 19.11.2020)">
+                                </div>
+                                <figcaption>Helligkeitskurve, LD=320ms</figcaption>
+                            </figure>
+                            <figure>
+                                <div class="img-container">
+                                    <img src="/assets/Datensätze/TC LED Rot/LD400.svg"
+                                        alt="TC LED Rot: Helligkeitskurve, LD=400ms"
+                                        data-imgSrc="https://docs.google.com/spreadsheets/d/17sHtoM12D5H6DvVnA3jSZMGxUAHOcgQIdPJzFkLIywI/edit?usp=sharing (Stand: 19.11.2020)">
+                                </div>
+                                <figcaption>Helligkeitskurve, LD=400ms</figcaption>
+                            </figure>
+                            <figure>
+                                <div class="img-container">
+                                    <img src="/assets/Datensätze/TC LED Rot/LD480.svg"
+                                        alt="Arduino Standard LED: Helligkeitskurve, LD=480ms"
+                                        data-imgSrc="https://docs.google.com/spreadsheets/d/17sHtoM12D5H6DvVnA3jSZMGxUAHOcgQIdPJzFkLIywI/edit?usp=sharing (Stand: 19.11.2020)">
+                                </div>
+                                <figcaption>Helligkeitskurve, LD=480ms</figcaption>
+                            </figure>
+                        </div>
+                    </div>
+
+                    <!-- #endregion -->
+
 
                     <h3>Vergleich aller Leuchtdioden und Schlussfolgerungen</h3>
                     <p>
                         Beinahe alle Leuchtdioden weisen gewisse Ausschlusskriterien auf. Zuwider der Annahme der
                         Hypothese, nach welcher
-                        hellere LEDs die Differenzierung von Bits vereinfachen würden, sind es die die der Marke “True
+                        hellere LEDs die Differenzierung von Bits vereinfachen würden, sind es die die der Marke
+                        “True
                         Components”, welche bei
                         frequenten Bitwechseln unter verhältnismäßig starkem Helligkeitsverlust leiden oder
                         unberechenbar auf sie reagieren.
