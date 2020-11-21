@@ -152,7 +152,7 @@
       grid-template-areas: 'h5 h5 h5 h5 h5 h5' 'f1 f2 f3 f4 f5 f6';
 }
 
-.info-box .gallery:nth-of-type(3) {
+.info-box .gallery:nth-of-type(2), .info-box .gallery:nth-of-type(3) {
   -ms-grid-columns: (1fr)[5];
       grid-template-columns: repeat(5, 1fr);
       grid-template-areas: 'h5 h5 h5 h5 h5' 'f1 f2 f3 f4 f5';

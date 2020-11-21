@@ -286,6 +286,23 @@ aside.download
     &:not(.landing)
         margin-top: $navHeight
 
+span.code
+    font-family: 'Consolas'
+    font-weight: 900
+    font-style: italic
+    padding: 5px 6.5px
+    font-size: 13px
+    background: white
+    color: $primaryColor
+    border-radius: 5px
+    word-spacing: .5px
+    sub
+        color: $primaryColor
+        font-weight: 900
+        font-style: italic
+sub
+    font-size: x-small
+
 main .container // aside is nested in here
     display: flex
     flex-direction: row
@@ -293,7 +310,7 @@ main .container // aside is nested in here
     position: relative
     z-Index: 2
     box-shadow: 1px 1.75px 5px black, 0px -1.75px 5px black
-    
+
     // @mixin expandTransition($prop: all)
     //     transition: $prop .45s cubic-bezier(.56,.36,.37,1.26)
 
@@ -449,7 +466,6 @@ section
             &:hover
                 cursor: pointer
                 background: rgba(white, 0.1)
-
 
     figure
         float: right

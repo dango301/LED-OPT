@@ -74,7 +74,7 @@
                 Bitwechseln, wie sie bei den 203
                 übertragenen Bits der ausgewählten Nachricht vorkommen, erhöhen. Beobachtet wird dazu, wie sich
                 die Helligkeit zum Ende
-                verschiedener Leuchtdauern sowie dem Ende einer weiteren Periode Tmin nach dem Ausschalten
+                verschiedener Leuchtdauern sowie dem Ende einer weiteren Periode T<sub>min</sub> nach dem Ausschalten
                 verhält. Dieses Verfahren
                 wird pro Messung zweimal durchgeführt und simuliert den Ablauf zwei aufeinanderfolgender
                 Bitwechsel.
@@ -103,18 +103,29 @@
                 <section id="vorgehen">
                     <h2>Begründung des Vorgehens für die Datenerfassung</h2>
                     <!-- <h3>Vergleichskriterien</h3> -->
+                    <figure>
+                        <div class="img-container">
+                            <img src="/assets/Datensätze/TC LED Blau/LD160.svg"
+                                alt="TC LED Blau: Helligkeitskurve, LD=160ms"
+                                data-imgSrc="https://docs.google.com/spreadsheets/d/1YNaNFaw-8JeICuI7LRExAZRBeJKntvZgIdP9HqouJZA/edit?usp=sharing (Stand: 19.11.2020)">
+                        </div>
+                        <figcaption>TC LED Blau: Helligkeitskurve, LD=160ms</figcaption>
+                    </figure>
                     <p>
                         Das in der Hypothese festgelegte Verfahren soll zeigen, wie sich die Lichtwerte nach
-                        verlängerter Dunkelheit (Max1),
-                        nach dem Abschalten der LED (Min1) für Tmin = 80 ms, dem erneuten Einschalten danach (Max2) und
+                        verlängerter Dunkelheit (<span class="code">Max<sub>1</sub></span>),
+                        nach dem Abschalten der LED (<span class="code">Min<sub>1</sub></span>) für <span
+                            class="code">T<sub>min</sub>&nbsp;=&nbsp;80ms</span>, dem erneuten Einschalten danach (<span
+                            class="code">Max<sub>2</sub></span>) und
                         schließlich erneutem
-                        Ausschalten (Min2) entwickeln. Dargelegt wird dadurch, wie sich Leuchtdioden bei rapidem Ein-
+                        Ausschalten (<span class="code">Min<sub>2</sub></span>) entwickeln. Dargelegt wird dadurch, wie
+                        sich Leuchtdioden bei rapidem Ein-
                         und Ausschalten entgegen
-                        längeren Leuchtperioden verhalten. Die Messpunkte der Variablen sind in der exemplarischen
+                        längeren Leuchtperioden verhalten. Die Messpunkte der Variablen sind in der nebenstehenden
                         Abbildung in genannter
-                        Reihenfolge an t = 160, t = 240, t = 400 und T = 480 der Kurve zu sehen.
+                        Reihenfolge an <span class="code">t&nbsp;=&nbsp;160ms, t&nbsp;=&nbsp;240ms, t&nbsp;=&nbsp;400ms
+                            und t&nbsp;=&nbsp;480ms</span> der Kurve zu sehen.
                     </p>
-                    <!-- TODO: F.c -->
                     <h3>Parameterwahl</h3>
                     <p>
                         Die Anzahl der Parameter ist im Rahmen dieser Facharbeit möglichst gering zu halten, da sonst
@@ -132,11 +143,13 @@
                         werden, simulieren die
                         Leuchtdauern Übermittlungen mehrerer kontinuierlicher Bits mit Wert 1. Die Leuchtdauern sind
                         Vielfache der angestrebten
-                        Leuchtdauer von 80 ms. Das Maximum beträgt dabei 480 ms, da der längste Byte sechsstellig ist,
+                        Leuchtdauer von 80ms. Das Maximum beträgt dabei 480ms, da der längste Byte sechsstellig ist,
                         während die LED immer für
-                        Tmin = 80 ms ausgeschaltet bleibt. Zur Diskussion verschiedener Leuchtdauern werden diese fortan
+                        <span class="code">T<sub>min</sub>&nbsp;=&nbsp;80ms</span> ausgeschaltet bleibt. Zur Diskussion
+                        verschiedener Leuchtdauern werden diese fortan
                         abgekürzt (LD) und in n
-                        Vielfachen der erstrebten Periodendauer Tmin angegeben (LD = n * Tmin).
+                        Vielfachen der erstrebten Periodendauer T<sub>min</sub> angegeben (<span
+                            class="code">LD&nbsp;=&nbsp;n&nbsp;*&nbsp;T<sub>min</sub></span>).
                     </p>
                     <h3>Abweichungen und Streuung von Werten</h3>
                     <p>
@@ -178,6 +191,13 @@
                         Google Sheets hochlädt.
                     </p>
                     <h3>Programmablauf</h3>
+                    <figure data-isFloating="true">
+                        <div class="img-container">
+                            <img src="/assets/Datensätze/Data Upload LED Blue.png" alt="Konsolenausgaben beim Daten-Upload für TC LED Blau"
+                                data-imgSrc="/Facharbeit - Dennis Paust.pdf (Stand: 21.11.2020)">
+                        </div>
+                        <figcaption>Konsolenausgaben beim Daten-Upload für TC LED Blau</figcaption>
+                    </figure>
                     <p>
                         Das Python-Programm wurde noch vor dessen Ausarbeitung in die Regionen “Serial Communication”,
                         “Data Extraction &
@@ -205,6 +225,14 @@
                     </p>
 
                     <h3>Implementierung der Google Sheets API</h3>
+                    <figure data-isFloating="true">
+                        <div class="img-container">
+                            <img src="/assets/Datensätze/Data Upload Red Overwrite.png"
+                                alt="Konsolenausgaben beim Daten-Upload mit Überschreibung"
+                                data-imgSrc="/Facharbeit - Dennis Paust.pdf (Stand: 21.11.2020)">
+                        </div>
+                        <figcaption>Konsolenausgaben beim Daten-Upload mit Überschreibung</figcaption>
+                    </figure>
                     <p>
                         Die finalen Dokumente und darin enthaltenen Datenblätter werden in der letzten Region des
                         Programms automatisch erzeugt
@@ -216,14 +244,16 @@
                         einzigen Upload befüllen.
                         Letzteres ist notwendig, sodass die Upload-Beschränkungen der Google Sheets API nicht überlastet
                         werden. Die Konsolenlogs waren dabei eine fundamentale Unterstützung beim Verfassen des Codes
-                        und demonstrieren die Fähigkeiten des Codes in seinem vollen Maße[E.b - E.e].
+                        und demonstrieren die Fähigkeiten des Codes in seinem vollen Maße.
                     </p>
                 </section>
 
                 <section id="auswertung">
                     <h2>Auswertung der Daten</h2>
                     <p>
-                        Besonders die zusammenfassenden Datenblätter der Variablen (Max1, Max2, Min1 und Min2) mit ihren
+                        Besonders die zusammenfassenden Datenblätter der Variablen (<span
+                            class="code">Max<sub>1</sub></span>, <span class="code">Max<sub>2</sub></span>, <span
+                            class="code">Min<sub>1</sub></span> und <span class="code">Min<sub>2</sub></span>) mit ihren
                         zugehörigen
                         Balkendiagrammen geben Aufschluss über das Verhalten der Leuchtdioden. Aber auch die
                         Helligkeitskurven einzelner
@@ -243,22 +273,26 @@
 
                     <p>
                         Unabhängig der Parameter verschiedener LEDs und Leuchtdauern lassen sich globale Beobachtungen
-                        machen: Max2 liegt immer
-                        20 SW bis 30 SW über Max1. Grund dafür ist, dass der Stromfluss einer Diode, bzw. proportional
+                        machen: <span class="code">Max<sub>2</sub></span> liegt immer
+                        20SW bis 30SW über <span class="code">Max<sub>1</sub></span>. Grund dafür ist, dass der
+                        Stromfluss einer Diode, bzw. proportional
                         dazu die Helligkeit,
                         nicht unmittelbar auf null sinkt. Bevor der Stromfluss in den Ausgangswert zurückfallen kann,
                         steigt er nach Ende der
-                        Periode bereits wieder an, weshalb er bei Max2 höher ist. Analog dazu gilt dasselbe für Min1 und
-                        Min2: Bei Max2 ist die
-                        LED heller, weshalb sie auch bei Min2 mit gleicher Periodendauer noch etwas weiter aufleuchtet.
+                        Periode bereits wieder an, weshalb er bei <span class="code">Max<sub>2</sub></span> höher ist.
+                        Analog dazu gilt dasselbe für <span class="code">Min<sub>1</sub></span> und
+                        <span class="code">Min<sub>2</sub></span>: Bei <span class="code">Max<sub>2</sub></span> ist die
+                        LED heller, weshalb sie auch bei <span class="code">Min<sub>2</sub></span> mit gleicher
+                        Periodendauer noch etwas weiter aufleuchtet.
                         Folglich sind die Minima
                         abhängig von vorhergehenden Maxima, als auch der Dauer, in der die LED ausgeschaltet bleibt
-                        (hier konstant bei Tmin).
+                        (hier konstant bei T<sub>min</sub>).
                         Dieser Effekt ist ist im Graphen der grünen Leuchtdiode von “Tru Components” außerordentlich
                         deutlich.
                     </p>
                     <p>
-                        Dadurch bestätigt sich, wie in der Hypothese bereits vermutet, die Erhöhung von Max2 und Min2
+                        Dadurch bestätigt sich, wie in der Hypothese bereits vermutet, die Erhöhung von <span
+                            class="code">Max<sub>2</sub></span> und <span class="code">Min<sub>2</sub></span>
                         bei wiederholten
                         Bitwechseln. Es ist anzunehmen, dass die Erhöhung der Maxima und Minima über sehr häufige
                         Wiederholungen von Bitwechseln
@@ -286,12 +320,13 @@
 
                     <h3>Analyse aller Leuchtdioden</h3>
 
-                    <!-- #region Arduino Standard LED-->
+
+                    <!-- #region yellow Arduino Standard LED-->
                     <p>
                         Wie zu erwarten, schneidet die standardmäßige LED des Arduino schlecht ab. Der gefärbte
                         Schirm
                         filtert einen Großteil
-                        des Lichtspektrums ab, weshalb nur ein Höchstwert von 150 SW erreicht wird. Die
+                        des Lichtspektrums ab, weshalb nur ein Höchstwert von 150SW erreicht wird. Die
                         Helligkeit
                         ist,
                         auch bei klaren,
@@ -317,7 +352,10 @@
                             <ul>
                                 <li>sehr geringe Helligkeit aufgrund Filterung des Farbschirms</li>
                                 <li>weite Abstände zwischen Minima und Maxima</li>
-                                <li>Min1, Min2, Max1 und Max2 nehmen mit steigender Leuchtdauer linear ab</li>
+                                <li><span class="code">Min<sub>1</sub></span>, <span
+                                        class="code">Min<sub>2</sub></span>, <span class="code">Max<sub>1</sub></span>
+                                    und <span class="code">Max<sub>2</sub></span> nehmen mit steigender Leuchtdauer
+                                    linear ab</li>
                             </ul>
                         </div>
                         <div class="gallery">
@@ -374,13 +412,15 @@
                     </div>
                     <!-- #endregion -->
 
-                    <!-- #region Tru Components LED Blau-->
+
+                    <!-- #region blue Tru Components LED Blau-->
                     <p>
-                        Die TC LED in Blau liegt im Gegensatz dazu mit Höchstwerten von 445 SW in einer angemessenen
+                        Die TC LED in Blau liegt im Gegensatz dazu mit Höchstwerten von 445SW in einer angemessenen
                         Größenordnung. Ihre
-                        Streuungen sind von der Leuchtdauer unabhängig und kompensierbar. Allerdings nimmt Max2
+                        Streuungen sind von der Leuchtdauer unabhängig und kompensierbar. Allerdings nimmt <span
+                            class="code">Max<sub>2</sub></span>
                         nicht
-                        wie Max1 linear, sondern
+                        wie <span class="code">Max<sub>1</sub></span> linear, sondern
                         exponentiell ab. Der Effekt würde sich mit hoher Sicherheit bei rapiden,
                         aufeinanderfolgenden
                         Bitwechseln verstärken,
@@ -390,10 +430,11 @@
                         <div class="content">
                             <h4><span>Kurzübersicht: Tru Components LED Blau</span></h4>
                             <ul>
-                                <li>angemesse Helligkeit mit Sensorwerten bis zu 445 SW</li>
+                                <li>angemesse Helligkeit mit Sensorwerten bis zu 445SW</li>
                                 <li>Streuungen unabähngig von der Leuchtdauer</li>
-                                <li>Max1 nimmt linear ab</li>
-                                <li>Max2 nimmt exponentiell ab; Effekt würde sich bei schnellen Bitwechseln
+                                <li><span class="code">Max<sub>1</sub></span> nimmt linear ab</li>
+                                <li><span class="code">Max<sub>2</sub></span> nimmt exponentiell ab; Effekt würde sich
+                                    bei schnellen Bitwechseln
                                     hintereinander verstärken</li>
                             </ul>
                             <figure>
@@ -425,14 +466,6 @@
                             </figure>
                             <figure>
                                 <div class="img-container">
-                                    <img src="/assets/Datensätze/TC LED Blau/LD160.svg"
-                                        alt="TC LED Blau: Helligkeitskurve, LD=160ms"
-                                        data-imgSrc="https://docs.google.com/spreadsheets/d/1YNaNFaw-8JeICuI7LRExAZRBeJKntvZgIdP9HqouJZA/edit?usp=sharing (Stand: 19.11.2020)">
-                                </div>
-                                <figcaption>Helligkeitskurve, LD=160ms</figcaption>
-                            </figure>
-                            <figure>
-                                <div class="img-container">
                                     <img src="/assets/Datensätze/TC LED Blau/LD320.svg"
                                         alt="TC LED Blau: Helligkeitskurve, LD=320ms"
                                         data-imgSrc="https://docs.google.com/spreadsheets/d/1YNaNFaw-8JeICuI7LRExAZRBeJKntvZgIdP9HqouJZA/edit?usp=sharing (Stand: 19.11.2020)">
@@ -460,12 +493,13 @@
                     <!-- #endregion -->
 
 
-                    <!-- #region Tru Components LED Grün -->
+                    <!-- #region limegreen Tru Components LED Grün -->
                     <p>
                         Keinerlei positive Merkmale weist die grüne LED derselben Marke auf. Vergleichsweise besteht
                         ein
                         geringerer Unterschied
-                        zwischen Maximum und Minimum sowie signifikante Unterschiede zwischen Min1 und Min2. Ähnlich
+                        zwischen Maximum und Minimum sowie signifikante Unterschiede zwischen <span
+                            class="code">Min<sub>1</sub></span> und <span class="code">Min<sub>2</sub></span>. Ähnlich
                         wie
                         bei den vorherigen
                         Dioden festgestellt, sind diese Charakteristika extrem anfällig sich bei längeren Bitfolgen
@@ -474,7 +508,8 @@
                         genannte Ausschlusskriterium, nachdem sich die Erhöhung von Maxima und Minima bei
                         Bitwechseln
                         verstärken, ist in der
-                        vorherigen Abbildung für LD = 1T am deutlichsten. Ersichtlich gruppierte, jedoch
+                        vorherigen Abbildung für <span class="code">LD&nbsp;=&nbsp;1T</span> am deutlichsten.
+                        Ersichtlich gruppierte, jedoch
                         unverhältnismäßig weite
                         Streuungen, machen das Verhalten zudem sprunghaft.
                     </p>
@@ -483,7 +518,8 @@
                             <h4><span>Kurzübersicht: Tru Components LED Grün</span></h4>
                             <ul>
                                 <li>zu geringe Abstände zwischen Minima und Maxima</li>
-                                <li>signifikante Unterschiede zwischen Min1 und Min2</li>
+                                <li>signifikante Unterschiede zwischen <span class="code">Min<sub>1</sub></span> und
+                                    <span class="code">Min<sub>2</sub></span></li>
                                 <li>gennante Merkmale sind anfällig bei längeren Bitfolgen schlechter zu werden</li>
                                 <li>extreme Streuungen</li>
                             </ul>
@@ -543,23 +579,26 @@
                     <!-- #endregion -->
 
 
-                    <!-- #region Tru Components LED Rot -->
+                    <!-- #region red Tru Components LED Rot -->
                     <p>
                         Herausstechend ist die rote TC LED durch ihr extrem konstantes Verhalten: Nahezu unabhängig
                         der
-                        Leuchtdauer gilt Max1 =
-                        Max2, Min1 = Min2 sowie Max ⩰ 2.15 * Min. Letzterer Zusammenhang bedeutet, dass diese
+                        Leuchtdauer gilt <span class="code">Max<sub>1</sub>&nbsp;=&nbsp;Max<sub>2</sub></span>, <span
+                            class="code">Min<sub>1</sub>&nbsp;=&nbsp;Min<sub>2</sub></span> sowie <span
+                            class="code">Max&nbsp;≈&nbsp;2.15&nbsp;*&nbsp;Min</span>. Letzterer Zusammenhang bedeutet,
+                        dass diese
                         LED
                         mit einem vergleichsmäßig
-                        großen Höchstwert bei 945 SW ihre Helligkeit in einer Periode nur auf etwa die Hälfte
+                        großen Höchstwert bei 945SW ihre Helligkeit in einer Periode nur auf etwa die Hälfte
                         mindern
-                        kann. Der Graph für LD =
-                        480 ms zeigt, im Gegenzug die nahezu infinitesimale, benötigte Dauer, um den Maximalbetrag
+                        kann. Der Graph für <span class="code">LD&nbsp;=&nbsp;480ms</span> zeigt, im Gegenzug die nahezu
+                        infinitesimale, benötigte Dauer, um den Maximalbetrag
                         zu
                         erreichen. Die Abnahme
                         der Helligkeit über verkürzte Leuchtdauern ist aufgrund ihrer Geringfügigkeit schlecht von
                         Messungenauigkeiten zu
-                        unterscheiden, weshalb sie für Leuchtdauern um Tmin als inexistent angesehen werden kann.
+                        unterscheiden, weshalb sie für Leuchtdauern um T<sub>min</sub> als inexistent angesehen werden
+                        kann.
                         Die
                         Ergebnisse schienen
                         zunächst überaus unwahrscheinlich, waren jedoch bei einer Wiederholung der gesamten
@@ -571,11 +610,14 @@
                         <div class="content">
                             <h4><span>Kurzübersicht: Tru Components LED Rot</span></h4>
                             <ul>
-                                <li>unabhängig der Leuchtdauer sind Max1 und Max2 sowie Min1 und Min2 jeweils identisch
+                                <li>unabhängig der Leuchtdauer sind <span class="code">Max<sub>1</sub></span> und <span
+                                        class="code">Max<sub>2</sub></span> sowie <span
+                                        class="code">Min<sub>1</sub></span> und <span
+                                        class="code">Min<sub>2</sub></span> jeweils identisch
                                 </li>
-                                <li>unabhängig der Leuchtdauer sind die Maxima das 2.15-fache der Minima; es gilt: Max ⩰
-                                    2.15 * Min</li>
-                                <li>extrem große Helligkeit bei 945 SW</li>
+                                <li>unabhängig der Leuchtdauer sind die Maxima das 2.15-fache der Minima; es gilt: <span
+                                        class="code">Max&nbsp;≈&nbsp;2.15&nbsp;*&nbsp;Min</span></li>
+                                <li>extrem große Helligkeit bei 945SW</li>
                                 <li>sofortiges Ansteigen von Minima zum Maximalbetrag der Helligkeit</li>
                             </ul>
                             <figure>
@@ -632,7 +674,7 @@
                             <figure>
                                 <div class="img-container">
                                     <img src="/assets/Datensätze/TC LED Rot/LD480.svg"
-                                        alt="Arduino Standard LED: Helligkeitskurve, LD=480ms"
+                                        alt="TC LED Rot: Helligkeitskurve, LD=480ms"
                                         data-imgSrc="https://docs.google.com/spreadsheets/d/17sHtoM12D5H6DvVnA3jSZMGxUAHOcgQIdPJzFkLIywI/edit?usp=sharing (Stand: 19.11.2020)">
                                 </div>
                                 <figcaption>Helligkeitskurve, LD=480ms</figcaption>
