@@ -97,23 +97,37 @@
                 <section id="anwendung">
                     <h2>An­wen­dung der Da­ten­aus­wer­tung</h2>
                     <h3>Verhalten beim Originalprogramm</h3>
+                    <figure data-isFloating="true">
+                        <div class="img-container">
+                            <img src="/assets/optimierung/Problematische Übertragung, rote LED, pre-optimization, T=125.png"
+                                alt="Problematische Übertragung vor Anpassung des Programs, T=125ms" data-imgSrc="">
+                        </div>
+                        <figcaption>Problematische Übertragung vor Anpassung des Programs, T=125ms</figcaption>
+                    </figure>
                     <p>
                         Der bisherig angewandte Algorithmus zur Bitbestimmung erweist sich als unpassend unter Nutzung
                         der neuen LED. Grund ist
-                        der geringe Unterschied zwischen ihrem Minimal- und Durchschnittswert[H.a]. Ihre wünschenswerten
+                        der geringe Unterschied zwischen ihrem Minimal- und Durchschnittswert. Ihre wünschenswerten
                         Eigenschaften bleiben
                         entgegen den Annahmen des vorherigen Kapitels jedoch vollständig erhalten. Unabhängig von der
                         Leuchtdauer vor einem
                         jeweiligen Bitwechsel fällt die Helligkeit nach einer Periode auf denselben festen Wert, wie in
-                        den Messungen, mit Max =
-                        2.15 * Min. Für jede weitere Periode, in der die LED ausgeschaltet bleibt, fällt der Wert
+                        den Messungen, mit <span class="code">Max&nbsp;=&nbsp;2.15&nbsp;*&nbsp;Min</span>. Für jede
+                        weitere Periode, in der die LED ausgeschaltet bleibt, fällt der Wert
                         weiterhin schlagartig. Diese
                         Eigenschaft ging aus der Datenerfassung zwar nicht hervor, ist jedoch nicht nachteilig. Des
                         Weiteren wechselt der
-                        Helligkeitswert von jedem beliebigen Minimalwert auf das feste Maximum von 945 SW.
+                        Helligkeitswert von jedem beliebigen Minimalwert auf das feste Maximum von 945SW.
                     </p>
 
                     <h3>Maßnahmen zur spezifischen Anpassung des Programms</h3>
+                    <figure data-isFloating="true">
+                        <div class="img-container">
+                            <img src="/assets/optimierung/gesamte Erfolgreiche Übertragung mit einem Fehler, rote LED, post-optimization, T=80.png"
+                                alt="Erfolgreiche Übertragung nach Anpassung des Programms, T=125ms" data-imgSrc="">
+                        </div>
+                        <figcaption>Erfolgreiche Übertragung nach Anpassung des Programms, T=125ms</figcaption>
+                    </figure>
                     <p>
                         Unter Ausnutzung letzterer Eigenschaft wurde der Durchschnittswert umfunktioniert zu einer
                         festen Schwelle knapp unter
@@ -121,21 +135,22 @@
                         oszillieren, wird nur
                         überprüft, ob der aktuelle Wert über oder unter der Schwelle liegt. Mit dieser Verbesserung
                         verläuft die Übermittlung
-                        bei Tmax mit einer Fehlerquote von null Prozent[H.b].
+                        bei Tmax mit einer Fehlerquote von null Prozent.
                     </p>
                     <p>
                         In einer Art zweiten Phase der Anpassung des Programmcodes wurde ein fehlerkorrigierender
                         Algorithmus entwickelt,
-                        welcher die angestrebte Periodendauer Tmin anwendbar macht. Die temporären Konsolenausgaben
+                        welcher die angestrebte Periodendauer T<sub>min</sub> anwendbar macht. Die temporären
+                        Konsolenausgaben
                         zeigen das Vorgehen, nach
-                        dem jede Folge von Nullen durch ihre Übertragungsdauer überprüft wird[H.c], [H.d].
+                        dem jede Folge von Nullen durch ihre Übertragungsdauer überprüft wird.
                     </p>
                     <p>
                         Unter Ausnutzung der schnellen Oszillation der roten TC LED korrigiert der neue Algorithmus
                         jeweilige Bits mit Wert
                         null, die durch Messverschiebungen fälschlicherweise mit Wert eins interpretiert werden. Dem
                         konkreten Anwendungsfall
-                        entsprechend, ermittelt und kennzeichnet das Programm die Steigung des Graphen[H.e]. Somit kann
+                        entsprechend, ermittelt und kennzeichnet das Programm die Steigung des Graphen. Somit kann
                         die Fallzeit vor jedem
                         Bitwechsel von Nullen zu Einsen bestimmt werden. Die Länge des Zeitraums gibt Aufschluss
                         darüber, wie viele Bits mit
@@ -143,18 +158,67 @@
                         interpretierten Bit des
                         Wertes eins abgeglichen. Sind sie nicht gleich bedeutet das eine verspätete Messung des letzten
                         Bits mit Wert null,
-                        womit der Bitfehler korrigierbar ist[H.c], [H.d]. Auch hier ist der Algorithmus nur auf den
+                        womit der Bitfehler korrigierbar ist. Auch hier ist der Algorithmus nur auf den
                         vorliegenden Anwendungsfall,
                         d. h. das Verhalten bei einer Röhrenlänge von einem Meter und der roten TC LED, optimiert.
                     </p>
+
+                    <div class="info-box">
+                        <div class="content">
+                            <figure>
+                                <div class="img-container">
+                                    <img src="/assets/optimierung/Fehlerkorrektur durch markierte Steigungsbestimmung.png"
+                                        alt="Am Oszillograph markierte Steigungen und Fehlerkorrekturen" data-imgSrc="">
+                                </div>
+                                <figcaption>Am Oszillograph markierte Steigungen und Fehlerkorrekturen</figcaption>
+                            </figure>
+                            <h4><span>Kurzübersicht: Anpassung des alten Arduino-Programms</span></h4>
+                            <ul>
+                                <li>geringer Unterschied zwischen Max und Min, weshalb Schwelle zur Bitbestimmung zu
+                                    festem Wert knapp unter 945SW
+                                    umfunktioniert</li>
+                                <li>Steigung des Graphen gibt Aufschluss über Zeit zwischen Bitwechseln</li>
+                                <li>Länge der Fallzeit (von Bitwert 1 zu 0) gibt an wie viele 0-Bits übertragen werden
+                                    müssten</li>
+                                <li>Abgleichung der tatsächlichen 0-Bits mit theoretischer Anzahl in Fallzeit erlaubt
+                                    Bitfehler zu berichtigen (grüne Punkte)</li>
+                            </ul>
+                        </div>
+                        <div class="gallery">
+                            <h5>Weitere Graphiken aus Datensätzen der Arduino Standard LED:</h5>
+                            <figure>
+                                <div class="img-container">
+                                    <img src="/assets/optimierung/successful identification of periods through time.png"
+                                        alt="Konsolenausgaben bei Identifizierung eines Übertragungsfehlers"
+                                        data-imgSrc="">
+                                </div>
+                                <figcaption>Konsolenausgaben bei Identifizierung eines Übertragungsfehlers</figcaption>
+                            </figure>
+                            <figure>
+                                <div class="img-container">
+                                    <img src="/assets/optimierung/caught 2.png"
+                                        alt="Konsolenausgaben bei Korrektur eines Übertragungsfehlers" data-imgSrc="">
+                                </div>
+                                <figcaption>Konsolenausgaben bei Korrektur eines Übertragungsfehlers</figcaption>
+                            </figure>
+                            <figure>
+                                <div class="img-container">
+                                    <img src="/assets/optimierung/caught.png"
+                                        alt="Konsolenausgaben bei Korrektur eines Übertragungsfehlers 2" data-imgSrc="">
+                                </div>
+                                <figcaption>Konsolenausgaben bei Korrektur eines Übertragungsfehlers 2</figcaption>
+                            </figure>
+                        </div>
+                    </div>
                 </section>
 
                 <section id="endresultate">
                     <h2>Endresultate</h2>
                     <p>
-                        Systematisches Verringern der Periodendauer ergibt, dass somit Übertragungen bei Tmin fehlerfrei
+                        Systematisches Verringern der Periodendauer ergibt, dass somit Übertragungen bei T<sub>min</sub>
+                        fehlerfrei
                         funktionieren und bis
-                        zu einer optimierten Periodendauer Topt = 65 reduzierbar sind.
+                        zu einer optimierten Periodendauer Topt&nbsp;=&nbsp;65 reduzierbar sind.
                         <!-- TODO: move this out of here -->
                     </p>
                     <p>
@@ -166,15 +230,18 @@
                         Dunkelheit erhöhen sich die Minima, während sich die Maxima bei längeren Leuchtdauern
                         vergrößern. Diese Beobachtung
                         erklärt das inkonsistente Verhalten vieler Leuchtdioden, das die Nachrichtenübermittlungen bei
-                        Periodendauern T < Tmax unmöglich machen. Glücklicherweise weist die rote TC LED unabhängig von
-                            Leuchtdauer und Periodenlänge konstante Lichtwerte zusammen mit einer extrem schnellen
-                            Oszillation auf. Obwohl die Programmumgebung die Dateninterpretation im Anwendungsfall mit
-                            Tmin unrealistisch machte, konnten die Merkmale der LED aus der Datenauswertung zur
-                            Entwicklung eines fehlerkorrigierenden Algorithmus ausgenutzt werden. Der Code wurde an die
-                            Leuchtdiode angepasst, womit ein BER < 1,5 Prozent gewährleistet ist. Schließlich konnte die
-                            Periodendauer unter Anwendung der Fehlerkorrektur über Tmin bis hin zu Topt=65 ms reduziert
-                            werden. Dies entspricht einer enormen Verbesserung von 48 Prozent, statt der zu Beginn
-                            angestrebten 36 Prozent. Die finale Frequenz beträgt bemerkenswerte 15,4 Bits/s. </p>
+                        Periodendauern <span class="code">T&nbsp;<&nbsp;T<sub>max</sub></span> unmöglich machen.
+                        Glücklicherweise weist die rote TC LED unabhängig von
+                        Leuchtdauer und Periodenlänge konstante Lichtwerte zusammen mit einer extrem schnellen
+                        Oszillation auf. Obwohl die Programmumgebung die Dateninterpretation im Anwendungsfall mit
+                        T<sub>min</sub> unrealistisch machte, konnten die Merkmale der LED aus der Datenauswertung zur
+                        Entwicklung eines fehlerkorrigierenden Algorithmus ausgenutzt werden. Der Code wurde an die
+                        Leuchtdiode angepasst, womit ein <span class="code">BER&nbsp;<&nbsp;1,5% </span>
+                                gewährleistet ist. Schließlich konnte die
+                                Periodendauer unter Anwendung der Fehlerkorrektur über T<sub>min</sub> bis hin zu <span
+                                    class="code">T<sub>opt</sub>&nbsp;=&nbsp;65ms</span> reduziert
+                                werden. Dies entspricht einer enormen Verbesserung von 48 Prozent, statt der zu Beginn
+                                angestrebten 36 Prozent. Die finale Frequenz beträgt bemerkenswerte 15,4 Bits/s. </p>
 
                 </section>
 
