@@ -8,7 +8,7 @@ var
     table: HTMLElement,
     container: HTMLElement,
     figures: HTMLElement[],
-    freeFigs: HTMLElement[],
+    floatingFigs: HTMLElement[],
     modal: HTMLElement,
     modalImg: HTMLImageElement,
     title: HTMLElement,
@@ -40,7 +40,7 @@ function pageLoad() {
     window.onscroll = scrollVisibility
 
     figures = Array.from(document.getElementsByTagName('figure'))
-    freeFigs = figures.filter(fig => !(fig.parentElement.classList.contains('gallery') || fig.parentElement.classList.contains('content')))
+    floatingFigs = figures.filter(fig => fig.hasAttribute('data-isFloating'))
     modal = <HTMLElement>document.querySelector('.modal')
     modalImg = <HTMLImageElement>document.querySelector('.modal img')
     title = document.querySelector('.modal h4')
@@ -128,14 +128,14 @@ function resize() { //TODO: if aspect ratio too wide make it go under text
     const availableW = totalW - 2 * 45 - 20 // total minus section padding and figure margin
     
     if (availableW - minImg < minP) { // both text and img would become too small
-        freeFigs.forEach(fig => changeOrder(fig, true))
+        floatingFigs.forEach(fig => changeOrder(fig, true))
     } else {
         let finalW = minImg + .5 * (availableW - minP - minImg) //distribute space evenly
 
         while (finalW > maxImg) finalW--
         //FIXME: while (availableW - finalW > maxP) finalW++ // if text is has enough space too reach maximum (800px) then give the remaining space to img
 
-        freeFigs.forEach(fig => {
+        floatingFigs.forEach(fig => {
             fig.style.width = finalW + 'px'
             changeOrder(fig, false)
         })

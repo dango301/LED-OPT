@@ -128,7 +128,6 @@
                         In Lichtwellenleitern, wie Glasfaserkabeln, werden Signale mittels einer Totalreflektion des
                         Lichtes übertragen.
                         Vereinfacht sieht das Prinzip des Übertragungssystems wie in der unteren Abbildung aus.
-                        <!-- TODO: A.a -->
                         Zunächst wird das Quellsignal durch einen Analog-Digital-Wandler und eine das elektrische Signal
                         verstärkende
                         Treiberstufe zu einer Leuchtdiode geführt. Diese überträgt die Information in Form von Licht
@@ -137,6 +136,14 @@
                         ggf. von digital zu
                         analog umgewandelt und verstärkt wird, bevor es zum Empfänger gelangt.
                     </p>
+                    <figure id="lwl-img">
+                        <div class="img-container">
+                            <img src="/assets/aufbauten/Übertragungssystem-Lichtwellenleiter.svg"
+                                alt="Übertragungssystem von Lichtwellenleitern"
+                                data-imgSrc="https://www.elektronik-kompendium.de/sites/kom/0301282.htm#:~:text=Prinzip%20eines%20%C3%9Cbertragungssystems%20auf%20Basis%20eines%20Lichtwellenleiters&text=Trs.&text=Das%20Licht%20wird%20direkt%20in,wieder%20in%20elektrische%20Signale%20umgewandelt. (Stand: 13.03.2020)">
+                        </div>
+                        <figcaption>Übertragungssystem von Lichtwellenleitern</figcaption>
+                    </figure>
                     <p>
                         Das System lässt sich nun auf das Modell übertragen: Der Nutzer liefert das Quellsignal über die
                         Texteingabe in einem Processing-Programm. Die
@@ -157,30 +164,81 @@
                         Computers
                         zuständig.
                     </p>
-                    <!-- TODO: [A.a] [A.b] [A.c] -->
                     <p>
                         Die Nachricht “tranquility base here, the eagle has landed.” wird fortan für alle
                         Testläufe des Modells
                         übertragen. Momentan zuverlässig ist die Übertragung unter Nutzung der Arduino-LED bei einer
-                        Periodendauer von Tmax = 125 ms.
+                        Periodendauer von <span class="code">T<sub>max</sub>&nbsp;=&nbsp;125ms</span>.
                     </p>
+                    <div class="info-box">
+                        <div class="content">
+                            <h4><span>Kurzübersicht: Die Versuchsaufbauten des Projekts</span></h4>
+                            <ul>
+                                <li>Nutzer gibt Nachricht über Processing-Programm ein</li>
+                                <li>Arduino kondiert Text zu Binärsequenz, die LED blinkt</li>
+                                <li>Licht erreicht durch ein Meter lange Röhre Photowiderstand an zweitem Arduino</li>
+                                <li>empfangendes Processing-Programm interpretiert Daten und zeigt Oszillograph</li>
+                                <li>zuverlässige Übertragung bei Periodendauer von <span
+                                        class="code">T<sub>max</sub>&nbsp;=&nbsp;125ms</span></li>
+                            </ul>
+                            <figure>
+                                <div class="img-container">
+                                    <img src="/assets/aufbauten/Aufbau Nachrichtenübermittlung (1).jpg"
+                                        alt="Kompletter Aufbau bei der Nachrichtenübermittlung" data-imgSrc="">
+                                </div>
+                                <figcaption>Kompletter Aufbau bei der Nachrichtenübermittlung</figcaption>
+                            </figure>
+                        </div>
+                        <div class="gallery">
+                            <h5>Weitere Bilder zum Versuchsaufbau:</h5>
+                            <figure>
+                                <div class="img-container">
+                                    <img src="/assets/aufbauten/Aktor Nahaufnahme (1).jpg"
+                                        alt="Nahaufnahme des Aktors mit roter TC LED" data-imgSrc="">
+                                </div>
+                                <figcaption>Nahaufnahme des Aktors mit roter TC LED</figcaption>
+                            </figure>
+                            <figure>
+                                <div class="img-container">
+                                    <img src="/assets/aufbauten/Sensor Nahaufnahme (1).jpg"
+                                        alt="Nahaufnahme des Lichtsensors" data-imgSrc="">
+                                </div>
+                                <figcaption>Nahaufnahme des Lichtsensors</figcaption>
+                            </figure>
+                            <figure>
+                                <div class="img-container">
+                                    <img src="/assets/aufbauten/Aufbau Datenerfassung (1).jpg"
+                                        alt="Aufbau bei der Datenerfassung" data-imgSrc="">
+                                </div>
+                                <figcaption>Aufbau bei der Datenerfassung</figcaption>
+                            </figure>
+                        </div>
+                    </div>
                 </section>
 
                 <section id="user-interfaces">
                     <h2>Die User Interfaces</h2>
                     <!-- TODO: Video von Sender Processing mit Texteingabe -->
+                    <figure data-isFloating="true">
+                        <div class="img-container">
+                            <img src="/assets/aufbauten/Oszillograph Beginn.png"
+                                alt="Oszillograph zu Beginn der Messung" data-imgSrc="">
+                        </div>
+                        <figcaption>Oszillograph zu Beginn der Messung</figcaption>
+                    </figure>
                     <p>
                         Die aufgenommenen Rohwerte des Lichtwiderstandes werden auf einer Ratioskala von null bis 1024
                         angegeben und auf die
                         Höhe des Programmfensters angepasst dargestellt. Im weiteren Verlauf wird mit dieser Skala
                         weitergearbeitet und deren
-                        Werte in SW (Sensor-Wert) angegeben. Es gilt: 1 SW ≙ 1.75 mcd, mit dem Nullpunkt beider Skalen
+                        Werte in SW (Sensor-Wert) angegeben. Es gilt: <span class="code">1SW&nbsp;≙&nbsp;1.75mcd</span>,
+                        mit dem Nullpunkt beider Skalen
                         bei null.
                     </p>
                     <p>
-                        Die gelben Linien zeigen Beginn und Ende der Übertragung an, während der Anfang der Nachricht
+                        Die pinke Linie zeigt den Beginn der Übertragung an, während der Anfang der Nachricht
                         durch
-                        die pinke Linie
+                        die gelbe Linie
                         markiert ist. Die grauen Punkte entsprechen den Cheats, die beim Schreiben des Programms zur
                         Fehlererkennung hinzugefügt
                         wurden. Sie dienen zur Identifizierung kritischer Messzeitpunkte und geben den
@@ -197,10 +255,17 @@
                 <section id="bitbestimmung">
                     <h2>Bestimmung von Bits</h2>
                     <!-- TODO: Video mit Konsolenausgabe von Beginn bis Ende der Messung -->
+                    <figure data-isFloating="true">
+                        <div class="img-container">
+                            <img src="/assets/aufbauten/Konsolenausgabe Beginn.png"
+                                alt="Konsolenausgaben zu Beginn der Messung" data-imgSrc="">
+                        </div>
+                        <figcaption>Konsolenausgaben zu Beginn der Messung</figcaption>
+                    </figure>
                     <p>
                         Der Dechiffrierungsprozess der einzelnen Bits zu einer gesamten Zeichenfolge ist in seiner
                         Gesamtheit anhand der
-                        Konsolenausgaben[B.d] zu erkennen. Die jeweils blauen bzw. roten Punkte, welche genau eine halbe
+                        Konsolenausgaben zu erkennen. Die jeweils blauen bzw. roten Punkte, welche genau eine halbe
                         Periode nach dem Cheat,
                         d. h. dem eigentlichen Zeitpunkt der Übertragung stehen, sind die Messpunkte für einen
                         jeweiligen
@@ -227,7 +292,7 @@
                         Messergebnisse hat. Die
                         Auskleidung des Inneren sowie der Enden der Pappröhre mit Aluminiumfolie ist somit effektiv. Der
                         LDR nimmt höchstens
-                        Werte bis 5 SW auf, wenn die LED länger abgeschaltet bleibt.
+                        Werte bis 5SW auf, wenn die LED länger abgeschaltet bleibt.
                     </p>
                     <p>
                         Zu den Umgebungsfaktoren zählen
@@ -239,8 +304,7 @@
                         Koordinierung von höchster Wichtigkeit ist, zu Verschiebungen der periodischen
                         Programmausführung kam. Die Problematik
                         besteht in der Funktion “draw” der Umgebung. Sie wird mit einer Frequenz von 60 Hz, d. h. etwa
-                        einmal in 17
-                        Millisekunden ausgeführt, ist dabei jedoch verhältnismäßig unregelmäßig.
+                        einmal in 17&nbsp;Millisekunden ausgeführt, ist dabei jedoch verhältnismäßig unregelmäßig.
                         Daher wird ständig
                         berechnet, wann die Zeit nach der letzten Periode abläuft und dieser Zeitpunkt abgewartet, bevor
                         der zeitabhängige Code
@@ -254,6 +318,30 @@
                         zeitlichen Verschiebungen zur
                         Länge einer gesamten Periode summieren und ein Bit versetzt gemessen wird.
                     </p>
+                    <div class="info-box">
+                        <div class="content">
+                            <h4><span>Kurzübersicht: Wie Bits bestimmt werden</span></h4>
+                            <ul>
+                                <li>wenn Lichtwert über Durchscnittswert liegt, ist Bitwert gleich&nbsp;1, sonst 0-Bit
+                                </li>
+                                <li>Lichteinfall kann innerhalb einer Periodendauer zwischen <span
+                                        class="code">Min</span> und <span class="code">Max</span> oszillieren und vice
+                                    versa</li>
+                                <li>daher Messzeitpunkt um eine halbe Periodenlänge verzögert, um verspäteter Änderung
+                                    des Lichts entgegenzuwirken</li>
+                                <li>einzelne Bits zu Bitfolge verkettet</li>
+                                <li>Bitkette jeweils abgeschnitten und dechiffriert, sobald Kodierungszeichen erkannt
+                                </li>
+                            </ul>
+                            <figure>
+                                <div class="img-container">
+                                    <img src="/assets/aufbauten/Oszillograph Ende.png"
+                                        alt="Oszillograph am Ende der Messung" data-imgSrc="">
+                                </div>
+                                <figcaption>Oszillograph am Ende der Messung</figcaption>
+                            </figure>
+                        </div>
+                    </div>
                 </section>
 
                 <section id="ziele">
@@ -271,6 +359,13 @@
                         und mit regelmäßigen Werten zu oszillieren, überprüft werden. Durch systematisches Verkürzen der
                         Periodendauer soll schließlich eine optimale Übertragung erzielt werden.
                     </p>
+                    <figure data-isFloating="true">
+                        <div class="img-container">
+                            <img src="/assets/aufbauten/Bitfehler _ Problematik der verlustfreien Komprimierung.png"
+                                alt="Bitfehler und Problematik der verlustfreien Übertragung" data-imgSrc="">
+                        </div>
+                        <figcaption>Bitfehler und Problematik der verlustfreien Übertragung</figcaption>
+                    </figure>
                     <p>
                         Problematisch ist die zur Kodierung verwendete verlustfreie
                         Komprimierung, da dabei keine einheitliche Bytelänge
@@ -292,7 +387,8 @@
                         Prozent, was
                         eine
                         erfolgreiche
-                        Verminderung der Periodendauer von Tmax = 125 ms auf Tmin = 80 ms , bzw. Erhöhung der Frequenz
+                        Verminderung der Periodendauer von <span class="code">T<sub>max</sub>&nbsp;=&nbsp;125ms</span>
+                        auf <span class="code">T<sub>min</sub>&nbsp;=&nbsp;80ms</span>, bzw. Erhöhung der Frequenz
                         von 8
                         Bits/s auf 12,5
                         Bits/s, bedeuten würde.

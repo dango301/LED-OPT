@@ -291,7 +291,7 @@ var _sections,
     table,
     container,
     figures,
-    freeFigs,
+    floatingFigs,
     modal,
     modalImg,
     title,
@@ -323,8 +323,8 @@ function pageLoad() {
   scrollVisibility();
   window.onscroll = scrollVisibility;
   figures = Array.from(document.getElementsByTagName('figure'));
-  freeFigs = figures.filter(function (fig) {
-    return !(fig.parentElement.classList.contains('gallery') || fig.parentElement.classList.contains('content'));
+  floatingFigs = figures.filter(function (fig) {
+    return fig.hasAttribute('data-isFloating');
   });
   modal = document.querySelector('.modal');
   modalImg = document.querySelector('.modal img');
@@ -420,7 +420,7 @@ function resize() {
 
   if (availableW - minImg < minP) {
     // both text and img would become too small
-    freeFigs.forEach(function (fig) {
+    floatingFigs.forEach(function (fig) {
       return changeOrder(fig, true);
     });
   } else {
@@ -431,7 +431,7 @@ function resize() {
     } //FIXME: while (availableW - finalW > maxP) finalW++ // if text is has enough space too reach maximum (800px) then give the remaining space to img
 
 
-    freeFigs.forEach(function (fig) {
+    floatingFigs.forEach(function (fig) {
       fig.style.width = finalW_1 + 'px';
       changeOrder(fig, false);
     });
@@ -465,7 +465,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57232" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59653" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

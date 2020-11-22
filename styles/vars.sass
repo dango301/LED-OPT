@@ -61,7 +61,7 @@ $softblack: rgb(33, 33, 33)
         background-color: rgba(black, $opac2)
 
 @mixin infoBox() //supports up to 6 additiona imgages
-    border-radius: 4px
+    border-radius: 6px
     background: $bg
     padding: 20px 15px
     margin: 20px
@@ -70,14 +70,15 @@ $softblack: rgb(33, 33, 33)
 
     .content
         display: grid
-        grid-template-columns: 7fr 6fr
+        grid-template-columns: 1fr 1fr
         grid-template-rows: auto auto
-        grid-template-areas: 'h4 h4' 'list fig'
+        grid-template-areas: 'h4 .' 'list fig'
         margin-bottom: 15px
         h4
             grid-area: h4
-            margin: 0px 10px
-            margin-bottom: 15px
+            margin: 0 10px
+            margin-bottom: 17px
+            text-align: center
             position: relative
             border: 2px solid $secondaryColor
             width: fit-content
@@ -101,6 +102,7 @@ $softblack: rgb(33, 33, 33)
 
             span
                 position: relative
+                text-align: center
                 z-Index: 3
                 font-weight: 900
                 color: $secondaryColor
@@ -115,7 +117,7 @@ $softblack: rgb(33, 33, 33)
             flex-direction: column
             li
                 width: 300px
-                margin-bottom: 12.5px
+                margin-bottom: 14px
                 text-align: left
                 font-size: 16px
                 list-style-type: disc
@@ -145,6 +147,8 @@ $softblack: rgb(33, 33, 33)
             float: none
             margin: 0 10px
             margin-top: 15px
+            img
+                max-height: 150px
 
             &:nth-of-type(1)
                 grid-area: f1
