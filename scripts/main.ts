@@ -32,12 +32,24 @@ function pageLoad() {
 
     _sections = document.querySelectorAll('section')
     sections = Array.from(_sections)
-    contentLI = document.querySelectorAll('aside.content li')
-    contentLinks = document.querySelectorAll('aside.content li a')
-    table = document.querySelector('aside.content .table-of-contents')
+    const asideContent = document.querySelector('aside.content')
+    contentLI = asideContent.querySelectorAll('li')
+    contentLinks = asideContent.querySelectorAll('li a')
+    table = asideContent.querySelector('.table-of-contents')
     container = document.querySelector('main .container')
     scrollVisibility()
     window.onscroll = scrollVisibility
+
+
+    const tableToggle = document.querySelector('aside.content a.toggle')
+    tableToggle.addEventListener('click', () => {
+
+        const isCollapsed = !(tableToggle.getAttribute('data-collapsed') == 'true')
+        tableToggle.setAttribute('data-collapsed', isCollapsed == true ? 'true' : 'false')
+        tableToggle.innerHTML = isCollapsed ? '🢚 OUT' : '🢘 IN'
+        asideContent.classList.toggle('collapsed', isCollapsed)
+        // resize()
+    })
 
     figures = Array.from(document.getElementsByTagName('figure'))
     floatingFigs = figures.filter(fig => fig.hasAttribute('data-isFloating'))
@@ -61,7 +73,20 @@ function pageLoad() {
     resize()
     window.onresize = resize
 
-    console.log({figures, figInfo})
+
+    Array.from(document.querySelectorAll('.info-box .content h4')).forEach(h4 => {
+
+        function toggleInfoBox(h4: Element) {
+            const infoBox = h4.parentElement.parentElement
+            const isExpanded = infoBox.getAttribute('data-isExpanded') == 'true'
+            infoBox.style.maxHeight = isExpanded ? `${(<HTMLElement>h4).offsetHeight}px` : '100vh'
+            infoBox.setAttribute('data-isExpanded', isExpanded ? 'false' : 'true')
+        }
+
+        toggleInfoBox(h4)
+        h4.addEventListener('click', () => toggleInfoBox(h4))
+    })
+
 }
 
 
@@ -126,7 +151,7 @@ function resize() { //TODO: if aspect ratio too wide make it go under text
 
     const totalW = document.querySelector('article').getBoundingClientRect().width
     const availableW = totalW - 2 * 45 - 20 // total minus section padding and figure margin
-    
+
     if (availableW - minImg < minP) { // both text and img would become too small
         floatingFigs.forEach(fig => changeOrder(fig, true))
     } else {

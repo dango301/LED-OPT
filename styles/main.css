@@ -28,7 +28,7 @@
   color: white;
   font-family: 'Montserrat', 'Noto Serif', 'Arial';
   list-style-type: none;
-  font-size: 15px;
+  font-size: .95rem;
   font-style: normal;
   font-weight: 500;
 }
@@ -39,6 +39,7 @@ body {
       -ms-hyphens: auto;
           hyphens: auto;
   position: relative;
+  background-attachment: fixed;
 }
 
 html {
@@ -439,7 +440,7 @@ aside.download:hover a {
   text-align: center;
   font-family: 'Noto Serif', 'Times New Roman';
   font-weight: 900;
-  font-size: 18px;
+  font-size: 1.125rem;
   margin: 10px 0;
 }
 
@@ -448,7 +449,7 @@ aside.download:hover a {
   width: -moz-fit-content;
   width: fit-content;
   margin: 0 auto;
-  font-size: 10px;
+  font-size: .65rem;
 }
 
 .modal a:before {
@@ -521,7 +522,7 @@ aside.download:hover a {
 
 .banner h1 {
   font-family: 'Noto Serif', 'Times New Roman';
-  font-size: 27.5px;
+  font-size: 1.7rem;
   font-weight: 700;
   margin: 15px;
   text-align: center;
@@ -558,8 +559,8 @@ span.code {
   font-family: 'Consolas';
   font-weight: 900;
   font-style: italic;
-  padding: 3.5px 6.5px;
-  font-size: 13px;
+  padding: 2.5px 6.5px 3.5px 6.5px;
+  font-size: .875em;
   background: white;
   color: crimson;
   border-radius: 5px;
@@ -574,6 +575,7 @@ span.code sub {
 
 sub {
   font-size: x-small;
+  line-height: 0;
 }
 
 main .container {
@@ -597,21 +599,24 @@ main .container aside.content {
   position: relative;
   -webkit-box-shadow: 1px 0px 3px black;
           box-shadow: 1px 0px 3px black;
-  width: 225px;
+  width: 14.55em;
   overflow: hidden;
+  -webkit-transition: all 0.33s cubic-bezier(0.56, 0.36, 0.37, 1.26);
+  transition: all 0.33s cubic-bezier(0.56, 0.36, 0.37, 1.26);
 }
 
 main .container aside.content .table-of-contents {
   position: absolute;
   top: 0;
+  font-size: 1em;
   padding: 25px;
-  margin-bottom: 25px;
+  padding-bottom: 50px;
 }
 
 main .container aside.content .table-of-contents a.top {
   padding: 7.5px 12.5px;
   font-weight: 700;
-  font-size: 15px;
+  font-size: 1em;
   -webkit-transition: all ease-in-out .4s;
   transition: all ease-in-out .4s;
   position: relative;
@@ -653,25 +658,80 @@ main .container aside.content .table-of-contents a.top:hover {
   color: #43a4f3;
 }
 
-main .container aside.content .table-of-contents h4 {
-  font-family: 'Noto Serif', 'Times New Roman';
-  font-style: italic;
-  margin: 25px 0;
-  font-size: 25px;
-  line-height: 25px;
-  font-weight: 500;
-  text-shadow: 1.375px 1.375px 2px #111;
-}
-
-main .container aside.content .table-of-contents li {
-  margin: 16px 0;
+main .container aside.content .table-of-contents a.toggle {
+  padding: 7.5px 12.5px;
+  font-weight: 700;
+  font-size: 1em;
+  -webkit-transition: all ease-in-out .4s;
+  transition: all ease-in-out .4s;
   position: relative;
 }
 
-main .container aside.content .table-of-contents li a {
-  font-size: 14px;
+main .container aside.content .table-of-contents a.toggle.active {
+  color: #43a4f3;
+}
+
+main .container aside.content .table-of-contents a.toggle::after {
+  -webkit-transition: all ease-out .15s;
+  transition: all ease-out .15s;
+  content: '';
+  position: absolute;
+  background: #43a4f3;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+}
+
+main .container aside.content .table-of-contents a.toggle:hover::after {
+  width: 100%;
+}
+
+main .container aside.content .table-of-contents a.toggle {
+  position: absolute;
+  left: 0;
+  cursor: pointer;
+}
+
+main .container aside.content .table-of-contents a.toggle:hover {
+  color: #43a4f3;
+}
+
+main .container aside.content .table-of-contents h4 {
+  font-family: 'Noto Serif', 'Times New Roman';
   font-style: italic;
-  line-height: 8px;
+  margin: .8em 0;
+  text-decoration: underline;
+  font-size: 1.6em;
+  line-height: 1.6em;
+  font-weight: 500;
+  overflow: hidden;
+  height: auto;
+  -webkit-transition: height 0.33s cubic-bezier(0.56, 0.36, 0.37, 1.26);
+  transition: height 0.33s cubic-bezier(0.56, 0.36, 0.37, 1.26);
+  text-shadow: 1.375px 1.375px 2px #111;
+}
+
+main .container aside.content .table-of-contents ul {
+  position: relative;
+  padding-left: 6.5px;
+  width: calc(100% + 6.5px);
+  left: -6.5px;
+  overflow: hidden;
+  height: auto;
+  -webkit-transition: all 0.33s cubic-bezier(0.56, 0.36, 0.37, 1.26);
+  transition: all 0.33s cubic-bezier(0.56, 0.36, 0.37, 1.26);
+}
+
+main .container aside.content .table-of-contents li {
+  position: relative;
+  margin: 1em 0;
+  line-height: 1.15em;
+}
+
+main .container aside.content .table-of-contents li a {
+  font-size: 1.085em;
+  font-style: italic;
   font-weight: 500;
   text-shadow: 1.25px 1.25px 2px #111;
   -webkit-transition: all ease-in-out .4s;
@@ -699,14 +759,23 @@ main .container aside.content .table-of-contents li a:hover::after {
   height: 100%;
 }
 
+main .container aside.content.collapsed {
+  width: 5.5em;
+}
+
+main .container aside.content.collapsed .table-of-contents h4, main .container aside.content.collapsed .table-of-contents ul {
+  height: 0;
+}
+
 main .container article {
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
+  -webkit-transition: all 0.33s cubic-bezier(0.56, 0.36, 0.37, 1.26);
+  transition: all 0.33s cubic-bezier(0.56, 0.36, 0.37, 1.26);
 }
 
 section {
-  scroll-snap-align: start;
   padding: 25px 45px;
   text-align: justify;
   overflow: auto;
@@ -731,14 +800,14 @@ section *::selection {
 section h2 {
   text-shadow: -.5px 1.25px 2px #999;
   text-align: left;
-  font-size: 30px;
+  font-size: 1.8em;
   font-weight: 900;
-  margin: 10px 25px;
+  margin: .4em 25px;
 }
 
 section h3 {
-  font-size: 16px;
-  margin: 30px 0 5px 0;
+  font-size: 1.125em;
+  margin: 1.4em 0 5px 0;
   font-weight: 900;
 }
 
@@ -748,8 +817,9 @@ section h3:before {
 
 section p {
   max-width: 800px;
-  margin-bottom: 15px;
-  line-height: 22px;
+  font-size: 0.9375rem;
+  margin-bottom: 0.9375rem;
+  line-height: 1.375rem;
 }
 
 section > p:first-of-type:first-letter {
@@ -757,8 +827,8 @@ section > p:first-of-type:first-letter {
   font-family: 'Noto Serif';
   margin-right: 1px;
   font-weight: 900;
-  font-size: 42px;
-  line-height: 44px;
+  font-size: 2.65rem;
+  line-height: 2.625rem;
   float: left;
 }
 
@@ -869,10 +939,11 @@ section figure:hover .img-container img {
 
 section figure figcaption {
   font-family: 'Noto Serif', 'Times New Roman';
-  font-size: 13px;
+  font-size: .85rem;
+  line-height: 1rem;
   text-align: center;
   text-align-last: center;
-  padding: 3px 12px 0 12px;
+  padding: .5rem .75rem 0 .75rem;
 }
 
 footer {
