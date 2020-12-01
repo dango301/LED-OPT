@@ -560,7 +560,7 @@ span.code {
   font-weight: 900;
   font-style: italic;
   padding: 2.5px 6.5px 3.5px 6.5px;
-  font-size: .875em;
+  font-size: .875rem;
   background: white;
   color: crimson;
   border-radius: 5px;
@@ -611,6 +611,11 @@ main .container aside.content .table-of-contents {
   font-size: 1em;
   padding: 25px;
   padding-bottom: 50px;
+}
+
+main .container aside.content .table-of-contents.smooth-top {
+  -webkit-transition: top .12s ease-in-out;
+  transition: top .12s ease-in-out;
 }
 
 main .container aside.content .table-of-contents a.top {
@@ -700,15 +705,15 @@ main .container aside.content .table-of-contents a.toggle:hover {
 main .container aside.content .table-of-contents h4 {
   font-family: 'Noto Serif', 'Times New Roman';
   font-style: italic;
-  margin: .8em 0;
   text-decoration: underline;
   font-size: 1.6em;
   line-height: 1.6em;
   font-weight: 500;
   overflow: hidden;
+  margin: .8em 0;
   height: auto;
-  -webkit-transition: height 0.33s cubic-bezier(0.56, 0.36, 0.37, 1.26);
-  transition: height 0.33s cubic-bezier(0.56, 0.36, 0.37, 1.26);
+  -webkit-transition: all 0.33s cubic-bezier(0.56, 0.36, 0.37, 1.26);
+  transition: all 0.33s cubic-bezier(0.56, 0.36, 0.37, 1.26);
   text-shadow: 1.375px 1.375px 2px #111;
 }
 
@@ -765,6 +770,7 @@ main .container aside.content.collapsed {
 
 main .container aside.content.collapsed .table-of-contents h4, main .container aside.content.collapsed .table-of-contents ul {
   height: 0;
+  margin: 0;
 }
 
 main .container article {

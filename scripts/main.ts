@@ -48,7 +48,14 @@ function pageLoad() {
         tableToggle.setAttribute('data-collapsed', isCollapsed == true ? 'true' : 'false')
         tableToggle.innerHTML = isCollapsed ? '🢚 OUT' : '🢘 IN'
         asideContent.classList.toggle('collapsed', isCollapsed)
-        // resize()
+        setTimeout(() => {
+            table.classList.add('smooth-top')
+            scrollVisibility()
+            setTimeout(() => {
+                table.classList.remove('smooth-top')
+            }, 150);
+            // resize()
+        }, 333)
     })
 
     figures = Array.from(document.getElementsByTagName('figure'))
@@ -122,8 +129,16 @@ function scrollVisibility() {
     const { top, bottom } = container.getBoundingClientRect()
     const containerHeight = bottom - top
     const tableHeight = table.offsetHeight
-    const pos = -top + 45 + tableHeight / 2
-    table.style.top = `${pos < 0 ? 0 : bottom < (tableHeight * 1.5 + 45) ? containerHeight - tableHeight : pos}px`
+    const pos = -top + 45 - tableHeight / 2 + window.innerHeight / 2  //pos = yPos on screen + 45px navHeight and center table on screen
+
+    let y: number
+    if (pos < 0)
+        y = 0
+    else {
+        if (bottom < window.innerHeight / 2 + tableHeight / 2) y = containerHeight - tableHeight
+        else y = pos
+    }
+    table.style.top = `${y}px`
 }
 
 

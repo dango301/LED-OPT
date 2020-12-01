@@ -328,7 +328,14 @@ function pageLoad() {
     var isCollapsed = !(tableToggle.getAttribute('data-collapsed') == 'true');
     tableToggle.setAttribute('data-collapsed', isCollapsed == true ? 'true' : 'false');
     tableToggle.innerHTML = isCollapsed ? '🢚 OUT' : '🢘 IN';
-    asideContent.classList.toggle('collapsed', isCollapsed); // resize()
+    asideContent.classList.toggle('collapsed', isCollapsed);
+    setTimeout(function () {
+      table.classList.add('smooth-top');
+      scrollVisibility();
+      setTimeout(function () {
+        table.classList.remove('smooth-top');
+      }, 150); // resize()
+    }, 333);
   });
   figures = Array.from(document.getElementsByTagName('figure'));
   floatingFigs = figures.filter(function (fig) {
@@ -407,8 +414,13 @@ function scrollVisibility() {
 
   var containerHeight = bottom - top;
   var tableHeight = table.offsetHeight;
-  var pos = -top + 45 + tableHeight / 2;
-  table.style.top = (pos < 0 ? 0 : bottom < tableHeight * 1.5 + 45 ? containerHeight - tableHeight : pos) + "px";
+  var pos = -top + 45 - tableHeight / 2 + window.innerHeight / 2; //pos = yPos on screen + 45px navHeight and center table on screen
+
+  var y;
+  if (pos < 0) y = 0;else {
+    if (bottom < window.innerHeight / 2 + tableHeight / 2) y = containerHeight - tableHeight;else y = pos;
+  }
+  table.style.top = y + "px";
 }
 
 var minP = 600,
@@ -482,7 +494,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58490" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58134" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

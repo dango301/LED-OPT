@@ -292,7 +292,7 @@ span.code
     font-weight: 900
     font-style: italic
     padding: 2.5px 6.5px 3.5px 6.5px
-    font-size: .875em
+    font-size: .875rem
     background: white
     color: $primaryColor
     border-radius: 5px
@@ -313,8 +313,8 @@ main .container // aside is nested in here
     z-Index: 2
     box-shadow: 1px 1.75px 5px black, 0px -1.75px 5px black
 
-    @mixin expandTransition($prop: all)
-        transition: $prop .33s cubic-bezier(.56,.36,.37,1.26)
+    @mixin expandTransition($prop: all, $length: .33s)
+        transition: $prop $length cubic-bezier(.56,.36,.37,1.26)
 
     aside.content
         position: relative
@@ -326,19 +326,12 @@ main .container // aside is nested in here
         .table-of-contents
             position: absolute
             top: 0
-            // margin-bottom: 50px
             font-size: 1em
             padding: 25px
             padding-bottom: 50px
+            &.smooth-top
+                transition: top .15s ease-in-out
 
-            // .wrapper
-            //     position: relative
-            //     padding-left: 6.5px
-            //     width: calc(100% + 6.5px)
-            //     left: -6.5px
-            //     overflow: hidden
-            //     height: auto
-            //     @include expandTransition()
             a.top
                 padding: 7.5px 12.5px
                 font-weight: 700
@@ -370,14 +363,14 @@ main .container // aside is nested in here
             h4
                 font-family: 'Noto Serif', 'Times New Roman'
                 font-style: italic
-                margin: .8em 0
                 text-decoration: underline
                 font-size: 1.6em
                 line-height: 1.6em
                 font-weight: 500
                 overflow: hidden
+                margin: .8em 0
                 height: auto
-                @include expandTransition(height)
+                @include expandTransition()
                 @include elevationShadow(1.1)
 
             ul // in order to make space for hover effects on a while visibility hidden
@@ -405,9 +398,11 @@ main .container // aside is nested in here
             .table-of-contents //.wrapper
                 h4, ul
                     height: 0
+                    margin: 0
 
     article
         flex: 1
+        // scroll-snap-align: start
         @include expandTransition()
 
 section
