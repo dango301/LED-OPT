@@ -1,4 +1,5 @@
 import mostVisible from 'most-visible'
+// import preload from 'preload-js'
 
 var
     _sections: NodeListOf<HTMLElement>,
@@ -21,6 +22,16 @@ const pages = ['home', 'leuchtdioden', 'datensätze', 'optimierung', 'impressum'
 
 // if (window.location.hash == '')
 //     Array.from(document.getElementsByClassName('page-transition')).forEach(el => el.classList.add('hide'))
+
+// var queue = new preload.LoadQueue(false)
+// queue.on('fileload', handleFileComplete)
+// function handleFileComplete() {
+
+    
+// }
+// const imgs = Array.from(document.querySelectorAll('main article img'))
+// console.log({imgs})
+// queue.loadManifest()
 
 window.onload = pageLoad
 function pageLoad() {

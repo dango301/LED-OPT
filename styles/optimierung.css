@@ -45,7 +45,6 @@
   width: calc(100% - 70px - 40px);
   margin-bottom: 40px;
   overflow: hidden;
-  max-height: 100vh;
   -webkit-transition: max-height .66s ease-in-out;
   transition: max-height .66s ease-in-out;
   scroll-snap-align: start;
@@ -148,7 +147,7 @@
   width: 350px;
   margin-bottom: 14px;
   text-align: left;
-  font-size: 1.15em;
+  font-size: 1.1em;
   list-style-type: disc;
   color: white;
 }
@@ -159,11 +158,7 @@
   grid-area: fig;
   float: none;
   margin: 0 20px;
-  max-height: 400px;
-}
-
-.info-box[data-isExpanded="true"] {
-  overflow-y: auto;
+  max-height: 350px;
 }
 
 .info-box[data-isExpanded="true"] .content h4:before {

@@ -282,7 +282,8 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var most_visible_1 = __importDefault(require("most-visible"));
+var most_visible_1 = __importDefault(require("most-visible")); // import preload from 'preload-js'
+
 
 var _sections,
     sections,
@@ -301,10 +302,16 @@ var _sections,
     figIndex = 0,
     figInfo = [];
 
-var pages = ['home', 'leuchtdioden', 'datensätze', 'optimierung', 'impressum'];
-if (window.location.hash == '') Array.from(document.getElementsByClassName('page-transition')).forEach(function (el) {
-  return el.classList.add('hide');
-});
+var pages = ['home', 'leuchtdioden', 'datensätze', 'optimierung', 'impressum']; // if (window.location.hash == '')
+//     Array.from(document.getElementsByClassName('page-transition')).forEach(el => el.classList.add('hide'))
+// var queue = new preload.LoadQueue(false)
+// queue.on('fileload', handleFileComplete)
+// function handleFileComplete() {
+// }
+// const imgs = Array.from(document.querySelectorAll('main article img'))
+// console.log({imgs})
+// queue.loadManifest()
+
 window.onload = pageLoad;
 
 function pageLoad() {
@@ -509,7 +516,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58134" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50417" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
