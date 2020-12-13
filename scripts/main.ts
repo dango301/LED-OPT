@@ -5,6 +5,8 @@ var
     sections: Array<HTMLElement>,
     contentLI: NodeListOf<Element>,
     contentLinks: NodeListOf<Element>,
+    asideContent: Element,
+    tableToggle: Element,
     table: HTMLElement,
     container: HTMLElement,
     figures: HTMLElement[],
@@ -17,8 +19,8 @@ var
     figInfo = []
 const pages = ['home', 'leuchtdioden', 'datensätze', 'optimierung', 'impressum']
 
-if (window.location.hash == '')
-    Array.from(document.getElementsByClassName('page-transition')).forEach(el => el.classList.add('hide'))
+// if (window.location.hash == '')
+//     Array.from(document.getElementsByClassName('page-transition')).forEach(el => el.classList.add('hide'))
 
 window.onload = pageLoad
 function pageLoad() {
@@ -32,7 +34,7 @@ function pageLoad() {
 
     _sections = document.querySelectorAll('section')
     sections = Array.from(_sections)
-    const asideContent = document.querySelector('aside.content')
+    asideContent = document.querySelector('aside.content')
     contentLI = asideContent.querySelectorAll('li')
     contentLinks = asideContent.querySelectorAll('li a')
     table = asideContent.querySelector('.table-of-contents')
@@ -41,22 +43,8 @@ function pageLoad() {
     window.onscroll = scrollVisibility
 
 
-    const tableToggle = document.querySelector('aside.content a.toggle')
-    tableToggle.addEventListener('click', () => {
-
-        const isCollapsed = !(tableToggle.getAttribute('data-collapsed') == 'true')
-        tableToggle.setAttribute('data-collapsed', isCollapsed == true ? 'true' : 'false')
-        tableToggle.innerHTML = isCollapsed ? '🢚 OUT' : '🢘 IN'
-        asideContent.classList.toggle('collapsed', isCollapsed)
-        setTimeout(() => {
-            table.classList.add('smooth-top')
-            scrollVisibility()
-            setTimeout(() => {
-                table.classList.remove('smooth-top')
-            }, 150);
-            // resize()
-        }, 333)
-    })
+    tableToggle = document.querySelector('aside.content a.toggle')
+    tableToggle.addEventListener('click', () => toggleAside())
 
     figures = Array.from(document.getElementsByTagName('figure'))
     floatingFigs = figures.filter(fig => fig.hasAttribute('data-isFloating'))
@@ -94,6 +82,27 @@ function pageLoad() {
         h4.addEventListener('click', () => toggleInfoBox(h4))
     })
 
+}
+
+
+function toggleAside(forcedState = undefined) {
+
+    const originalState = tableToggle.getAttribute('data-collapsed') == 'true'
+    if (forcedState && forcedState == originalState) return
+
+    const isCollapsed = forcedState != undefined ? forcedState : !originalState
+    tableToggle.setAttribute('data-collapsed', isCollapsed ? 'true' : 'false')
+    tableToggle.innerHTML = isCollapsed ? '🢚 OUT' : '🢘 IN'
+    asideContent.classList.toggle('collapsed', isCollapsed)
+
+    setTimeout(() => {
+        table.classList.add('smooth-top')
+        scrollVisibility()
+        setTimeout(() => {
+            table.classList.remove('smooth-top')
+        }, 150);
+        // resize()
+    }, 333)
 }
 
 
@@ -146,7 +155,7 @@ const
     minP = 600,
     maxP = 800,
     minImg = 250,
-    maxImg = 600,
+    maxImg = 450,
     changeOrder = (fig: HTMLElement, pushDown: boolean) => { //TODO: set max height
         const section = fig.parentNode
         const isFloating = fig.getAttribute('data-isFloating') == 'true'
@@ -164,6 +173,8 @@ const
     }
 function resize() { //TODO: if aspect ratio too wide make it go under text
 
+    toggleAside(window.innerWidth < 992)
+
     const totalW = document.querySelector('article').getBoundingClientRect().width
     const availableW = totalW - 2 * 45 - 20 // total minus section padding and figure margin
 
@@ -180,5 +191,6 @@ function resize() { //TODO: if aspect ratio too wide make it go under text
             changeOrder(fig, false)
         })
     }
+    scrollVisibility()
 }
 

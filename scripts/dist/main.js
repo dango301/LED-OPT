@@ -288,6 +288,8 @@ var _sections,
     sections,
     contentLI,
     contentLinks,
+    asideContent,
+    tableToggle,
     table,
     container,
     figures,
@@ -316,26 +318,16 @@ function pageLoad() {
   });
   _sections = document.querySelectorAll('section');
   sections = Array.from(_sections);
-  var asideContent = document.querySelector('aside.content');
+  asideContent = document.querySelector('aside.content');
   contentLI = asideContent.querySelectorAll('li');
   contentLinks = asideContent.querySelectorAll('li a');
   table = asideContent.querySelector('.table-of-contents');
   container = document.querySelector('main .container');
   scrollVisibility();
   window.onscroll = scrollVisibility;
-  var tableToggle = document.querySelector('aside.content a.toggle');
+  tableToggle = document.querySelector('aside.content a.toggle');
   tableToggle.addEventListener('click', function () {
-    var isCollapsed = !(tableToggle.getAttribute('data-collapsed') == 'true');
-    tableToggle.setAttribute('data-collapsed', isCollapsed == true ? 'true' : 'false');
-    tableToggle.innerHTML = isCollapsed ? '🢚 OUT' : '🢘 IN';
-    asideContent.classList.toggle('collapsed', isCollapsed);
-    setTimeout(function () {
-      table.classList.add('smooth-top');
-      scrollVisibility();
-      setTimeout(function () {
-        table.classList.remove('smooth-top');
-      }, 150); // resize()
-    }, 333);
+    return toggleAside();
   });
   figures = Array.from(document.getElementsByTagName('figure'));
   floatingFigs = figures.filter(function (fig) {
@@ -383,6 +375,26 @@ function pageLoad() {
   });
 }
 
+function toggleAside(forcedState) {
+  if (forcedState === void 0) {
+    forcedState = undefined;
+  }
+
+  var originalState = tableToggle.getAttribute('data-collapsed') == 'true';
+  if (forcedState && forcedState == originalState) return;
+  var isCollapsed = forcedState != undefined ? forcedState : !originalState;
+  tableToggle.setAttribute('data-collapsed', isCollapsed ? 'true' : 'false');
+  tableToggle.innerHTML = isCollapsed ? '🢚 OUT' : '🢘 IN';
+  asideContent.classList.toggle('collapsed', isCollapsed);
+  setTimeout(function () {
+    table.classList.add('smooth-top');
+    scrollVisibility();
+    setTimeout(function () {
+      table.classList.remove('smooth-top');
+    }, 150); // resize()
+  }, 333);
+}
+
 function enlargeImg(n) {
   if (n >= figInfo.length) figIndex = 0;else if (n < 0) figIndex = figInfo.length - 1;else figIndex = n;
   var info = figInfo[figIndex];
@@ -426,7 +438,7 @@ function scrollVisibility() {
 var minP = 600,
     maxP = 800,
     minImg = 250,
-    maxImg = 600,
+    maxImg = 450,
     changeOrder = function changeOrder(fig, pushDown) {
   var section = fig.parentNode;
   var isFloating = fig.getAttribute('data-isFloating') == 'true';
@@ -444,6 +456,7 @@ var minP = 600,
 };
 
 function resize() {
+  toggleAside(window.innerWidth < 992);
   var totalW = document.querySelector('article').getBoundingClientRect().width;
   var availableW = totalW - 2 * 45 - 20; // total minus section padding and figure margin
 
@@ -465,6 +478,8 @@ function resize() {
       changeOrder(fig, false);
     });
   }
+
+  scrollVisibility();
 }
 },{"most-visible":"../node_modules/most-visible/dist/most-visible.js"}],"../../../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];

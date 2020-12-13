@@ -71,7 +71,7 @@ header
         a
             font-family: 'Noto Serif', 'Times New Roman'
             font-style: italic
-            font-size: 15px
+            font-size: 1.05em
             font-weight: 500
             text-shadow: none
             transition: color 0.25s ease-out
@@ -319,7 +319,7 @@ main .container // aside is nested in here
     aside.content
         position: relative
         box-shadow: 1px 0px 3px black
-        width: 14.55em
+        width: 14.5em
         overflow: hidden
         @include expandTransition()
 
@@ -395,7 +395,7 @@ main .container // aside is nested in here
 
         &.collapsed
             width: 5.5em
-            .table-of-contents //.wrapper
+            .table-of-contents
                 h4, ul
                     height: 0
                     margin: 0
@@ -604,3 +604,27 @@ footer
                     margin: 3px 0
                     a
                         @include navLinks(false)
+
+@media screen and ( min-width: 1500px )
+    main .container aside.content
+        width: 20em
+
+@media screen and ( max-width: 992px)
+    header ul a
+        font-size: 1.05em
+    main .container
+        display: grid
+        grid-template-columns: 5.5em auto
+        grid-template-rows: auto
+        aside.content
+            position: relative
+            z-index: 5
+            height: auto
+            background: $bg
+        article
+            position: relative
+            z-index: 4
+
+@media screen and ( max-width: 875px)
+    html
+        font-size: .875rem

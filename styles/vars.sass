@@ -69,7 +69,7 @@ $softblack: rgb(33, 33, 33)
     // max-width: 900px
     margin-bottom: 40px
     overflow: hidden
-    max-height: 100vh
+    // max-height: 100vh
     transition: max-height .66s ease-in-out
     scroll-snap-align: start
 
@@ -139,9 +139,10 @@ $softblack: rgb(33, 33, 33)
             grid-area: fig
             float: none
             margin: 0 20px
+            max-height: 350px
 
     &[data-isExpanded="true"]
-        overflow-y: auto
+        // overflow-y: auto
         .content h4
             &:before
                 transform: scaleY(0)
