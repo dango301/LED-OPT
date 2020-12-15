@@ -1,4 +1,5 @@
 import mostVisible from 'most-visible'
+import jump from 'jump.js'
 // import preload from 'preload-js'
 
 var
@@ -29,7 +30,7 @@ function pageLoad() {
 
     console.log('%c' + 'Welcome!', 'font-weight: 900; color: lightblue')
     Array.from(document.getElementsByClassName('page-transition')).forEach(el => el.classList.add('loaded'))
-
+    
 
     // let queue = new preload.LoadQueue(false)
     // let images = Array.from(document.querySelectorAll('main article img'))
@@ -112,6 +113,9 @@ function pageLoad() {
 
     resize()
     window.onresize = resize
+    let target = document.getElementById(window.location.hash.substring(1))
+    // console.log(target)
+    jump(target, {offset: -45})
 }
 
 
