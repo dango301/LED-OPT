@@ -304,13 +304,6 @@ var _sections,
 
 var pages = ['home', 'leuchtdioden', 'datensätze', 'optimierung', 'impressum']; // if (window.location.hash == '')
 //     Array.from(document.getElementsByClassName('page-transition')).forEach(el => el.classList.add('hide'))
-// var queue = new preload.LoadQueue(false)
-// queue.on('fileload', handleFileComplete)
-// function handleFileComplete() {
-// }
-// const imgs = Array.from(document.querySelectorAll('main article img'))
-// console.log({imgs})
-// queue.loadManifest()
 
 window.onload = pageLoad;
 
@@ -318,24 +311,27 @@ function pageLoad() {
   console.log('%c' + 'Welcome!', 'font-weight: 900; color: lightblue');
   Array.from(document.getElementsByClassName('page-transition')).forEach(function (el) {
     return el.classList.add('loaded');
-  });
-  var n = pages.indexOf(Array.from(document.getElementsByTagName('main'))[0].getAttribute('data-namespace'));
-  Array.from(document.querySelectorAll('header nav a')).forEach(function (navLink, i) {
-    return navLink.classList.toggle('active', i == n);
-  });
-  _sections = document.querySelectorAll('section');
-  sections = Array.from(_sections);
-  asideContent = document.querySelector('aside.content');
-  contentLI = asideContent.querySelectorAll('li');
-  contentLinks = asideContent.querySelectorAll('li a');
-  table = asideContent.querySelector('.table-of-contents');
-  container = document.querySelector('main .container');
-  scrollVisibility();
-  window.onscroll = scrollVisibility;
-  tableToggle = document.querySelector('aside.content a.toggle');
-  tableToggle.addEventListener('click', function () {
-    return toggleAside();
-  });
+  }); // let queue = new preload.LoadQueue(false)
+  // let images = Array.from(document.querySelectorAll('main article img'))
+  // let imgInfos = []
+  // images.forEach(img => {
+  //     let src = img.getAttribute('data-src')
+  //     let alt = (<HTMLImageElement>img).alt
+  //     let imgSrc = img.getAttribute('data-imgSrc')
+  //     let parent = img.parentNode
+  //     imgInfos.push({ src, alt, imgSrc, parent })
+  // })
+  // imgInfos.forEach(img => queue.loadFile(img.src))
+  // queue.on('fileload', (event) => {
+  //     let src = event.item.src
+  //     let img = <HTMLImageElement>images.find(i => i.getAttribute('data-src') == src)
+  //     console.log(img.alt)
+  //     img.src = src
+  //     // resize()
+  //     // window.onresize = resize
+  // })
+  // queue.on('complete', () => {
+
   figures = Array.from(document.getElementsByTagName('figure'));
   floatingFigs = figures.filter(function (fig) {
     return fig.hasAttribute('data-isFloating');
@@ -361,12 +357,28 @@ function pageLoad() {
     fig.addEventListener('click', function () {
       return enlargeImg(i);
     });
+  }); // })
+
+  var n = pages.indexOf(Array.from(document.getElementsByTagName('main'))[0].getAttribute('data-namespace'));
+  Array.from(document.querySelectorAll('header nav a')).forEach(function (navLink, i) {
+    return navLink.classList.toggle('active', i == n);
+  });
+  _sections = document.querySelectorAll('section');
+  sections = Array.from(_sections);
+  asideContent = document.querySelector('aside.content');
+  contentLI = asideContent.querySelectorAll('li');
+  contentLinks = asideContent.querySelectorAll('li a');
+  table = asideContent.querySelector('.table-of-contents');
+  container = document.querySelector('main .container');
+  scrollVisibility();
+  window.onscroll = scrollVisibility;
+  tableToggle = document.querySelector('aside.content a.toggle');
+  tableToggle.addEventListener('click', function () {
+    return toggleAside();
   });
   if (modal) modal.addEventListener('click', function (e) {
     return hideImg(e.target);
   });
-  resize();
-  window.onresize = resize;
   Array.from(document.querySelectorAll('.info-box .content h4')).forEach(function (h4) {
     function toggleInfoBox(h4) {
       var infoBox = h4.parentElement.parentElement;
@@ -380,6 +392,8 @@ function pageLoad() {
       return toggleInfoBox(h4);
     });
   });
+  resize();
+  window.onresize = resize;
 }
 
 function toggleAside(forcedState) {
@@ -516,7 +530,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50417" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54818" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

@@ -23,15 +23,6 @@ const pages = ['home', 'leuchtdioden', 'datensätze', 'optimierung', 'impressum'
 // if (window.location.hash == '')
 //     Array.from(document.getElementsByClassName('page-transition')).forEach(el => el.classList.add('hide'))
 
-// var queue = new preload.LoadQueue(false)
-// queue.on('fileload', handleFileComplete)
-// function handleFileComplete() {
-
-    
-// }
-// const imgs = Array.from(document.querySelectorAll('main article img'))
-// console.log({imgs})
-// queue.loadManifest()
 
 window.onload = pageLoad
 function pageLoad() {
@@ -40,22 +31,29 @@ function pageLoad() {
     Array.from(document.getElementsByClassName('page-transition')).forEach(el => el.classList.add('loaded'))
 
 
-    const n = pages.indexOf(Array.from(document.getElementsByTagName('main'))[0].getAttribute('data-namespace'))
-    Array.from(document.querySelectorAll('header nav a')).forEach((navLink, i) => navLink.classList.toggle('active', i == n))
+    // let queue = new preload.LoadQueue(false)
+    // let images = Array.from(document.querySelectorAll('main article img'))
+    // let imgInfos = []
 
-    _sections = document.querySelectorAll('section')
-    sections = Array.from(_sections)
-    asideContent = document.querySelector('aside.content')
-    contentLI = asideContent.querySelectorAll('li')
-    contentLinks = asideContent.querySelectorAll('li a')
-    table = asideContent.querySelector('.table-of-contents')
-    container = document.querySelector('main .container')
-    scrollVisibility()
-    window.onscroll = scrollVisibility
+    // images.forEach(img => {
+    //     let src = img.getAttribute('data-src')
+    //     let alt = (<HTMLImageElement>img).alt
+    //     let imgSrc = img.getAttribute('data-imgSrc')
+    //     let parent = img.parentNode
+    //     imgInfos.push({ src, alt, imgSrc, parent })
+    // })
 
+    // imgInfos.forEach(img => queue.loadFile(img.src))
+    // queue.on('fileload', (event) => {
+    //     let src = event.item.src
+    //     let img = <HTMLImageElement>images.find(i => i.getAttribute('data-src') == src)
+    //     console.log(img.alt)
+    //     img.src = src
 
-    tableToggle = document.querySelector('aside.content a.toggle')
-    tableToggle.addEventListener('click', () => toggleAside())
+    //     // resize()
+    //     // window.onresize = resize
+    // })
+    // queue.on('complete', () => {
 
     figures = Array.from(document.getElementsByTagName('figure'))
     floatingFigs = figures.filter(fig => fig.hasAttribute('data-isFloating'))
@@ -75,9 +73,28 @@ function pageLoad() {
         })
         fig.addEventListener('click', () => enlargeImg(i))
     })
+
+    // })
+
+
+    const n = pages.indexOf(Array.from(document.getElementsByTagName('main'))[0].getAttribute('data-namespace'))
+    Array.from(document.querySelectorAll('header nav a')).forEach((navLink, i) => navLink.classList.toggle('active', i == n))
+
+    _sections = document.querySelectorAll('section')
+    sections = Array.from(_sections)
+    asideContent = document.querySelector('aside.content')
+    contentLI = asideContent.querySelectorAll('li')
+    contentLinks = asideContent.querySelectorAll('li a')
+    table = asideContent.querySelector('.table-of-contents')
+    container = document.querySelector('main .container')
+    scrollVisibility()
+    window.onscroll = scrollVisibility
+
+
+    tableToggle = document.querySelector('aside.content a.toggle')
+    tableToggle.addEventListener('click', () => toggleAside())
+
     if (modal) modal.addEventListener('click', e => hideImg(<HTMLElement>e.target))
-    resize()
-    window.onresize = resize
 
 
     Array.from(document.querySelectorAll('.info-box .content h4')).forEach(h4 => {
@@ -93,6 +110,8 @@ function pageLoad() {
         h4.addEventListener('click', () => toggleInfoBox(h4))
     })
 
+    resize()
+    window.onresize = resize
 }
 
 
@@ -182,7 +201,7 @@ const
             fig.setAttribute('data-isFloating', 'true')
         }
     }
-function resize() { //TODO: if aspect ratio too wide make it go under text
+function resize() {
 
     toggleAside(window.innerWidth < 992)
 

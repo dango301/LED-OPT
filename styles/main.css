@@ -1187,6 +1187,14 @@ footer nav .column ul li a:hover::after {
   height: 100%;
 }
 
+img {
+  visibility: hidden;
+}
+
+img[src] {
+  visibility: visible;
+}
+
 @media screen and (min-width: 1500px) {
   main .container aside.content {
     width: 20em;
