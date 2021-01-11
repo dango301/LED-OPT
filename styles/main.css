@@ -599,7 +599,7 @@ main .container aside.content {
   position: relative;
   -webkit-box-shadow: 1px 0px 3px black;
           box-shadow: 1px 0px 3px black;
-  width: 14.5em;
+  width: 14.5rem;
   overflow: hidden;
   -webkit-transition: all 0.33s cubic-bezier(0.56, 0.36, 0.37, 1.26);
   transition: all 0.33s cubic-bezier(0.56, 0.36, 0.37, 1.26);
@@ -765,7 +765,7 @@ main .container aside.content .table-of-contents li a:hover::after {
 }
 
 main .container aside.content.collapsed {
-  width: 5.5em;
+  width: 5.5rem;
 }
 
 main .container aside.content.collapsed .table-of-contents h4, main .container aside.content.collapsed .table-of-contents ul {
@@ -777,6 +777,7 @@ main .container article {
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
+  width: calc(100% - 90px - 5.5rem);
   -webkit-transition: all 0.33s cubic-bezier(0.56, 0.36, 0.37, 1.26);
   transition: all 0.33s cubic-bezier(0.56, 0.36, 0.37, 1.26);
 }
@@ -1205,14 +1206,6 @@ img[src] {
   header ul a {
     font-size: 1.05em;
   }
-  main .container {
-    display: -ms-grid;
-    display: grid;
-    -ms-grid-columns: 5.5em auto;
-        grid-template-columns: 5.5em auto;
-    -ms-grid-rows: auto;
-        grid-template-rows: auto;
-  }
   main .container aside.content {
     position: relative;
     z-index: 5;
@@ -1222,6 +1215,20 @@ img[src] {
   main .container article {
     position: relative;
     z-index: 4;
+  }
+  main .container article section .info-box .content {
+    -ms-grid-columns: auto;
+        grid-template-columns: auto;
+    -ms-grid-rows: auto auto auto;
+        grid-template-rows: auto auto auto;
+        grid-template-areas: 'h4' 'list' 'fig';
+  }
+  main .container article section .info-box .gallery {
+    -ms-grid-rows: (1fr)[auto-fit];
+        grid-template-rows: repeat(auto-fit, 1fr);
+    -ms-grid-columns: auto;
+        grid-template-columns: auto;
+        grid-template-areas: 'h5' 'f1' 'f2' 'f3' 'f4' 'f5' 'f6';
   }
 }
 

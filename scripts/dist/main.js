@@ -550,7 +550,7 @@ function pageLoad() {
     function toggleInfoBox(h4) {
       var infoBox = h4.parentElement.parentElement;
       var isExpanded = infoBox.getAttribute('data-isExpanded') == 'true';
-      infoBox.style.maxHeight = isExpanded ? h4.offsetHeight + "px" : '100vh';
+      infoBox.style.maxHeight = isExpanded ? h4.offsetHeight + "px" : window.innerWidth < 992 ? '1000vh' : '100vh';
       infoBox.setAttribute('data-isExpanded', isExpanded ? 'false' : 'true');
     }
 
@@ -561,8 +561,7 @@ function pageLoad() {
   });
   resize();
   window.onresize = resize;
-  var target = document.getElementById(window.location.hash.substring(1)); // console.log(target)
-
+  var target = document.getElementById(window.location.hash.substring(1));
   jump_js_1.default(target, {
     offset: -45
   });
@@ -595,8 +594,12 @@ function enlargeImg(n) {
   modalImg.src = info.src;
   modalImg.alt = info.alt;
   title.innerHTML = info.alt;
-  link.innerHTML = info.imgSrc;
-  link.href = info.href;
+
+  if (info.href) {
+    link.style.display = 'initial';
+    link.innerHTML = info.imgSrc;
+    link.href = info.href;
+  } else link.style.display = 'none';
 }
 
 function hideImg(el) {
@@ -702,7 +705,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50245" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59689" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

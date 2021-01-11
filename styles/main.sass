@@ -17,6 +17,7 @@ body
     hyphens: auto
     position: relative
     background-attachment: fixed
+    // overflow-x: hidden
 html
     scroll-behavior: smooth
     scroll-snap-type: y proximity
@@ -319,7 +320,7 @@ main .container // aside is nested in here
     aside.content
         position: relative
         box-shadow: 1px 0px 3px black
-        width: 14.5em
+        width: 14.5rem
         overflow: hidden
         @include expandTransition()
 
@@ -394,7 +395,7 @@ main .container // aside is nested in here
                     @include navLinks(false)
 
         &.collapsed
-            width: 5.5em
+            width: 5.5rem
             .table-of-contents
                 h4, ul
                     height: 0
@@ -403,6 +404,7 @@ main .container // aside is nested in here
     article
         flex: 1
         // scroll-snap-align: start
+        width: calc(100% - 90px - 5.5rem)
         @include expandTransition()
 
 section
@@ -609,7 +611,7 @@ img
     visibility: hidden
 img[src]
     visibility: visible
-    
+
 @media screen and ( min-width: 1500px )
     main .container aside.content
         width: 20em
@@ -618,9 +620,10 @@ img[src]
     header ul a
         font-size: 1.05em
     main .container
-        display: grid
-        grid-template-columns: 5.5em auto
-        grid-template-rows: auto
+        // display: grid
+        // width: 100vw
+        // grid-template-columns: 5.5rem auto
+        // grid-template-rows: auto
         aside.content
             position: relative
             z-index: 5
@@ -629,6 +632,16 @@ img[src]
         article
             position: relative
             z-index: 4
+
+            section .info-box
+                .content
+                    grid-template-columns: auto
+                    grid-template-rows: auto auto auto
+                    grid-template-areas: 'h4' 'list' 'fig'
+                .gallery
+                    grid-template-rows: repeat(auto-fit, 1fr)
+                    grid-template-columns: auto
+                    grid-template-areas: 'h5' 'f1' 'f2' 'f3' 'f4' 'f5' 'f6'
 
 @media screen and ( max-width: 875px)
     html

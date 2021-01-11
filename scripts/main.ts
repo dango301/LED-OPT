@@ -30,7 +30,7 @@ function pageLoad() {
 
     console.log('%c' + 'Welcome!', 'font-weight: 900; color: lightblue')
     Array.from(document.getElementsByClassName('page-transition')).forEach(el => el.classList.add('loaded'))
-    
+
 
     // let queue = new preload.LoadQueue(false)
     // let images = Array.from(document.querySelectorAll('main article img'))
@@ -103,7 +103,7 @@ function pageLoad() {
         function toggleInfoBox(h4: Element) {
             const infoBox = h4.parentElement.parentElement
             const isExpanded = infoBox.getAttribute('data-isExpanded') == 'true'
-            infoBox.style.maxHeight = isExpanded ? `${(<HTMLElement>h4).offsetHeight}px` : '100vh'
+            infoBox.style.maxHeight = isExpanded ? `${(<HTMLElement>h4).offsetHeight}px` : (window.innerWidth < 992 ? '1000vh' : '100vh')
             infoBox.setAttribute('data-isExpanded', isExpanded ? 'false' : 'true')
         }
 
@@ -114,8 +114,7 @@ function pageLoad() {
     resize()
     window.onresize = resize
     let target = document.getElementById(window.location.hash.substring(1))
-    // console.log(target)
-    jump(target, {offset: -45})
+    jump(target, { offset: -45 })
 }
 
 
@@ -152,8 +151,12 @@ function enlargeImg(n: number) {
     modalImg.src = info.src
     modalImg.alt = info.alt
     title.innerHTML = info.alt
-    link.innerHTML = info.imgSrc
-    link.href = info.href
+    if (info.href) {
+        link.style.display = 'initial'
+        link.innerHTML = info.imgSrc
+        link.href = info.href
+    } else
+        link.style.display = 'none'
 }
 function hideImg(el: HTMLElement) {
 
