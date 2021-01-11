@@ -30,24 +30,27 @@ html
 header
     height: $navHeight
     position: fixed
-    width: 100%
+    width: 100vw
     top: 0
     left: 0
     z-index: 999
-    display: grid
-    grid-template-columns: 1fr 2fr
+    display: flex
+    justify-content: space between
     background: $bg
     padding: 0
     box-shadow: 0px 1px 3px black
 
     nav
         height: $navHeight
+        padding-right: 15px
+        flex: 2
 
     .logo
         margin: 2.5px 15px
         display: flex
         align-items: center
         height: 40px
+        flex: 1
 
         a:first-child
             width: 40px
@@ -411,7 +414,8 @@ section
     // scroll-snap-align: start
     padding: 25px 45px
     text-align: justify
-    overflow: auto // handles vertical float elements not hanging over section
+    overflow-y: auto // handles vertical float elements not hanging over section
+    overflow-x: hidden // handles vertical float elements not hanging over section
 
     *
         color: black
@@ -646,3 +650,24 @@ img[src]
 @media screen and ( max-width: 875px)
     html
         font-size: .875rem
+    header nav
+        flex: 3
+
+@media screen and ( max-width: 700px)
+    .info-box
+        display: none
+    header ul a
+        font-size: .75rem
+    header nav
+        flex: 4
+
+@media screen and ( max-width: 500px) // mobile
+    html
+        font-size: .7rem
+    header .logo a:last-child
+        display: none
+    header nav
+        flex: 10
+
+    main .container aside.content
+        display: none

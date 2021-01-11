@@ -62,14 +62,16 @@ html {
 header {
   height: 45px;
   position: fixed;
-  width: 100%;
+  width: 100vw;
   top: 0;
   left: 0;
   z-index: 999;
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: 1fr 2fr;
-      grid-template-columns: 1fr 2fr;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space between;
+      -ms-flex-pack: space between;
+          justify-content: space between;
   background: #111;
   padding: 0;
   -webkit-box-shadow: 0px 1px 3px black;
@@ -78,6 +80,10 @@ header {
 
 header nav {
   height: 45px;
+  padding-right: 15px;
+  -webkit-box-flex: 2;
+      -ms-flex: 2;
+          flex: 2;
 }
 
 header .logo {
@@ -89,6 +95,9 @@ header .logo {
       -ms-flex-align: center;
           align-items: center;
   height: 40px;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
 }
 
 header .logo a:first-child {
@@ -785,7 +794,8 @@ main .container article {
 section {
   padding: 25px 45px;
   text-align: justify;
-  overflow: auto;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 section * {
@@ -1235,6 +1245,42 @@ img[src] {
 @media screen and (max-width: 875px) {
   html {
     font-size: .875rem;
+  }
+  header nav {
+    -webkit-box-flex: 3;
+        -ms-flex: 3;
+            flex: 3;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .info-box {
+    display: none;
+  }
+  header ul a {
+    font-size: .75rem;
+  }
+  header nav {
+    -webkit-box-flex: 4;
+        -ms-flex: 4;
+            flex: 4;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  html {
+    font-size: .7rem;
+  }
+  header .logo a:last-child {
+    display: none;
+  }
+  header nav {
+    -webkit-box-flex: 10;
+        -ms-flex: 10;
+            flex: 10;
+  }
+  main .container aside.content {
+    display: none;
   }
 }
 /*# sourceMappingURL=main.css.map */

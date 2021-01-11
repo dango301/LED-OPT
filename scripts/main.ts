@@ -103,7 +103,7 @@ function pageLoad() {
         function toggleInfoBox(h4: Element) {
             const infoBox = h4.parentElement.parentElement
             const isExpanded = infoBox.getAttribute('data-isExpanded') == 'true'
-            infoBox.style.maxHeight = isExpanded ? `${(<HTMLElement>h4).offsetHeight}px` : (window.innerWidth < 992 ? '1000vh' : '100vh')
+            infoBox.style.maxHeight = isExpanded ? `${(<HTMLElement>h4).offsetHeight}px` : '1000vh'
             infoBox.setAttribute('data-isExpanded', isExpanded ? 'false' : 'true')
         }
 
@@ -217,6 +217,8 @@ function resize() {
 
     if (availableW - minImg < minP) { // both text and img would become too small
         floatingFigs.forEach(fig => changeOrder(fig, true))
+        if (window.innerWidth < 500) //mobile
+            floatingFigs.forEach(fig => fig.style.width = 'auto')
     } else {
         let finalW = minImg + .5 * (availableW - minP - minImg) //distribute space evenly
 
